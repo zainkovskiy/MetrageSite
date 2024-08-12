@@ -1,0 +1,35 @@
+{
+  "name": "metragesite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack serve --mode development",
+    "build": "webpack --mode production"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@svgr/webpack": "^8.1.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@types/react-router-dom": "^5.3.3",
+    "@types/yandex-maps": "^2.1.36",
+    "axios": "^1.7.3",
+    "css-loader": "^7.1.2",
+    "framer-motion": "^11.3.24",
+    "html-webpack-plugin": "^5.6.0",
+    "mini-css-extract-plugin": "^2.9.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.0",
+    "sass-loader": "^16.0.0",
+    "styled-components": "^6.1.12",
+    "ts-loader": "^9.5.1",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.93.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4"
+  }
+}

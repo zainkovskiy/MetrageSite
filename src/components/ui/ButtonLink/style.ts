@@ -1,0 +1,35 @@
+import styled, { css } from 'styled-components';
+import { IButtonLinkStyleProps } from './types';
+
+export const ButtonLink = styled.a<IButtonLinkStyleProps>`
+  font-family: ${({ theme, $bold }) =>
+    $bold ? theme.font.bold : theme.font.regular};
+  color: ${({ theme }) => theme.color.text};
+  font-size: 14px;
+  cursor: pointer;
+  transition: color 0.3s;
+  text-decoration: none;
+  ${({ $isMatch }) =>
+    $isMatch &&
+    css`
+      text-decoration: underline;
+    `}
+  ${({ $uppercase }) =>
+    $uppercase &&
+    css`
+      text-transform: uppercase;
+    `}
+  @media (hover: hover) {
+    &:hover {
+      color: ${({ theme }) => theme.palette.primaryLite};
+    }
+    &:active {
+      color: ${({ theme }) => theme.palette.primaryDark};
+    }
+  }
+  @media (hover: none) {
+    &:active {
+      color: ${({ theme }) => theme.palette.primaryDark};
+    }
+  }
+`;
