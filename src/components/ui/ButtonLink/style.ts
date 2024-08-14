@@ -4,8 +4,9 @@ import { IButtonLinkStyleProps } from './types';
 export const ButtonLink = styled.a<IButtonLinkStyleProps>`
   font-family: ${({ theme, $bold }) =>
     $bold ? theme.font.bold : theme.font.regular};
-  color: ${({ theme }) => theme.color.text};
-  font-size: 14px;
+  color: ${({ theme, $color }) =>
+    $color ? theme.palette[$color] : theme.palette.black};
+  font-size: ${({ $size }) => ($size ? `${$size}px` : '14px')};
   cursor: pointer;
   transition: color 0.3s;
   text-decoration: none;

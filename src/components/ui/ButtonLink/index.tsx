@@ -13,6 +13,8 @@ const ButtonLink = <E extends ElementType = typeof defaultTag>(
     uppercase = false,
     bold = false,
     isMatch,
+    color = 'black',
+    size,
     ...otherProps
   } = props;
 
@@ -30,6 +32,8 @@ const ButtonLink = <E extends ElementType = typeof defaultTag>(
       $isMatch={getIsMatch()}
       $uppercase={uppercase}
       $bold={bold}
+      $color={color}
+      $size={size}
     >
       {label}
     </S.ButtonLink>

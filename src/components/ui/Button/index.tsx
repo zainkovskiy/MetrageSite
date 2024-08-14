@@ -8,6 +8,7 @@ const Button = (props: IButtonProps) => {
     variant = 'default',
     color = 'primary',
     type = 'button',
+    fullWidth,
     ...otherProps
   } = props;
   const getButtonComponent = () => {
@@ -18,7 +19,12 @@ const Button = (props: IButtonProps) => {
   };
   const ButtonComponent = getButtonComponent();
   return (
-    <ButtonComponent type={type} {...otherProps}>
+    <ButtonComponent
+      type={type}
+      {...otherProps}
+      color={color}
+      $fullWidth={fullWidth}
+    >
       {children}
     </ButtonComponent>
   );

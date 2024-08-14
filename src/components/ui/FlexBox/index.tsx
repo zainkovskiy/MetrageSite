@@ -7,9 +7,15 @@ const FlexBox: React.FC<IFlexBoxProps> = ({
   jContent,
   aItems,
   gap,
+  fullWidth,
 }) => {
   return (
-    <S.FlexBox $gap={gap} $aItems={aItems} $jContent={jContent}>
+    <S.FlexBox
+      $gap={gap}
+      $aItems={aItems}
+      $jContent={jContent}
+      $fullWidth={fullWidth}
+    >
       {children}
     </S.FlexBox>
   );

@@ -18,4 +18,9 @@ export const FlexBox = styled.div<IFlexBoxPropsStyle>`
     css`
       justify-content: ${props.$jContent};
     `}
+  ${(props) =>
+    props.$fullWidth &&
+    css`
+      width: 100%;
+    `}
 `;

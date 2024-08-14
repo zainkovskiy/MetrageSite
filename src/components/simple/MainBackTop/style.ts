@@ -5,7 +5,5 @@ export const MainBackTop = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 720px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
 `;

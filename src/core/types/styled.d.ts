@@ -1,4 +1,5 @@
 import 'styled-components';
+import { DefaultTheme } from 'styled-components/dist/types';
 
 declare module 'styled-components' {
   export interface DefaultTheme {
@@ -6,14 +7,16 @@ declare module 'styled-components' {
       regular: string;
       bold: string;
       gilroy: string;
+      dinpro: string;
     };
     palette: {
       primary: string;
       primaryLite: string;
       primaryDark: string;
-      text: string;
       error: string;
       grey: string;
+      greyDark: string;
+      black: string;
       white: string;
     };
   }

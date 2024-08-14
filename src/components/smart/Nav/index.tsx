@@ -6,7 +6,6 @@ import ButtonLink from '../../ui/ButtonLink';
 import { Link } from 'react-router-dom';
 import FlexBox from '../../ui/FlexBox';
 import CenterContainer from '../../containers/CenterContainer';
-import Button from '../../ui/Button';
 
 const Nav = () => {
   const [isVisibleBack, setIsVisibleBack] = useState(false);
@@ -46,8 +45,6 @@ const Nav = () => {
               uppercase
             />
           </FlexBox>
-          <Button>default</Button>
-          <Button variant='outline'> outline</Button>
           <FlexBox gap='20px'>
             <ButtonLink
               label='Сервисы'
