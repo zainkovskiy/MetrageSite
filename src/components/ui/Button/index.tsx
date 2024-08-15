@@ -9,11 +9,15 @@ const Button = (props: IButtonProps) => {
     color = 'primary',
     type = 'button',
     fullWidth,
+    small,
     ...otherProps
   } = props;
   const getButtonComponent = () => {
     if (variant === 'outline') {
       return S.ButtonOutline;
+    }
+    if (variant === 'text') {
+      return S.ButtonText;
     }
     return S.Button;
   };
@@ -24,6 +28,7 @@ const Button = (props: IButtonProps) => {
       {...otherProps}
       color={color}
       $fullWidth={fullWidth}
+      $small={small}
     >
       {children}
     </ButtonComponent>

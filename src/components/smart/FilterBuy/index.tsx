@@ -14,7 +14,7 @@ const FilterBuy = () => {
         <InputWithBox placeholder='Улица' />
       </S.FilterBuyInputs>
       <FlexBox jContent='space-between'>
-        <Button variant='outline'>Сбросить</Button>
+        <Button variant='text'>Сбросить</Button>
         <FlexBox gap='12px'>
           <Button variant='outline'>На карте</Button>
           <Button>Найдено 6 000 предложений</Button>

@@ -4,9 +4,10 @@ import Text from '../../ui/Text';
 import InputWithBox from '../../ui/InputWithBox';
 import Button from '../../ui/Button';
 import FlexBox from '../../ui/FlexBox';
-const MainSignCconsultation = () => {
+import HorizontLine from '../../simple/HorizontLine';
+const MainSignConsultation = () => {
   return (
-    <S.MainSignCconsultation>
+    <S.MainSignConsultation>
       <S.IconLogoContainer>
         <S.IconLogo />
       </S.IconLogoContainer>
@@ -26,9 +27,9 @@ const MainSignCconsultation = () => {
           </S.ButtonWrapper>
         </FlexBox>
       </FlexBox>
-      <S.HorizontLine />
-    </S.MainSignCconsultation>
+      <HorizontLine />
+    </S.MainSignConsultation>
   );
 };
 
-export default MainSignCconsultation;
+export default MainSignConsultation;

@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import Nav from './components/smart/Nav';
 import { useAppDispatch } from './core/hooks/storeHook';
 import { getRegion } from './core/store/slices/MainInfoSlice';
+import Footer from './components/smart/Footer';
 const App = () => {
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -15,6 +16,7 @@ const App = () => {
     <>
       <Nav />
       <Outlet />
+      <Footer />
     </>
   );
 };

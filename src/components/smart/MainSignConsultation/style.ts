@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { ReactComponent as LogoBlack } from '../../../assets/images/logoBlack.svg';
-export const MainSignCconsultation = styled.div`
+export const MainSignConsultation = styled.div`
   padding: 200px 0;
   box-sizing: border-box;
   display: flex;
@@ -30,11 +30,6 @@ export const IconLogoContainer = styled.div`
     margin-right: 1rem;
     background-color: ${({ theme }) => theme.palette.black};
   }
-`;
-export const HorizontLine = styled.div`
-  width: 100%;
-  height: 1px;
-  background-color: ${({ theme }) => theme.palette.black};
 `;
 export const IconLogo = styled(LogoBlack)`
   min-width: 27px;

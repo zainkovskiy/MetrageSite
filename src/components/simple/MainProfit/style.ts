@@ -18,7 +18,7 @@ export const MainProfitTitleWrap = styled.div`
   margin: 0 auto;
   left: 0;
   right: 0;
-  padding: 40px 60px;
+  padding: 40px 4vw;
   box-sizing: border-box;
 `;
 export const MainProfitCards = styled.div`

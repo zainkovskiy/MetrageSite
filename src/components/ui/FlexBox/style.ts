@@ -23,4 +23,9 @@ export const FlexBox = styled.div<IFlexBoxPropsStyle>`
     css`
       width: 100%;
     `}
+  ${(props) =>
+    props.$column &&
+    css`
+      flex-direction: column;
+    `}
 `;

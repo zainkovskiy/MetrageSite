@@ -13,7 +13,7 @@ export const MainRealtorsText = styled.div`
 `;
 export const MainRealtorsCards = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   grid-gap: 1rem;
   grid-column-start: 2;
   grid-column-end: 4;

@@ -8,7 +8,8 @@ import MainCredo from '../../simple/MainCredo';
 import MainNewBuild from '../../smart/MainNewBuild';
 import MainRealtors from '../../smart/MainRealtors';
 import MainProfit from '../../simple/MainProfit';
-import MainSignCconsultation from '../../smart/MainSignCconsultation';
+import MainSignConsultation from '../../smart/MainSignConsultation';
+import MainInfo from '../../simple';
 
 const MainPage = () => {
   return (
@@ -27,7 +28,8 @@ const MainPage = () => {
       <MainProfit />
       <CenterContainer>
         <PaddingSide>
-          <MainSignCconsultation />
+          <MainSignConsultation />
+          <MainInfo />
         </PaddingSide>
       </CenterContainer>
     </>

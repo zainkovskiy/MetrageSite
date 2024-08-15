@@ -1,12 +1,12 @@
 import styled, { css } from 'styled-components';
 import { IButtonStyleProps } from './types';
 
-const buttonCss = css`
+const buttonCss = css<IButtonStyleProps>`
   outline: none;
-  padding: 16px 40px;
+  padding: ${(props) => (props.$small ? '7.5px 40px' : '14px 40px')};
   box-sizing: border-box;
   font-family: ${({ theme }) => theme.font.regular};
-  font-size: clamp(10px, 1vw, 14px);
+  font-size: ${(props) => (props.$small ? '12px' : '14px')};
   text-transform: uppercase;
   cursor: pointer;
   border: none;
@@ -68,6 +68,7 @@ export const Button = styled.button<IButtonStyleProps>`
 
 const buttonOutlineCss = css`
   background-color: ${({ theme }) => theme.palette.white};
+  color: ${({ theme }) => theme.palette.primary};
   @media (hover: hover) {
     &:hover {
       border: 1px solid ${({ theme }) => theme.palette.primaryLite};
@@ -107,4 +108,31 @@ export const ButtonOutline = styled.button<IButtonStyleProps>`
       `;
     }
   }};
+`;
+const buttonTextCss = css`
+  background-color: ${({ theme }) => theme.palette.white};
+  border: 1px solid ${({ theme }) => theme.palette.white};
+  color: ${({ theme }) => theme.palette.primary};
+  @media (hover: hover) {
+    &:hover {
+      color: ${({ theme }) => theme.palette.primaryLite};
+    }
+    &:active {
+      color: ${({ theme }) => theme.palette.primaryDark};
+    }
+  }
+  @media (hover: none) {
+    &:active {
+      color: ${({ theme }) => theme.palette.primaryDark};
+    }
+  }
+`;
+export const ButtonText = styled.button<IButtonStyleProps>`
+  ${buttonCss}
+  ${buttonTextCss}
+    ${({ $fullWidth }) =>
+    $fullWidth &&
+    css`
+      width: 100%;
+    `};
 `;

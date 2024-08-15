@@ -2,9 +2,10 @@ import React, { ComponentProps } from 'react';
 
 interface IButtonOwnProps {
   children: React.ReactNode;
-  variant?: 'default' | 'outline';
+  variant?: 'default' | 'outline' | 'text';
   color?: 'primary' | 'black';
   fullWidth?: boolean;
+  small?: boolean;
 }
 
 export type IButtonProps = IButtonOwnProps &
@@ -13,4 +14,5 @@ export type IButtonProps = IButtonOwnProps &
 export interface IButtonStyleProps {
   color?: 'primary' | 'black';
   $fullWidth?: boolean;
+  $small?: boolean;
 }
