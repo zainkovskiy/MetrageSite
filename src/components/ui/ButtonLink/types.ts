@@ -12,6 +12,7 @@ interface IButtonLinkOwnProps<E extends ElementType = ElementType> {
   isMatch?: boolean;
   uppercase?: boolean;
   bold?: boolean;
+  arrow?: 'left' | 'right';
   size?: number;
   color?:
     | 'primary'

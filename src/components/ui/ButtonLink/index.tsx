@@ -2,7 +2,6 @@ import React, { ElementType } from 'react';
 import * as S from './style';
 import { IButtonLinkProps } from './types';
 import { useMatch } from 'react-router-dom';
-
 const defaultTag = 'a';
 const ButtonLink = <E extends ElementType = typeof defaultTag>(
   props: IButtonLinkProps<E>
@@ -14,6 +13,7 @@ const ButtonLink = <E extends ElementType = typeof defaultTag>(
     bold = false,
     isMatch,
     color = 'black',
+    arrow,
     size,
     ...otherProps
   } = props;
@@ -35,7 +35,9 @@ const ButtonLink = <E extends ElementType = typeof defaultTag>(
       $color={color}
       $size={size}
     >
+      {arrow === 'left' && <S.ArrowIconLeft />}
       {label}
+      {arrow === 'right' && <S.ArrowIconRight />}
     </S.ButtonLink>
   );
 };

@@ -1,7 +1,12 @@
 import styled, { css } from 'styled-components';
 import { IButtonLinkStyleProps } from './types';
+import { ReactComponent as ArrowBoldLeft } from '../../../assets/images/arrowBoldLeft.svg';
+import { ReactComponent as ArrowBoldRight } from '../../../assets/images/arrowBoldRight.svg';
 
 export const ButtonLink = styled.a<IButtonLinkStyleProps>`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   font-family: ${({ theme, $bold }) =>
     $bold ? theme.font.bold : theme.font.regular};
   color: ${({ theme, $color }) =>
@@ -34,3 +39,6 @@ export const ButtonLink = styled.a<IButtonLinkStyleProps>`
     }
   }
 `;
+
+export const ArrowIconLeft = ArrowBoldLeft;
+export const ArrowIconRight = ArrowBoldRight;

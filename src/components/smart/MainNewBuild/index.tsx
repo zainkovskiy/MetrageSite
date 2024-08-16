@@ -17,6 +17,7 @@ const MainNewBuild = () => {
           color='primaryDark'
           uppercase
           bold
+          arrow='right'
         />
       </S.MainNewBuildText>
       <S.MainNewBuildCards>

@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { IAPI, IMainData, IRegion } from '../../models/api';
 import axios from 'axios';
 import { IMainSlice } from '../typesStore/mainSliceType';
@@ -42,7 +42,11 @@ const initialState: IMainSlice = {
 const MainInfoSlice = createSlice({
   name: 'main',
   initialState,
-  reducers: {},
+  reducers: {
+    setRegion(state, action: PayloadAction<string>) {
+      state.region = action.payload;
+    },
+  },
   extraReducers(builder) {
     builder
       .addCase(getRegion.fulfilled, (state, action) => {
@@ -55,5 +59,5 @@ const MainInfoSlice = createSlice({
   },
 });
 
-export const {} = MainInfoSlice.actions;
+export const { setRegion } = MainInfoSlice.actions;
 export default MainInfoSlice.reducer;

@@ -34,6 +34,17 @@ export const IconLogoContainer = styled.div`
 export const IconLogo = styled(LogoBlack)`
   min-width: 27px;
 `;
+export const MainSignConsultationWrap = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+`;
+export const InputsWrap = styled.div`
+  grid-column-start: 2;
+  grid-column-end: 4;
+  display: flex;
+  gap: 0.5rem;
+`;
 export const ButtonWrapper = styled.div`
   position: relative;
   width: 100%;

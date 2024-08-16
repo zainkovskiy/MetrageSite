@@ -17,6 +17,7 @@ const MainRealtors = () => {
           color='primaryDark'
           uppercase
           bold
+          arrow='right'
         />
       </S.MainRealtorsText>
       <S.MainRealtorsCards>
