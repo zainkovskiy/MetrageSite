@@ -14,6 +14,7 @@ export const NavWrapper = styled.div`
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
+  position: relative;
   @media (max-width: 1215px) {
     padding: 26px 1rem;
   }

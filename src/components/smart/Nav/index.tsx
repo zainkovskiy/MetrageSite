@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as S from './style';
 import { scroll } from 'framer-motion';
 import { navVariants } from './animate';
@@ -13,15 +13,34 @@ import ListBoxItem from '../../ui/ListBoxItem';
 import { useAppDispatch, useAppSelector } from '../../../core/hooks/storeHook';
 import { setRegion } from '../../../core/store/slices/MainInfoSlice';
 import { regionRus } from '../../../core/constants/regions';
+import ButtonMenu from '../../ui/ButtonMenu';
+import NavMenu from '../../simple/NavMenu';
+import Logo from '../Logo';
 
 const Nav = () => {
   const dispatch = useAppDispatch();
   const { region } = useAppSelector((state) => state.main);
   const [isVisibleBack, setIsVisibleBack] = useState(false);
   const [active, setActive] = useState(false);
+  const [openMenu, setOpenMenu] = useState(false);
+  const navRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (openMenu) {
+      document.addEventListener('click', handleListener, true);
+    } else {
+      document.removeEventListener('click', handleListener, true);
+    }
+    return () => {
+      document.removeEventListener('click', handleListener, true);
+    };
+  }, [openMenu]);
   scroll(
     (progress) => {
       if (progress > 0) {
+        setIsVisibleBack(true);
+        return;
+      }
+      if (openMenu) {
         setIsVisibleBack(true);
         return;
       }
@@ -29,6 +48,24 @@ const Nav = () => {
     },
     { axis: 'y' }
   );
+  const handleListener = (e: MouseEvent) => {
+    const target = e.target as HTMLElement;
+    const className = target.className;
+
+    if (!className) {
+      setOpenMenu(false);
+    }
+    if (navRef.current) {
+      const elemColection = navRef.current.getElementsByClassName(
+        `${className}`
+      );
+      if (elemColection.length > 0) {
+        return;
+      }
+      setOpenMenu(false);
+    }
+    setOpenMenu(false);
+  };
   const _active = () => {
     setActive(!active);
   };
@@ -38,15 +75,20 @@ const Nav = () => {
     const target = event.target as HTMLElement;
     dispatch(setRegion(target.id));
   };
+  const _openMenu = () => {
+    setOpenMenu(!openMenu);
+  };
   return (
     <S.Nav
       animate={isVisibleBack ? 'visible' : 'invisible'}
       variants={navVariants}
       transition={{ duration: 0.3 }}
+      ref={navRef}
     >
       <CenterContainer>
         <S.NavWrapper>
-          <FlexBox gap='20px'>
+          <FlexBox gap='20px' aItems='center'>
+            <ButtonMenu onClick={_openMenu} open={openMenu} />
             <ButtonLink label='Купить' as={Link} to='/buy' isMatch uppercase />
             <ButtonLink
               label='Продать'
@@ -63,7 +105,8 @@ const Nav = () => {
               uppercase
             />
           </FlexBox>
-          <FlexBox gap='20px'>
+          <Logo />
+          <FlexBox gap='20px' aItems='center'>
             <ButtonLink
               label='Сервисы'
               as={Link}
@@ -80,6 +123,7 @@ const Nav = () => {
               label='8-800-222-85-28'
               uppercase
               href='tel:8-800-222-85-28'
+              isNumber
             />
             <ListBox
               title={regionRus[region]}
@@ -100,6 +144,7 @@ const Nav = () => {
           </FlexBox>
         </S.NavWrapper>
       </CenterContainer>
+      <NavMenu open={openMenu} />
     </S.Nav>
   );
 };

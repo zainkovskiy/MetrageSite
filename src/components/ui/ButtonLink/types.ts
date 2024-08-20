@@ -12,6 +12,7 @@ interface IButtonLinkOwnProps<E extends ElementType = ElementType> {
   isMatch?: boolean;
   uppercase?: boolean;
   bold?: boolean;
+  isNumber?: boolean;
   arrow?: 'left' | 'right';
   size?: number;
   color?:
@@ -30,6 +31,7 @@ export interface IButtonLinkStyleProps {
   $isMatch: boolean;
   $uppercase: boolean;
   $bold: boolean;
+  $isNumber: boolean;
   $size?: number;
   $color?:
     | 'primary'

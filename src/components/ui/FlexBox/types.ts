@@ -1,4 +1,6 @@
-export interface IFlexBoxProps {
+import { ComponentElement, ComponentProps } from 'react';
+
+export interface IFlexOwnBoxProps {
   gap?: string;
   fullWidth?: boolean;
   column?: boolean;
@@ -6,6 +8,9 @@ export interface IFlexBoxProps {
   jContent?: 'center' | 'flex-end' | 'flex-start' | 'space-between';
   children?: React.ReactNode;
 }
+export type IFlexBoxProps = IFlexOwnBoxProps &
+  Omit<ComponentProps<'div'>, keyof IFlexOwnBoxProps>;
+
 export interface IFlexBoxPropsStyle {
   $gap?: string;
   $aItems?: string;

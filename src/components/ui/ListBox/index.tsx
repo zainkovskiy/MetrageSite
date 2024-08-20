@@ -35,8 +35,6 @@ const ListBox = (props: IListBoxProps) => {
   };
   const setElementId = (elem: React.ReactNode, isIcon?: string) => {
     if (elem && React.isValidElement(elem)) {
-      console.log(elem);
-
       return React.cloneElement(elem, {
         'data-name': `list_box_${newId}`,
         id: isIcon === 'icon' ? 'icon' : elem.props?.id,

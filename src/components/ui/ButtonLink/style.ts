@@ -1,14 +1,24 @@
-import styled, { css } from 'styled-components';
+import styled, { css, ExecutionContext } from 'styled-components';
 import { IButtonLinkStyleProps } from './types';
 import { ReactComponent as ArrowBoldLeft } from '../../../assets/images/arrowBoldLeft.svg';
 import { ReactComponent as ArrowBoldRight } from '../../../assets/images/arrowBoldRight.svg';
+
+const getFont = (props: ExecutionContext & IButtonLinkStyleProps) => {
+  const { $bold, $isNumber, theme } = props;
+  if ($isNumber) {
+    return theme.font.dinpro;
+  }
+  if ($bold) {
+    return theme.font.bold;
+  }
+  return theme.font.regular;
+};
 
 export const ButtonLink = styled.a<IButtonLinkStyleProps>`
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-family: ${({ theme, $bold }) =>
-    $bold ? theme.font.bold : theme.font.regular};
+  font-family: ${(props) => getFont(props)};
   color: ${({ theme, $color }) =>
     $color ? theme.palette[$color] : theme.palette.black};
   font-size: ${({ $size }) => ($size ? `${$size}px` : '14px')};
@@ -41,4 +51,8 @@ export const ButtonLink = styled.a<IButtonLinkStyleProps>`
 `;
 
 export const ArrowIconLeft = ArrowBoldLeft;
-export const ArrowIconRight = ArrowBoldRight;
+export const ArrowIconRight = styled(ArrowBoldRight)<{ $color: string }>`
+  ${({ $color }) => css`
+    fill: ${$color};
+  `}
+`;

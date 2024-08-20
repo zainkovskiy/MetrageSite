@@ -7,7 +7,6 @@ import FlexBox from '../../ui/FlexBox';
 import Text from '../../ui/Text';
 import { ReactComponent as Logo } from '../../../assets/images/logo.svg';
 import ButtonLink from '../../ui/ButtonLink';
-import InputWithBox from '../../ui/InputWithBox';
 import Button from '../../ui/Button';
 import Input from '../../ui/Input';
 import { Link } from 'react-router-dom';

@@ -19,6 +19,7 @@ const MainProfTeam = () => {
             color='white'
             label='познакомиться со специалистами'
             bold
+            arrow='right'
           />
         </S.MainProfTeamLink>
       </S.MainProfTeamWrap>
