@@ -39,4 +39,9 @@ export const Input = styled.input<IInputStyleProps>`
   &:hover::placeholder {
     color: ${({ theme }) => theme.palette.primary};
   }
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 `;

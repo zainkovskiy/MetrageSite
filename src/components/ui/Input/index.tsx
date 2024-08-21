@@ -6,7 +6,12 @@ const Input = (props: IInputProps) => {
   const { type = 'text', fullWidth, small, ...otherProps } = props;
   return (
     <S.InputContainer $fullWidth={fullWidth}>
-      <S.Input $fullWidth={fullWidth} {...otherProps} $small={small} />
+      <S.Input
+        type={type}
+        $fullWidth={fullWidth}
+        {...otherProps}
+        $small={small}
+      />
     </S.InputContainer>
   );
 };
