@@ -4,6 +4,9 @@ export const FilterSell = styled.div`
   padding: 0.5rem 1rem;
   box-sizing: border-box;
   background-color: #fff;
+  gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
 `;
 export const FilterBuyInputs = styled.div`
   display: grid;

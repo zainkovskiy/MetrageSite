@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './style';
-import Text from '../ui/Text';
-import MainInfoCard from './MainInfoCard';
+import Text from '../../ui/Text';
+import MainInfoCard from '../MainInfoCard';
 
 const MainInfo = () => {
   return (

@@ -8,7 +8,9 @@ const Logo = () => {
 
   return (
     <S.LogoContrainer>
-      <Link to='/'>{windowSize > 1330 ? <S.Logo /> : <S.LogoSmall />}</Link>
+      <Link to='/'>
+        {windowSize > 1330 || windowSize <= 1200 ? <S.Logo /> : <S.LogoSmall />}
+      </Link>
     </S.LogoContrainer>
   );
 };

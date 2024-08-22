@@ -32,6 +32,30 @@ export const GlobalStyle = createGlobalStyle`
       border-radius: 3px;
       height: 80px;
   }
+  .react-dadata__input{
+    height: auto;
+  }
+  .react-dadata__suggestion{
+    @media(hover: hover){
+      &:hover{
+        background-color: transparent
+      }
+    }
+    background-color: transparent
+  }
+  .react-dadata__suggestions{
+    padding: 2rem 1rem;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 0 #0000, 0 0 #0000, 0 0 21px #0000000d, 0 100px 80px #00000012,
+      0 41.7776px 33.4221px #0000000d, 0 22.3363px 17.869px #0000000b,
+      0 12.5216px 10.0172px #00000009, 0 6.6501px 5.32008px #00000007,
+      0 2.76726px 2.21381px #00000005;
+  }
+  .react-dadata__suggestion-note{
+    margin-bottom: 1rem;
+  }
   @font-face {
     font-family: 'CeraCY';
     src: local('CeraCY'), local('CeraCY'),

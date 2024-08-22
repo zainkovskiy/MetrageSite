@@ -13,3 +13,5 @@ export interface IInputStyleProps {
   $fullWidth?: boolean;
   $small?: boolean;
 }
+
+export type InputRef = HTMLInputElement;

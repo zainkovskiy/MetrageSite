@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Tabs from '../../ui/Tabs';
 import Tab from '../../ui/Tab';
 import TabsPanel from '../../ui/TabsPanel';
-import FilterBuy from '../FilterBuy';
+import FilterForm from '../FilterForm';
 import * as S from './style';
 import FilterSell from '../FilterSell';
 import PaddingSide from '../../containers/PaddingSide';
@@ -22,10 +22,10 @@ const Filter = () => {
             <Tab label='Продать' activeKey='sell' />
           </Tabs>
           <TabsPanel activeKey='buy' value={indexTab}>
-            <FilterBuy />
+            <FilterForm />
           </TabsPanel>
           <TabsPanel activeKey='rent' value={indexTab}>
-            <div>rent</div>
+            <FilterForm />
           </TabsPanel>
           <TabsPanel activeKey='sell' value={indexTab}>
             <FilterSell />

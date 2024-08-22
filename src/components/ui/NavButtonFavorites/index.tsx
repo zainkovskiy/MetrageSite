@@ -1,12 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { ReactComponent as IconFavorites } from '../../../assets/images/heart.svg';
-
+import * as S from './style';
 const NavButtonFavorites = () => {
   return (
-    <Link to='/favorites'>
+    <S.NavButtonFavorites to='/favorites'>
       <IconFavorites />
-    </Link>
+    </S.NavButtonFavorites>
   );
 };
 

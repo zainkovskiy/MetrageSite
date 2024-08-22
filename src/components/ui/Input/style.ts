@@ -7,6 +7,8 @@ export const InputContainer = styled.div<IInputStyleProps>`
     css`
       width: 100%;
     `}
+  display: flex;
+  flex-direction: column;
 `;
 export const Input = styled.input<IInputStyleProps>`
   padding: ${(props) => (props.$small ? '5px 16px' : '13px 16px')};

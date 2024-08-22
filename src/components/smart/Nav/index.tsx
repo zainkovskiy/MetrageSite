@@ -16,6 +16,8 @@ import { regionRus } from '../../../core/constants/regions';
 import ButtonMenu from '../../ui/ButtonMenu';
 import NavMenu from '../../simple/NavMenu';
 import Logo from '../Logo';
+import { useWindowSize } from '../../../core/hooks/windowSize';
+import ButtonLocationMobile from '../../ui/ButtonLocationMobile';
 
 const Nav = () => {
   const dispatch = useAppDispatch();
@@ -24,6 +26,7 @@ const Nav = () => {
   const [active, setActive] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
+  const windowSize = useWindowSize();
   useEffect(() => {
     if (openMenu) {
       document.addEventListener('click', handleListener, true);
@@ -87,60 +90,76 @@ const Nav = () => {
     >
       <CenterContainer>
         <S.NavWrapper>
-          <FlexBox gap='20px' aItems='center'>
-            <ButtonMenu onClick={_openMenu} open={openMenu} />
-            <ButtonLink label='Купить' as={Link} to='/buy' isMatch uppercase />
-            <ButtonLink
-              label='Продать'
-              as={Link}
-              to='/sell'
-              isMatch
-              uppercase
-            />
-            <ButtonLink
-              label='Ипотека'
-              as={Link}
-              to='/mortgage'
-              isMatch
-              uppercase
-            />
-          </FlexBox>
+          {windowSize >= 1200 && (
+            <FlexBox gap='20px' aItems='center'>
+              <ButtonMenu onClick={_openMenu} open={openMenu} />
+              <ButtonLink
+                label='Купить'
+                as={Link}
+                to='/buy'
+                isMatch
+                uppercase
+              />
+              <ButtonLink
+                label='Продать'
+                as={Link}
+                to='/sell'
+                isMatch
+                uppercase
+              />
+              <ButtonLink
+                label='Ипотека'
+                as={Link}
+                to='/mortgage'
+                isMatch
+                uppercase
+              />
+            </FlexBox>
+          )}
+          {windowSize < 1200 && <ButtonLocationMobile />}
           <Logo />
           <FlexBox gap='20px' aItems='center'>
-            <ButtonLink
-              label='Сервисы'
-              as={Link}
-              to='/services'
-              isMatch
-              uppercase
-            />
-            <ButtonLink
-              label='Передать клиента'
-              uppercase
-              href='https://crm.metragegroup.com/'
-            />
-            <ButtonLink
-              label='8-800-222-85-28'
-              uppercase
-              href='tel:8-800-222-85-28'
-              isNumber
-            />
-            <ListBox
-              title={regionRus[region]}
-              iconStart={<Pin />}
-              arrow
-              isHover
-              open={active}
-              onClick={_active}
-            >
-              <ListBoxItem id='msk' onClick={setNewRegion}>
-                Москва
-              </ListBoxItem>
-              <ListBoxItem id='nsk' onClick={setNewRegion}>
-                Новосибирск
-              </ListBoxItem>
-            </ListBox>
+            {windowSize >= 1200 && (
+              <>
+                <ButtonLink
+                  label='Сервисы'
+                  as={Link}
+                  to='/services'
+                  isMatch
+                  uppercase
+                />
+                <ButtonLink
+                  label='Передать клиента'
+                  uppercase
+                  href='https://crm.metragegroup.com/'
+                />
+                <ButtonLink
+                  label='8-800-222-85-28'
+                  uppercase
+                  href='tel:8-800-222-85-28'
+                  isNumber
+                />
+                <ListBox
+                  title={regionRus[region]}
+                  iconStart={<Pin />}
+                  arrow
+                  isHover
+                  open={active}
+                  onClick={_active}
+                >
+                  <ListBoxItem id='msk' onClick={setNewRegion}>
+                    Москва
+                  </ListBoxItem>
+                  <ListBoxItem id='nsk' onClick={setNewRegion}>
+                    Новосибирск
+                  </ListBoxItem>
+                </ListBox>
+              </>
+            )}
             <NavButtonFavorites />
+            {windowSize < 1200 && (
+              <ButtonMenu onClick={_openMenu} open={openMenu} />
+            )}
           </FlexBox>
         </S.NavWrapper>
       </CenterContainer>

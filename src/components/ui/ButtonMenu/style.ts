@@ -10,4 +10,7 @@ export const ButtonMenu = styled(motion.div)`
   & > * {
     pointer-events: none;
   }
+  @media (max-width: 1200px) {
+    margin-right: 0;
+  }
 `;

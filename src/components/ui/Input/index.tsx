@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import * as S from './style';
-import { IInputProps } from './type';
+import { IInputProps, InputRef } from './type';
 
-const Input = (props: IInputProps) => {
+const Input = forwardRef<InputRef, IInputProps>((props, ref) => {
   const { type = 'text', fullWidth, small, ...otherProps } = props;
   return (
     <S.InputContainer $fullWidth={fullWidth}>
       <S.Input
+        ref={ref}
         type={type}
         $fullWidth={fullWidth}
         {...otherProps}
@@ -14,6 +15,6 @@ const Input = (props: IInputProps) => {
       />
     </S.InputContainer>
   );
-};
+});
 
 export default Input;

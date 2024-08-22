@@ -1,4 +1,6 @@
-export interface IFormDataBuy {
+import { DaDataAddress, DaDataSuggestion } from 'react-dadata';
+
+export interface IFilterFormData {
   typeEstate: string;
   subTypeEstate: string | string[];
   roomsCount: string[];
@@ -8,4 +10,5 @@ export interface IFormDataBuy {
   priceType: string;
   areaFrom: number | null;
   areaTo: number | null;
+  address: DaDataSuggestion<DaDataAddress> | undefined;
 }

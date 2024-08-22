@@ -9,7 +9,7 @@ import MainNewBuild from '../../smart/MainNewBuild';
 import MainRealtors from '../../smart/MainRealtors';
 import MainProfit from '../../simple/MainProfit';
 import MainSignConsultation from '../../smart/MainSignConsultation';
-import MainInfo from '../../simple';
+import MainInfo from '../../simple/MainInfo';
 
 const MainPage = () => {
   return (
