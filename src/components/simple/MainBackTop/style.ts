@@ -6,4 +6,7 @@ export const MainBackTop = styled.div`
   background-repeat: no-repeat;
   min-height: 720px;
   position: relative;
+  @media (max-width: 480px) {
+    min-height: 80vh;
+  }
 `;

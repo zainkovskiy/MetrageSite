@@ -25,7 +25,7 @@ const MainRealtorCard = (props: IRealtors) => {
           <Text>{officeName}</Text>
         </S.MainRealtorCardWrapText>
         <S.MainRealtorCardWrapButton>
-          <Button>{phone}...показать номер</Button>
+          <Button fullWidth>{phone}...показать номер</Button>
         </S.MainRealtorCardWrapButton>
       </S.MainRealtorCardWrap>
     </S.MainRealtorCard>

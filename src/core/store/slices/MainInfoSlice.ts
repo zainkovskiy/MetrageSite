@@ -24,6 +24,7 @@ export const fetchData = createAsyncThunk(
   async (region: string) => {
     const res = await axios.post<IAPI<IMainData>>(API, {
       method: 'site.client.getMain',
+      location: region,
     });
     if (res?.statusText === 'OK') {
       const data = res?.data?.result || null;
@@ -50,7 +51,9 @@ const MainInfoSlice = createSlice({
   extraReducers(builder) {
     builder
       .addCase(getRegion.fulfilled, (state, action) => {
-        if (action.payload) state.region = action.payload;
+        if (action.payload && action.payload !== state.region) {
+          state.region = action.payload;
+        }
       })
       .addCase(fetchData.fulfilled, (state, action) => {
         state.newBuildings = action.payload?.newbuildings || [];

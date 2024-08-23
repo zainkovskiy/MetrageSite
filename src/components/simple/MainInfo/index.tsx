@@ -7,7 +7,9 @@ const MainInfo = () => {
   return (
     <S.MainInfo>
       <S.MainInfoTextWrap>
-        <Text size={44}>Учись и строй карьеру вместе с нами</Text>
+        <Text sizeStr='clamp(26px, 4vw, 44px)'>
+          Учись и строй карьеру вместе с нами
+        </Text>
       </S.MainInfoTextWrap>
       <S.MainInfoCards>
         <MainInfoCard

@@ -6,99 +6,95 @@ import Text from '../../ui/Text';
 import ButtonLink from '../../ui/ButtonLink';
 import { Link } from 'react-router-dom';
 import CenterContainer from '../../containers/CenterContainer';
-import PaddingSide from '../../containers/PaddingSide';
+import { useWindowSize } from '../../../core/hooks/windowSize';
+import { desktopAnimate, mobileAnimate } from './animate';
 
 const NavMenu = ({ open, ...otherProps }: { open: boolean }) => {
+  const windowSize = useWindowSize();
   return (
     <AnimatePresence>
       {open && (
         <S.NavMenu
           {...otherProps}
-          initial={{ height: 0, opacity: 0 }}
-          animate={{ height: 'auto', opacity: 1 }}
-          exit={{ height: 0, opacity: 0 }}
+          initial='close'
+          animate={open ? 'open' : 'close'}
+          exit='close'
+          variants={windowSize > 1024 ? desktopAnimate : mobileAnimate}
+          transition={{ duration: 0.3 }}
         >
-          <CenterContainer>
-            <PaddingSide>
-              <FlexBox jContent='space-between'>
-                <FlexBox gap='4rem'>
-                  <FlexBox column gap='1rem'>
-                    <Text>Для клиентов</Text>
-                    <FlexBox column gap='0.5rem'>
-                      <ButtonLink as={Link} to='/sell' label='Продать' />
-                      <ButtonLink as={Link} to='/buy' label='Купить' />
-                      <ButtonLink as={Link} to='/mortgage' label='Ипотека' />
-                      <ButtonLink as={Link} to='/help' label='Помощь' />
-                      <ButtonLink
-                        as={Link}
-                        to='/rieltors'
-                        label='Наши специалисты'
-                      />
-                    </FlexBox>
-                  </FlexBox>
-                  <FlexBox column gap='1rem'>
-                    <Text>О нас</Text>
-                    <FlexBox column gap='0.5rem'>
-                      <ButtonLink as={Link} to='/about' label='О компании' />
-                      <ButtonLink as={Link} to='/journal' label='Журнал' />
-                      <ButtonLink as={Link} to='/contacts' label='Контакты' />
-                    </FlexBox>
-                  </FlexBox>
-                  <FlexBox column gap='1rem'>
-                    <Text>Передать клиента</Text>
-                    <FlexBox column gap='0.5rem'>
-                      <ButtonLink
-                        href='https://crm.metragegroup.com/'
-                        label='Оставить заявку'
-                      />
-                    </FlexBox>
-                  </FlexBox>
-                  <FlexBox column gap='1rem'>
-                    <Text>Сервисы</Text>
-                    <FlexBox column gap='0.5rem'>
-                      <ButtonLink
-                        as={Link}
-                        to='/services/1'
-                        label='Страхование'
-                      />
-                      <ButtonLink as={Link} to='/services/3' label='Переезд' />
-                      <ButtonLink as={Link} to='/mortgage' label='Ипотека' />
-                      <ButtonLink
-                        as={Link}
-                        to='/services/4'
-                        label='Продажа квартиры'
-                      />
-                      <ButtonLink
-                        as={Link}
-                        to='/services/5'
-                        label='Оценка недвижимости'
-                      />
-                      <ButtonLink
-                        as={Link}
-                        to='/services/6'
-                        label='Управление капиталом'
-                      />
-                      <ButtonLink as={Link} to='/services/7' label='Франшиза' />
-                    </FlexBox>
-                  </FlexBox>
-                </FlexBox>
-                <FlexBox column gap='0.5rem' aItems='flex-end'>
+          <S.NavMenuWrap>
+            <S.NavMenuLeftSide>
+              <FlexBox column gap='1rem'>
+                <Text bold>Для клиентов</Text>
+                <FlexBox column gap='0.5rem'>
+                  <ButtonLink as={Link} to='/sell' label='Продать' />
+                  <ButtonLink as={Link} to='/buy' label='Купить' />
+                  <ButtonLink as={Link} to='/mortgage' label='Ипотека' />
+                  <ButtonLink as={Link} to='/help' label='Помощь' />
                   <ButtonLink
-                    color='primaryLite'
-                    label='8-800-222-85-28'
-                    href='tel:8-800-222-85-28'
-                    isNumber
+                    as={Link}
+                    to='/rieltors'
+                    label='Наши специалисты'
                   />
-                  <ButtonLink
-                    color='primaryLite'
-                    label='Dunauskas.o@metragegroup.com'
-                    href='mailto:Dunauskas.o@metragegroup.com'
-                  />
-                  <ButtonLink color='primaryLite' label='Письмо директору' />
                 </FlexBox>
               </FlexBox>
-            </PaddingSide>
-          </CenterContainer>
+              <FlexBox column gap='1rem'>
+                <Text bold>О нас</Text>
+                <FlexBox column gap='0.5rem'>
+                  <ButtonLink as={Link} to='/about' label='О компании' />
+                  <ButtonLink as={Link} to='/journal' label='Журнал' />
+                  <ButtonLink as={Link} to='/contacts' label='Контакты' />
+                </FlexBox>
+              </FlexBox>
+              <FlexBox column gap='1rem'>
+                <Text>Передать клиента</Text>
+                <FlexBox column gap='0.5rem'>
+                  <ButtonLink
+                    href='https://crm.metragegroup.com/'
+                    label='Оставить заявку'
+                  />
+                </FlexBox>
+              </FlexBox>
+              <FlexBox column gap='1rem'>
+                <Text bold>Сервисы</Text>
+                <FlexBox column gap='0.5rem'>
+                  <ButtonLink as={Link} to='/services/1' label='Страхование' />
+                  <ButtonLink as={Link} to='/services/3' label='Переезд' />
+                  <ButtonLink as={Link} to='/mortgage' label='Ипотека' />
+                  <ButtonLink
+                    as={Link}
+                    to='/services/4'
+                    label='Продажа квартиры'
+                  />
+                  <ButtonLink
+                    as={Link}
+                    to='/services/5'
+                    label='Оценка недвижимости'
+                  />
+                  <ButtonLink
+                    as={Link}
+                    to='/services/6'
+                    label='Управление капиталом'
+                  />
+                  <ButtonLink as={Link} to='/services/7' label='Франшиза' />
+                </FlexBox>
+              </FlexBox>
+            </S.NavMenuLeftSide>
+            <FlexBox column gap='0.5rem' aItems='flex-end'>
+              <ButtonLink
+                color='primaryLite'
+                label='8-800-222-85-28'
+                href='tel:8-800-222-85-28'
+                isNumber
+              />
+              <ButtonLink
+                color='primaryLite'
+                label='Dunauskas.o@metragegroup.com'
+                href='mailto:Dunauskas.o@metragegroup.com'
+              />
+              <ButtonLink color='primaryLite' label='Письмо директору' />
+            </FlexBox>
+          </S.NavMenuWrap>
         </S.NavMenu>
       )}
     </AnimatePresence>

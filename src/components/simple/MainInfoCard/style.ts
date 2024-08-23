@@ -12,9 +12,16 @@ export const MainInfoCard = styled.div`
   height: 13rem;
   position: relative;
   overflow: hidden;
+  @media (max-width: 768px) {
+    padding: 1rem;
+    height: auto;
+  }
 `;
 export const MainInfoCardTextWrap = styled.div`
   max-width: 285px;
+  @media (max-width: 768px) {
+    max-width: 100%;
+  }
 `;
 const iconCss = css`
   position: absolute;

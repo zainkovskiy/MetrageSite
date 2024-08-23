@@ -6,5 +6,6 @@ export const Text = styled.span<ITextStyleProps>`
     $bold ? theme.font.bold : theme.font.regular};
   color: ${({ theme, $color }) =>
     $color ? theme.palette[$color] : theme.palette.black};
-  font-size: ${({ $size }) => ($size ? `${$size}px` : '14px')};
+  font-size: ${({ $size, $sizeStr }) =>
+    $size ? `${$size}px` : $sizeStr ? $sizeStr : '14px'};
 `;

@@ -10,7 +10,9 @@ const MainNewBuild = () => {
   return (
     <S.MainNewBuild>
       <S.MainNewBuildText>
-        <Text size={44}>Новостройки и жилые комплексы</Text>
+        <Text sizeStr='clamp(26px, 4vw, 44px)'>
+          Новостройки и жилые комплексы
+        </Text>
         <ButtonLink
           size={16}
           label='Все новостройки'

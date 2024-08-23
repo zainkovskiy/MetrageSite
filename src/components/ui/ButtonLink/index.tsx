@@ -10,6 +10,7 @@ const ButtonLink = <E extends ElementType = typeof defaultTag>(
     label,
     as,
     uppercase = false,
+    underline = false,
     bold = false,
     isMatch,
     color = 'black',
@@ -32,6 +33,7 @@ const ButtonLink = <E extends ElementType = typeof defaultTag>(
       {...otherProps}
       $isMatch={getIsMatch()}
       $uppercase={uppercase}
+      $underline={underline}
       $bold={bold}
       $color={color}
       $size={size}

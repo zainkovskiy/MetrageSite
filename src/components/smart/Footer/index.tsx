@@ -10,15 +10,17 @@ import ButtonLink from '../../ui/ButtonLink';
 import Button from '../../ui/Button';
 import Input from '../../ui/Input';
 import { Link } from 'react-router-dom';
+import { useWindowSize } from '../../../core/hooks/windowSize';
 
 const Footer = () => {
+  const windowSize = useWindowSize();
   return (
     <CenterContainer>
       <PaddingSide>
         <HorizontLine />
         <S.Footer>
           <S.FooterWrap>
-            <FlexBox gap='1rem'>
+            <S.FooterLinksWrap>
               <FlexBox gap='1rem' column>
                 <ButtonLink as={Link} to='/buy' size={16} label='Купить' />
                 <ButtonLink as={Link} to='/sell' size={16} label='Продать' />
@@ -59,22 +61,41 @@ const Footer = () => {
                 <ButtonLink as={Link} to='/help' size={16} label='Помощь' />
                 <ButtonLink as={Link} to='/journal' size={16} label='Журнал' />
               </FlexBox>
-            </FlexBox>
+            </S.FooterLinksWrap>
             <FlexBox column gap='1rem'>
               <S.FooterSubscribe>
-                <Input placeholder='Эл. почта' fullWidth small />
-                <Button fullWidth small disabled>
+                <Input
+                  placeholder='Эл. почта'
+                  fullWidth
+                  small={windowSize > 768}
+                />
+                <Button fullWidth small={windowSize > 768} disabled>
                   подписаться
                 </Button>
               </S.FooterSubscribe>
               <Text size={12} color='greyDark'>
                 Продолжая использовать наш сайт, вы даете согласие на обработку
                 файлов cookies и других пользовательских данных, в соответствии
-                с Правилами обработки персональных данных
+                с
+                <ButtonLink
+                  size={12}
+                  color='greyDark'
+                  label='Правилами обработки персональных данных'
+                  as={Link}
+                  to='/privacy-policy'
+                  underline
+                />
               </Text>
             </FlexBox>
-            <FlexBox gap='1rem' column aItems='flex-end'>
-              <FlexBox column aItems='flex-end'>
+            <FlexBox
+              gap='1rem'
+              column
+              aItems={windowSize > 768 ? 'flex-end' : 'flex-start'}
+            >
+              <FlexBox
+                column
+                aItems={windowSize > 768 ? 'flex-end' : 'flex-start'}
+              >
                 <ButtonLink
                   size={16}
                   color='primaryLite'
@@ -96,7 +117,7 @@ const Footer = () => {
             </FlexBox>
           </S.FooterWrap>
           <FlexBox aItems='center' jContent='space-between'>
-            <Logo />
+            {windowSize > 768 && <Logo />}
             <Text>© ООО «Вдоме», 2022</Text>
           </FlexBox>
         </S.Footer>

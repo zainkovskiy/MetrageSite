@@ -3,9 +3,9 @@ import { ITextProps } from './types';
 import * as S from './style';
 
 const Text = (props: ITextProps) => {
-  const { children, bold, size, color } = props;
+  const { children, bold, size, color, sizeStr } = props;
   return (
-    <S.Text $bold={bold} $size={size} $color={color}>
+    <S.Text $bold={bold} $size={size} $color={color} $sizeStr={sizeStr}>
       {children}
     </S.Text>
   );

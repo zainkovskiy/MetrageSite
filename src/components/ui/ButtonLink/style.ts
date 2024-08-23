@@ -25,6 +25,11 @@ export const ButtonLink = styled.a<IButtonLinkStyleProps>`
   cursor: pointer;
   transition: color 0.3s;
   text-decoration: none;
+  ${({ $underline }) =>
+    $underline &&
+    css`
+      text-decoration: underline;
+    `}
   ${({ $isMatch }) =>
     $isMatch &&
     css`

@@ -1,9 +1,8 @@
 import React from 'react';
 
-export interface ITextProps {
+interface ITextDefaultProps {
   children: React.ReactNode;
   bold?: boolean;
-  size?: number;
   color?:
     | 'primary'
     | 'primaryLite'
@@ -13,9 +12,22 @@ export interface ITextProps {
     | 'black'
     | 'white';
 }
+
+type ITextSizeNumberProps = ITextDefaultProps & {
+  size?: number;
+  sizeStr?: never;
+};
+type ITextSizeStringProps = ITextDefaultProps & {
+  size?: never;
+  sizeStr?: string;
+};
+
+export type ITextProps = ITextSizeNumberProps | ITextSizeStringProps;
+
 export interface ITextStyleProps {
   $bold?: boolean;
   $size?: number;
+  $sizeStr?: string;
   $color?:
     | 'primary'
     | 'primaryLite'

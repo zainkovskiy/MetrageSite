@@ -4,11 +4,13 @@ import ToggleButtonGroup from '../../ui/ToggleButtonGroup';
 import FlexBox from '../../ui/FlexBox';
 import { Controller, useFormContext } from 'react-hook-form';
 import Input from '../../ui/Input';
+import * as S from './style';
+
 const FilterFormPrice = () => {
   const { control } = useFormContext();
   return (
     <FlexBox column gap='1rem'>
-      <FlexBox gap='0.5rem'>
+      <S.FilterFormPrice>
         <Controller
           name='priceFrom'
           control={control}
@@ -33,7 +35,7 @@ const FilterFormPrice = () => {
             />
           )}
         />
-      </FlexBox>
+      </S.FilterFormPrice>
       <Controller
         name='priceType'
         control={control}

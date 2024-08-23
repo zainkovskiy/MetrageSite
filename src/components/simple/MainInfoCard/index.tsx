@@ -19,7 +19,7 @@ const MainInfoCard = (props: IMainInfoCards) => {
   return (
     <S.MainInfoCard>
       <S.MainInfoCardTextWrap>
-        <Text size={24}>{text}</Text>
+        <Text sizeStr='clamp(20px, 3vw, 24px)'>{text}</Text>
       </S.MainInfoCardTextWrap>
       {icon && getIcon()}
     </S.MainInfoCard>

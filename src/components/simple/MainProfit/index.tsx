@@ -22,13 +22,13 @@ const MainProfit = () => {
       <S.MainProfitImgWrap>
         <S.MainProfitImg src={imgLink} />
         <S.MainProfitTitleWrap>
-          <Text size={44} color='white'>
+          <Text sizeStr='clamp(26px, 4vw, 44px)' color='white'>
             С METRAGE выгодно
           </Text>
         </S.MainProfitTitleWrap>
       </S.MainProfitImgWrap>
       <CenterContainer>
-        <PaddingSide>
+        <S.MainProfitCardsWrap>
           <S.MainProfitCards>
             <MainProfitCard
               label='Поиск, ипотека, регистрация сделки - все в одном месте'
@@ -48,7 +48,7 @@ const MainProfit = () => {
             <S.VerticalLine />
             <MainProfitCard label='Первыми узнаем о новых объектах, даем аналитику для инвесторов' />
           </S.MainProfitCards>
-        </PaddingSide>
+        </S.MainProfitCardsWrap>
       </CenterContainer>
     </S.MainProfit>
   );

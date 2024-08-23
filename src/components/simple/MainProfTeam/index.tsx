@@ -6,7 +6,7 @@ const MainProfTeam = () => {
   return (
     <S.MainProfTeam>
       <S.MainProfTeamWrap>
-        <Text size={28} color='white'>
+        <Text sizeStr='clamp(26px, 4vw, 44px)' color='white'>
           Профессиональная команда
         </Text>
         <Text size={16} color='white'>

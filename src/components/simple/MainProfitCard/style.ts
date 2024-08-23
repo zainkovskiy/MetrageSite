@@ -11,7 +11,7 @@ export const MainProfitCard = styled.div<IMainProfitCardStyleProps>`
   border-radius: 20px 0;
   box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0);
   transition: box-shadow 0.3s;
-  width: 100%;
+  width: 25%;
   ${({ $isButton }) =>
     $isButton &&
     css`
@@ -19,6 +19,12 @@ export const MainProfitCard = styled.div<IMainProfitCardStyleProps>`
     `}
   & > * {
     pointer-events: none;
+  }
+  @media (max-width: 1024px) {
+    min-width: 320px;
+  }
+  @media (max-width: 480px) {
+    min-width: 270px;
   }
   @media (hover: hover) {
     &:hover {

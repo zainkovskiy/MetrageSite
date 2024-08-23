@@ -20,7 +20,6 @@ import {
   filterTypeTranslate,
 } from '../../../core/constants/filter';
 import Dadata from '../../ui/Dadata';
-import { control } from 'yandex-maps';
 const FilterForm = () => {
   const method = useForm({
     defaultValues: defaultFilter,
@@ -150,23 +149,25 @@ const FilterForm = () => {
             )}
           />
         </S.FilterFormInputs>
-        <FlexBox
-          jContent={method.formState.isDirty ? 'space-between' : 'flex-end'}
-        >
-          {method.formState.isDirty && (
-            <Button type='reset' onClick={_reset} variant='text'>
-              Сбросить
-            </Button>
-          )}
-          <S.FileterButtonWrap>
+        <S.FileterButtonsWrap>
+          <div>
+            {method.formState.isDirty ? (
+              <Button type='reset' onClick={_reset} variant='text'>
+                Сбросить
+              </Button>
+            ) : (
+              <div style={{ height: 48 }}></div>
+            )}
+          </div>
+          <S.FileterButtonsWrapRight>
             <Button fullWidth variant='outline'>
               На карте
             </Button>
             <Button fullWidth type='submit'>
               Найти
             </Button>
-          </S.FileterButtonWrap>
-        </FlexBox>
+          </S.FileterButtonsWrapRight>
+        </S.FileterButtonsWrap>
       </S.FilterForm>
     </FormProvider>
   );

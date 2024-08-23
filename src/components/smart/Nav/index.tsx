@@ -11,7 +11,7 @@ import ListBox from '../../ui/ListBox';
 import { ReactComponent as Pin } from '../../../assets/images/Icon_pin.svg';
 import ListBoxItem from '../../ui/ListBoxItem';
 import { useAppDispatch, useAppSelector } from '../../../core/hooks/storeHook';
-import { setRegion } from '../../../core/store/slices/MainInfoSlice';
+import { fetchData, setRegion } from '../../../core/store/slices/MainInfoSlice';
 import { regionRus } from '../../../core/constants/regions';
 import ButtonMenu from '../../ui/ButtonMenu';
 import NavMenu from '../../simple/NavMenu';
@@ -20,6 +20,7 @@ import { useWindowSize } from '../../../core/hooks/windowSize';
 import ButtonLocationMobile from '../../ui/ButtonLocationMobile';
 
 const Nav = () => {
+  const firstMount = useRef(true);
   const dispatch = useAppDispatch();
   const { region } = useAppSelector((state) => state.main);
   const [isVisibleBack, setIsVisibleBack] = useState(false);
@@ -37,6 +38,14 @@ const Nav = () => {
       document.removeEventListener('click', handleListener, true);
     };
   }, [openMenu]);
+  useEffect(() => {
+    if (firstMount.current) {
+      firstMount.current = false;
+      return;
+    }
+    dispatch(fetchData(region));
+    console.log(region);
+  }, [region]);
   scroll(
     (progress) => {
       if (progress > 0) {
@@ -87,6 +96,7 @@ const Nav = () => {
       variants={navVariants}
       transition={{ duration: 0.3 }}
       ref={navRef}
+      $fullHeight={windowSize < 1024 && openMenu}
     >
       <CenterContainer>
         <S.NavWrapper>

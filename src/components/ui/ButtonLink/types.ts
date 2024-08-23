@@ -11,6 +11,7 @@ interface IButtonLinkOwnProps<E extends ElementType = ElementType> {
   as?: IsAllowedElement<E>;
   isMatch?: boolean;
   uppercase?: boolean;
+  underline?: boolean;
   bold?: boolean;
   isNumber?: boolean;
   arrow?: 'left' | 'right';
@@ -20,6 +21,7 @@ interface IButtonLinkOwnProps<E extends ElementType = ElementType> {
     | 'primaryLite'
     | 'primaryDark'
     | 'grey'
+    | 'greyDark'
     | 'black'
     | 'white';
 }
@@ -30,6 +32,7 @@ export type IButtonLinkProps<E extends ElementType> = IButtonLinkOwnProps<E> &
 export interface IButtonLinkStyleProps {
   $isMatch: boolean;
   $uppercase: boolean;
+  $underline: boolean;
   $bold: boolean;
   $isNumber: boolean;
   $size?: number;
@@ -38,6 +41,7 @@ export interface IButtonLinkStyleProps {
     | 'primaryLite'
     | 'primaryDark'
     | 'grey'
+    | 'greyDark'
     | 'black'
     | 'white';
 }

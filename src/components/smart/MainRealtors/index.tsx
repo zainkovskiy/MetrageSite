@@ -10,7 +10,7 @@ const MainRealtors = () => {
   return (
     <S.MainRealtors>
       <S.MainRealtorsText>
-        <Text size={44}>Наши специалисты</Text>
+        <Text sizeStr='clamp(26px, 4vw, 44px)'>Наши специалисты</Text>
         <ButtonLink
           size={16}
           label='все специалисты'
