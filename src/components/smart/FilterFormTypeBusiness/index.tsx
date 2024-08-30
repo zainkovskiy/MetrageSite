@@ -6,9 +6,12 @@ import {
   FieldValues,
   useFormContext,
 } from 'react-hook-form';
-import { filterTypeBusiness } from '../../../core/constants/filter';
+import {
+  filterTypeBusiness,
+  filterTypeBusinessRent,
+} from '../../../core/constants/filter';
 
-const FilterFormTypeBusiness = () => {
+const FilterFormTypeBusiness = ({ isRent }: { isRent: boolean }) => {
   const { control } = useFormContext();
   const setNewValue = (
     field: ControllerRenderProps<FieldValues, 'subTypeEstate'>,
@@ -24,9 +27,12 @@ const FilterFormTypeBusiness = () => {
     }
     field.onChange([value]);
   };
+  const businessValueList = isRent
+    ? filterTypeBusinessRent
+    : filterTypeBusiness;
   return (
     <>
-      {filterTypeBusiness.map((subType, index) => (
+      {businessValueList.map((subType, index) => (
         <Controller
           key={`subTypeEstate${index}`}
           name='subTypeEstate'

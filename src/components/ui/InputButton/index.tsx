@@ -60,9 +60,7 @@ const InputButton = (props: InputButtonProps) => {
         variants={inputButtonVariants}
         transition={{ duration: 0.3 }}
       >
-        <S.InputButtonTextWrap>
-          <S.InputButtonText>{label}</S.InputButtonText>
-        </S.InputButtonTextWrap>
+        <S.InputText readOnly value={label} />
         <S.IconArrow />
       </S.InputButton>
       <AnimatePresence>

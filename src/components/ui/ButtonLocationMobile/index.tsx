@@ -4,12 +4,13 @@ import Text from '../Text';
 import { useWindowSize } from '../../../core/hooks/windowSize';
 import { useAppSelector } from '../../../core/hooks/storeHook';
 import { regionRus } from '../../../core/constants/regions';
+import { IButtonLocationMobile } from './type';
 
-const ButtonLocationMobile = () => {
+const ButtonLocationMobile = (props: IButtonLocationMobile) => {
   const { region } = useAppSelector((state) => state.main);
   const windowSize = useWindowSize();
   return (
-    <S.ButtonLocationMobile>
+    <S.ButtonLocationMobile onClick={props.onClick}>
       <S.ButtonLocationPin />
       {windowSize > 480 && <Text>{regionRus[region]}</Text>}
     </S.ButtonLocationMobile>

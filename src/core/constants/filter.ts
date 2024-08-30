@@ -25,7 +25,7 @@ export const filterTypeBusiness = [
     value: 'warehouse',
   },
   {
-    label: 'Помещение свободного назначения',
+    label: 'Пом. свободного назначения',
     value: 'freeAppointmentObject',
   },
   {
@@ -43,6 +43,28 @@ export const filterTypeBusiness = [
   {
     label: 'Коммерческая земля',
     value: 'commercialLand',
+  },
+];
+export const filterTypeBusinessRent = [
+  {
+    label: 'Офис',
+    value: 'office',
+  },
+  {
+    label: 'Склад',
+    value: 'warehouse',
+  },
+  {
+    label: 'Пом. свободного назначения',
+    value: 'freeAppointmentObject',
+  },
+  {
+    label: 'Производство',
+    value: 'industry',
+  },
+  {
+    label: 'Здание',
+    value: 'building',
   },
 ];
 export const filterTypeLive = [
@@ -75,7 +97,7 @@ export const filterTypeTranslate: { [key: string]: string } = {
   office: 'Офис',
   shoppingArea: 'Торговая площадь',
   warehouse: 'Склад',
-  freeAppointmentObject: 'Помещение свободного назначения',
+  freeAppointmentObject: 'Пом. свободного назначения',
   industry: 'Производство',
   building: 'Здание',
   business: 'Готовый бизнес',

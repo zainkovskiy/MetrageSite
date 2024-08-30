@@ -9,35 +9,21 @@ export const InputButton = styled(motion.div)`
   border-radius: 2px;
   border: 1px solid;
   border-color: ${({ theme }) => theme.palette.grey};
-  padding: 13px 38px 13px 16px;
+  padding: 13px;
   box-sizing: border-box;
   position: relative;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
   &:hover > * > * {
     color: ${({ theme }) => theme.palette.primary};
     fill: ${({ theme }) => theme.palette.primary};
   }
 `;
-export const InputButtonTextWrap = styled.div`
-  overflow: hidden;
-  display: flex;
-`;
 export const IconArrow = styled(Arrow)`
-  width: 14px;
-  height: 8px;
-  position: absolute;
-  right: 13px;
-  top: 50%;
   fill: ${({ theme }) => theme.palette.black};
-  transform: translate(0, -50%);
-`;
-export const InputButtonText = styled.span`
-  font-family: ${({ theme }) => theme.font.dinpro};
-  color: ${({ theme }) => theme.palette.black};
-  font-size: 16px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  min-width: 14px;
 `;
 export const InputButtonList = styled(motion.div)`
   position: absolute;
@@ -53,4 +39,14 @@ export const InputButtonList = styled(motion.div)`
     0 41.7776px 33.4221px #0000000d, 0 22.3363px 17.869px #0000000b,
     0 12.5216px 10.0172px #00000009, 0 6.6501px 5.32008px #00000007,
     0 2.76726px 2.21381px #00000005;
+`;
+export const InputText = styled.input`
+  border: none;
+  width: 100%;
+  text-overflow: ellipsis;
+  outline: none;
+  font-family: ${({ theme }) => theme.font.dinpro};
+  color: ${({ theme }) => theme.palette.black};
+  font-size: 16px;
+  pointer-events: none;
 `;

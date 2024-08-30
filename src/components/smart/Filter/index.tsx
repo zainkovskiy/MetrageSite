@@ -25,7 +25,7 @@ const Filter = () => {
             <FilterForm />
           </TabsPanel>
           <TabsPanel activeKey='rent' value={indexTab}>
-            <FilterForm />
+            <FilterForm filterActive={indexTab} />
           </TabsPanel>
           <TabsPanel activeKey='sell' value={indexTab}>
             <FilterSell />

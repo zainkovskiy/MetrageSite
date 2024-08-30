@@ -18,6 +18,7 @@ import NavMenu from '../../simple/NavMenu';
 import Logo from '../Logo';
 import { useWindowSize } from '../../../core/hooks/windowSize';
 import ButtonLocationMobile from '../../ui/ButtonLocationMobile';
+import WindowLocationMenu from '../WindowLocationMenu';
 
 const Nav = () => {
   const firstMount = useRef(true);
@@ -26,6 +27,7 @@ const Nav = () => {
   const [isVisibleBack, setIsVisibleBack] = useState(false);
   const [active, setActive] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
+  const [openMobileMenu, setOpenMobileMenu] = useState(false);
   const navRef = useRef<HTMLDivElement>(null);
   const windowSize = useWindowSize();
   useEffect(() => {
@@ -44,7 +46,6 @@ const Nav = () => {
       return;
     }
     dispatch(fetchData(region));
-    console.log(region);
   }, [region]);
   scroll(
     (progress) => {
@@ -90,6 +91,9 @@ const Nav = () => {
   const _openMenu = () => {
     setOpenMenu(!openMenu);
   };
+  const _openMobileMenu = () => {
+    setOpenMobileMenu(!openMobileMenu);
+  };
   return (
     <S.Nav
       animate={isVisibleBack ? 'visible' : 'invisible'}
@@ -126,7 +130,9 @@ const Nav = () => {
               />
             </FlexBox>
           )}
-          {windowSize < 1200 && <ButtonLocationMobile />}
+          {windowSize < 1200 && (
+            <ButtonLocationMobile onClick={_openMobileMenu} />
+          )}
           <Logo />
           <FlexBox gap='20px' aItems='center'>
             {windowSize >= 1200 && (
@@ -166,7 +172,7 @@ const Nav = () => {
                 </ListBox>
               </>
             )}
-            <NavButtonFavorites />
+            {/* <NavButtonFavorites /> */}
             {windowSize < 1200 && (
               <ButtonMenu onClick={_openMenu} open={openMenu} />
             )}
@@ -174,6 +180,7 @@ const Nav = () => {
         </S.NavWrapper>
       </CenterContainer>
       <NavMenu open={openMenu} />
+      {openMobileMenu && <WindowLocationMenu onClick={_openMobileMenu} />}
     </S.Nav>
   );
 };

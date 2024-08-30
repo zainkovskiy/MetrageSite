@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { ComponentProps } from 'react';
 
-interface ITextDefaultProps {
+interface ITextDefaultOwnProps {
   children: React.ReactNode;
   bold?: boolean;
   color?:
@@ -12,6 +12,8 @@ interface ITextDefaultProps {
     | 'black'
     | 'white';
 }
+type ITextDefaultProps = ITextDefaultOwnProps &
+  Omit<ComponentProps<'span'>, keyof ITextDefaultOwnProps>;
 
 type ITextSizeNumberProps = ITextDefaultProps & {
   size?: number;

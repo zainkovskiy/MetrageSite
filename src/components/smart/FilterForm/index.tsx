@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import * as S from './style';
 import Button from '../../ui/Button';
-import FlexBox from '../../ui/FlexBox';
-import Input from '../../ui/Input';
 import InputButton from '../../ui/InputButton';
 import {
   Controller,
@@ -20,7 +18,7 @@ import {
   filterTypeTranslate,
 } from '../../../core/constants/filter';
 import Dadata from '../../ui/Dadata';
-const FilterForm = () => {
+const FilterForm = ({ filterActive }: { filterActive?: string }) => {
   const method = useForm({
     defaultValues: defaultFilter,
   });
@@ -53,14 +51,14 @@ const FilterForm = () => {
   };
   const getTypeLabel = () => {
     const values = method.getValues('subTypeEstate');
-    if (Array.isArray(values)) {
+    if (values.length > 0 && Array.isArray(values)) {
       return values
         .map((item) => {
           return filterTypeTranslate[item];
         })
         .join(', ');
     }
-    if (values) {
+    if (values && !Array.isArray(values)) {
       return filterTypeTranslate[values];
     }
     return 'Тип';
@@ -124,7 +122,7 @@ const FilterForm = () => {
       <S.FilterForm onSubmit={method.handleSubmit(onSubmit)}>
         <S.FilterFormInputs $columns={getColumns()}>
           <InputButton label={getTypeLabel()}>
-            <FilterFormType />
+            <FilterFormType filterActive={filterActive} />
           </InputButton>
           {(method.getValues('subTypeEstate') === 'flat' ||
             method.getValues('subTypeEstate') === 'newBuildingFlat') && (

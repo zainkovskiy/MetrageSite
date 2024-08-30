@@ -5,7 +5,8 @@ import FlexBox from '../../ui/FlexBox';
 import { Controller, useFormContext } from 'react-hook-form';
 import FilterFormTypeLive from '../FilterFormTypeLive';
 import FilterFormTypeBusiness from '../FilterFormTypeBusiness';
-const FilterFormType = () => {
+import FilterFormTypeLiveRent from '../FilterFormTypeLiveRent';
+const FilterFormType = ({ filterActive }: { filterActive?: string }) => {
   const { control, watch, getValues } = useFormContext();
   watch('typeEstate');
   return (
@@ -23,8 +24,18 @@ const FilterFormType = () => {
           </ToggleButtonGroup>
         )}
       />
-      {getValues('typeEstate') === 'live' && <FilterFormTypeLive />}
-      {getValues('typeEstate') === 'business' && <FilterFormTypeBusiness />}
+      {getValues('typeEstate') === 'live' && (
+        <>
+          {filterActive === 'rent' ? (
+            <FilterFormTypeLiveRent />
+          ) : (
+            <FilterFormTypeLive />
+          )}
+        </>
+      )}
+      {getValues('typeEstate') === 'business' && (
+        <FilterFormTypeBusiness isRent={filterActive === 'rent'} />
+      )}
     </FlexBox>
   );
 };
