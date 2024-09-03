@@ -5,6 +5,8 @@ export const MainNewBuild = styled.div`
   grid-template-columns: repeat(3, 1fr);
   padding-bottom: 200px;
   box-sizing: border-box;
+  gap: 0.5rem;
+
   @media (max-width: 1200px) {
     padding-bottom: 100px;
   }

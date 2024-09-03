@@ -11,9 +11,31 @@ import Button from '../../ui/Button';
 import Input from '../../ui/Input';
 import { Link } from 'react-router-dom';
 import { useWindowSize } from '../../../core/hooks/windowSize';
+import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+import { regExpMail } from '../../../core/constants/regExp';
+import { subscribe } from '../../../core/api/api';
+import { IEmailData } from '../../../core/models/main';
+import { useAppSelector } from '../../../core/hooks/storeHook';
 
 const Footer = () => {
+  const { handleSubmit, watch, getValues, control, reset } = useForm({
+    defaultValues: { email: '' },
+  });
   const windowSize = useWindowSize();
+  const { region } = useAppSelector((state) => state.main);
+  const onSubmit: SubmitHandler<IEmailData> = (data) => {
+    subscribe({
+      location: region,
+      URL: window.location.href,
+      formData: data,
+    }).then((answer) => {
+      if (answer) {
+        reset();
+      }
+    });
+  };
+  watch('email');
+
   return (
     <CenterContainer>
       <PaddingSide>
@@ -63,13 +85,26 @@ const Footer = () => {
               </FlexBox>
             </S.FooterLinksWrap>
             <FlexBox column gap='1rem'>
-              <S.FooterSubscribe>
-                <Input
-                  placeholder='Эл. почта'
+              <S.FooterSubscribe onSubmit={handleSubmit(onSubmit)}>
+                <Controller
+                  name='email'
+                  control={control}
+                  render={({ field }) => (
+                    <Input
+                      placeholder='Эл. почта'
+                      fullWidth
+                      small={windowSize > 768}
+                      value={field.value}
+                      onChange={field.onChange}
+                    />
+                  )}
+                />
+                <Button
                   fullWidth
                   small={windowSize > 768}
-                />
-                <Button fullWidth small={windowSize > 768} disabled>
+                  disabled={!regExpMail.test(getValues('email'))}
+                  type='submit'
+                >
                   подписаться
                 </Button>
               </S.FooterSubscribe>

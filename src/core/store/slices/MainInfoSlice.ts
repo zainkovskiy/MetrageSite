@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { IAPI, IMainData, IRegion } from '../../models/api';
 import axios from 'axios';
-import { IMainSlice } from '../typesStore/mainSliceType';
+import { IMainSlice } from '../typesStore/sliceType';
 const API = 'https://crm.metragegroup.com/API/site.php';
 
 export const getRegion = createAsyncThunk(

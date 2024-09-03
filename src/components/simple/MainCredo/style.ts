@@ -16,24 +16,3 @@ export const MainText = styled.div`
   max-width: 640px;
   text-align: center;
 `;
-export const IconLogoContainer = styled.div`
-  &:after {
-    content: '';
-    display: inline-block;
-    width: 67px;
-    height: 1px;
-    vertical-align: super;
-    margin-left: 1rem;
-    background-color: ${({ theme }) => theme.palette.black};
-  }
-  &:before {
-    content: '';
-    display: inline-block;
-    width: 67px;
-    height: 1px;
-    vertical-align: super;
-    margin-right: 1rem;
-    background-color: ${({ theme }) => theme.palette.black};
-  }
-`;
-export const IconLogo = LogoBlack;

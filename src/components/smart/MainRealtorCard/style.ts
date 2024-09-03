@@ -14,6 +14,7 @@ export const MainRealtorCardImg = styled.img`
   height: 16rem;
   object-fit: cover;
   border-radius: 40px 0;
+  cursor: pointer;
 `;
 export const MainRealtorCardWrap = styled.div`
   display: flex;

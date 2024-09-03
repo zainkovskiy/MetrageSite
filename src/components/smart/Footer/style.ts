@@ -28,7 +28,7 @@ export const FooterWrap = styled.div`
     grid-template-columns: 1fr;
   }
 `;
-export const FooterSubscribe = styled.div`
+export const FooterSubscribe = styled.form`
   max-width: 215px;
   display: flex;
   flex-direction: column;

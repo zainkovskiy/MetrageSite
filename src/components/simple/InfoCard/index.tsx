@@ -1,9 +1,9 @@
 import React from 'react';
 import * as S from './style';
 import Text from '../../ui/Text';
-import { IMainInfoCards } from './type';
-const MainInfoCard = (props: IMainInfoCards) => {
-  const { text, icon } = props;
+import { IInfoCards } from './type';
+const InfoCard = (props: IInfoCards) => {
+  const { title, text, icon } = props;
   const getIcon = () => {
     switch (icon) {
       case 'around':
@@ -17,13 +17,14 @@ const MainInfoCard = (props: IMainInfoCards) => {
     }
   };
   return (
-    <S.MainInfoCard>
-      <S.MainInfoCardTextWrap>
-        <Text sizeStr='clamp(20px, 3vw, 24px)'>{text}</Text>
-      </S.MainInfoCardTextWrap>
+    <S.InfoCard>
+      <S.InfoCardTextWrap>
+        <Text sizeStr='clamp(20px, 3vw, 24px)'>{title}</Text>
+        <Text size={14}>{text}</Text>
+      </S.InfoCardTextWrap>
       {icon && getIcon()}
-    </S.MainInfoCard>
+    </S.InfoCard>
   );
 };
 
-export default MainInfoCard;
+export default InfoCard;

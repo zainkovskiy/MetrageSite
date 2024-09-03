@@ -14,10 +14,24 @@ interface IMeta {
   stTime: number;
 }
 
+export type ISimleAnswer = boolean;
+
 export interface IRegion {
   region: string;
 }
 export interface IMainData {
   team: IRealtors[];
   newbuildings: INewBuildings[];
+}
+
+export interface ISetForm<F> {
+  URL: string;
+  location: string;
+  formData: F;
+}
+export interface IGetRealtors {
+  curPage: number;
+  items: IRealtors[];
+  itemsCount: number;
+  pagesCount: number;
 }

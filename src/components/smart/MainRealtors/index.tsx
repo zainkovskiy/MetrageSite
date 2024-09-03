@@ -4,6 +4,7 @@ import Text from '../../ui/Text';
 import ButtonLink from '../../ui/ButtonLink';
 import { useAppSelector } from '../../../core/hooks/storeHook';
 import MainRealtorCard from '../MainRealtorCard';
+import { Link } from 'react-router-dom';
 
 const MainRealtors = () => {
   const { realtors } = useAppSelector((state) => state.main);
@@ -18,6 +19,8 @@ const MainRealtors = () => {
           uppercase
           bold
           arrow='right'
+          as={Link}
+          to='/rieltors'
         />
       </S.MainRealtorsText>
       <S.MainRealtorsCards>

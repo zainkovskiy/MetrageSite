@@ -8,7 +8,6 @@ import {
   SubmitHandler,
   useForm,
 } from 'react-hook-form';
-import { IFilterFormData } from './type';
 import FilterFormType from '../FilterFormType';
 import FilterFormRooms from '../FilterFormRooms';
 import FilterFormPrice from '../FilterFormPrice';
@@ -18,9 +17,17 @@ import {
   filterTypeTranslate,
 } from '../../../core/constants/filter';
 import Dadata from '../../ui/Dadata';
+import { IFilterFormData } from '../../../core/models/main';
+import { useAppDispatch, useAppSelector } from '../../../core/hooks/storeHook';
+import { setFilter } from '../../../core/store/slices/objectsSlice';
+import { useLocation, useNavigate } from 'react-router-dom';
 const FilterForm = ({ filterActive }: { filterActive?: string }) => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { filter } = useAppSelector((state) => state.object);
   const method = useForm({
-    defaultValues: defaultFilter,
+    defaultValues: filter,
   });
 
   useEffect(() => {
@@ -31,7 +38,10 @@ const FilterForm = ({ filterActive }: { filterActive?: string }) => {
     });
   }, [method.watch]);
   const onSubmit: SubmitHandler<IFilterFormData> = (data) => {
-    console.log(data);
+    dispatch(setFilter(data));
+    if (location.pathname === '/') {
+      filterActive ? navigate('/rent') : navigate('/buy');
+    }
   };
   const getColumns = () => {
     if (method.getValues('typeEstate') === 'live') {

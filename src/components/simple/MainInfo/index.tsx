@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './style';
 import Text from '../../ui/Text';
-import MainInfoCard from '../MainInfoCard';
+import InfoCard from '../InfoCard';
 
 const MainInfo = () => {
   return (
@@ -12,21 +12,18 @@ const MainInfo = () => {
         </Text>
       </S.MainInfoTextWrap>
       <S.MainInfoCards>
-        <MainInfoCard
-          icon='cross'
-          text='Наставничество и обучение для новичков'
-        />
-        <MainInfoCard
+        <InfoCard icon='cross' title='Наставничество и обучение для новичков' />
+        <InfoCard
           icon='around'
-          text='Регулярные презентации, мастер-классы и тренинги'
+          title='Регулярные презентации, мастер-классы и тренинги'
         />
-        <MainInfoCard
+        <InfoCard
           icon='arrow'
-          text='Профессиональное сообщество с поддержкой по любым вопросам'
+          title='Профессиональное сообщество с поддержкой по любым вопросам'
         />
-        <MainInfoCard
+        <InfoCard
           icon='semicolon'
-          text='Одни из лучших в городе условия оплаты'
+          title='Одни из лучших в городе условия оплаты'
         />
       </S.MainInfoCards>
     </S.MainInfo>

@@ -4,7 +4,7 @@ import { ReactComponent as Cross } from '../../../assets/images/mainCross.svg';
 import { ReactComponent as Arrow } from '../../../assets/images/mainArrow.svg';
 import { ReactComponent as Semicon } from '../../../assets/images/semicolon.svg';
 
-export const MainInfoCard = styled.div`
+export const InfoCard = styled.div`
   padding: 32px 24px;
   box-sizing: border-box;
   border-radius: 0 20px;
@@ -17,8 +17,11 @@ export const MainInfoCard = styled.div`
     height: auto;
   }
 `;
-export const MainInfoCardTextWrap = styled.div`
+export const InfoCardTextWrap = styled.div`
   max-width: 285px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   @media (max-width: 768px) {
     max-width: 100%;
   }

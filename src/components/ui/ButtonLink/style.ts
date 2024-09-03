@@ -55,7 +55,11 @@ export const ButtonLink = styled.a<IButtonLinkStyleProps>`
   }
 `;
 
-export const ArrowIconLeft = ArrowBoldLeft;
+export const ArrowIconLeft = styled(ArrowBoldLeft)<{ $color: string }>`
+  ${({ $color }) => css`
+    fill: ${$color};
+  `}
+`;
 export const ArrowIconRight = styled(ArrowBoldRight)<{ $color: string }>`
   ${({ $color }) => css`
     fill: ${$color};

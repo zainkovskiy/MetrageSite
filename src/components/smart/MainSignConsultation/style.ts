@@ -49,7 +49,7 @@ export const MainSignConsultationWrap = styled.div`
     margin-bottom: 2rem;
   }
 `;
-export const InputsWrap = styled.div`
+export const InputsWrap = styled.form`
   grid-column-start: 2;
   grid-column-end: 4;
   display: flex;
