@@ -7,13 +7,14 @@ const API = 'https://crm.metragegroup.com/API/site.php';
 
 export const getRieltors = createAsyncThunk<
   IGetRealtors,
-  undefined,
+  number,
   { rejectValue: string; state: { main: IMainSlice } }
->('rieltors/getRieltors', async (_, { getState, rejectWithValue }) => {
+>('rieltors/getRieltors', async (page, { getState, rejectWithValue }) => {
   const res = await axios.post<IAPI<IGetRealtors>>(API, {
     method: 'site.team.list',
     fields: {
       location: getState().main.region,
+      page: page,
     },
   });
   if (res?.statusText !== 'OK') {

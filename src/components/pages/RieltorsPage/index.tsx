@@ -16,6 +16,7 @@ import { findRealtors } from '../../../core/api/api';
 import { IRealtorsSearch } from '../../../core/models/main';
 import ButtonLink from '../../ui/ButtonLink';
 import { Link } from 'react-router-dom';
+import Pagination from '../../ui/Pagination';
 
 const RieltorsPage = () => {
   const dispatch = useAppDispatch();
@@ -25,8 +26,11 @@ const RieltorsPage = () => {
   useEffect(() => {
     getRieltorsList();
   }, []);
+  useEffect(() => {
+    getRieltorsList();
+  }, [region]);
   const getRieltorsList = () => {
-    dispatch(getRieltors());
+    dispatch(getRieltors(1));
   };
   const _search = (value: string) => {
     findRealtors({
@@ -39,6 +43,10 @@ const RieltorsPage = () => {
       }
       setRieltorsList([]);
     });
+  };
+  const hanleChangePage = (page: number) => {
+    dispatch(getRieltors(page));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
   return (
     <CenterContainer>
@@ -84,11 +92,14 @@ const RieltorsPage = () => {
                   <MainRealtorCard key={realtor.UID} {...realtor} />
                 ))}
             </S.RieltorsPageCards>
-            <S.RieltorsPagePagination>
-              <span>1</span>
-              <span>2</span>
-              <span>3</span>
-            </S.RieltorsPagePagination>
+            {data?.pagesCount && (
+              <S.RieltorsPagePagination>
+                <Pagination
+                  count={data.pagesCount}
+                  onChange={hanleChangePage}
+                />
+              </S.RieltorsPagePagination>
+            )}
             <S.RieltorsPageText>
               <LogoWithLine />
               <S.RieltorsPageTextWrap>

@@ -15,6 +15,7 @@ export const MainRealtorCardImg = styled.img`
   object-fit: cover;
   border-radius: 40px 0;
   cursor: pointer;
+  background-color: #c0c0c0;
 `;
 export const MainRealtorCardWrap = styled.div`
   display: flex;
