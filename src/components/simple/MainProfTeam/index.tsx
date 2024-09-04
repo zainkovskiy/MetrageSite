@@ -2,6 +2,7 @@ import React from 'react';
 import * as S from './styled';
 import Text from '../../ui/Text';
 import ButtonLink from '../../ui/ButtonLink';
+import { Link } from 'react-router-dom';
 const MainProfTeam = () => {
   return (
     <S.MainProfTeam>
@@ -20,6 +21,8 @@ const MainProfTeam = () => {
             label='познакомиться со специалистами'
             bold
             arrow='right'
+            as={Link}
+            to='/rieltors'
           />
         </S.MainProfTeamLink>
       </S.MainProfTeamWrap>

@@ -46,6 +46,24 @@ export const RieltorPageImg = styled.img`
   width: 100%;
   object-fit: cover;
 `;
+export const RieltorPageImgWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+export const RieltorPageRewardsWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+export const RieltorPageRewards = styled.div`
+  display: flex;
+  gap: 0.2rem;
+`;
+export const RieltorPageRewardImg = styled.img`
+  height: 80px;
+  object-fit: cover;
+  width: 60px;
+`;
 export const RieltorPageFixForm = styled.div`
   position: sticky;
   top: 76px;

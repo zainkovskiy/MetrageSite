@@ -5,4 +5,5 @@ export interface IRealtorInfoSmall {
   phone: string[];
   email: string;
   socNetworks: ISocNetworkAndReview[];
+  specialisation: string[];
 }

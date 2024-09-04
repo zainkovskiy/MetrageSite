@@ -3,9 +3,8 @@ import { IRealtors } from '../../../core/models/main';
 import * as S from './style';
 import Text from '../../ui/Text';
 import Button from '../../ui/Button';
-import FlexBox from '../../ui/FlexBox';
 import { getNumberPhone } from '../../../core/api/api';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import ButtonLink from '../../ui/ButtonLink';
 import { Link } from 'react-router-dom';
 
@@ -13,6 +12,8 @@ const MainRealtorCard = (props: IRealtors) => {
   const { avatar, firstName, lastName, phone, officeName, speciality, UID } =
     props;
   const navigate = useNavigate();
+  const location = useLocation();
+
   const [curPhone, setCurPhone] = useState(`${phone}...показать номер`);
   const getPhone = () => {
     getNumberPhone(UID).then((newPhone) => {
@@ -22,7 +23,7 @@ const MainRealtorCard = (props: IRealtors) => {
     });
   };
   const navigateTo = () => {
-    navigate(`${UID}`);
+    navigate(location.pathname === '/' ? `/rieltors/${UID}` : `${UID}`);
   };
   return (
     <S.MainRealtorCard>
@@ -41,7 +42,7 @@ const MainRealtorCard = (props: IRealtors) => {
             bold
             label={`${firstName} ${lastName}`}
             as={Link}
-            to={`${UID}`}
+            to={location.pathname === '/' ? `/rieltors/${UID}` : `${UID}`}
           />
           <Text>{officeName}</Text>
         </S.MainRealtorCardWrapText>

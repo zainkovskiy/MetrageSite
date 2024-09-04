@@ -1,20 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import CenterContainer from '../../containers/CenterContainer';
 import PaddingSide from '../../containers/PaddingSide';
-
 import * as S from './style';
 import Text from '../../ui/Text';
 import FlexBox from '../../ui/FlexBox';
-import { useAppDispatch, useAppSelector } from '../../../core/hooks/storeHook';
-import { getRieltors } from '../../../core/store/slices/rieltorsSlice';
-import MainRealtorCard from '../../smart/MainRealtorCard';
-import LogoWithLine from '../../simple/LogoWithLine';
-import InfoCard from '../../simple/InfoCard';
-import FormNamePhone from '../../smart/FormNamePhone';
 import FormNamePhoneSmall from '../../smart/FormNamePhoneSmall';
-import InputSearch from '../../ui/InputSearch';
-import { findRealtors, getOneRealtor } from '../../../core/api/api';
-import { IRealtorFull, IRealtorsSearch } from '../../../core/models/main';
+import { getOneRealtor } from '../../../core/api/api';
+import { IRealtorFull } from '../../../core/models/main';
 import ButtonLink from '../../ui/ButtonLink';
 import { Link, useParams } from 'react-router-dom';
 import RieltorObject from '../../simple/RieltorObject';
@@ -35,8 +27,6 @@ const RieltorPage = () => {
     if (params?.id) {
       getOneRealtor(params.id).then((fullRieltor) => {
         if (fullRieltor) {
-          console.log(fullRieltor);
-
           setRealtor(fullRieltor);
         }
       });
@@ -59,7 +49,19 @@ const RieltorPage = () => {
         <S.RieltorPage>
           <S.RieltorPageRight>
             <S.RieltorPageInfo>
-              <S.RieltorPageImg src={rieltor?.avatar} />
+              <S.RieltorPageImgWrap>
+                <S.RieltorPageImg src={rieltor?.avatar} />
+                {rieltor?.rewards && rieltor?.rewards.length > 0 && (
+                  <S.RieltorPageRewardsWrap>
+                    <Text size={16}>Документы и награды</Text>
+                    <S.RieltorPageRewards>
+                      {rieltor.rewards.map((reward) => (
+                        <S.RieltorPageRewardImg src={reward.image} />
+                      ))}
+                    </S.RieltorPageRewards>
+                  </S.RieltorPageRewardsWrap>
+                )}
+              </S.RieltorPageImgWrap>
               <FlexBox column gap='1.5rem'>
                 <FlexBox column gap='0.5rem'>
                   <Text sizeStr='clamp(32px, 5vw, 56px)'>
@@ -68,6 +70,19 @@ const RieltorPage = () => {
                   <Text size={18}>{rieltor?.officeName}</Text>
                 </FlexBox>
                 <S.RieltorPageContacts>
+                  {rieltor?.specialisation &&
+                    rieltor?.specialisation.length > 0 && (
+                      <FlexBox gap='0.3rem' aItems='flex-start'>
+                        <Home />
+                        <FlexBox column gap='0.5rem'>
+                          {rieltor?.specialisation.map((spec) => (
+                            <Text key={spec} size={16}>
+                              {spec}
+                            </Text>
+                          ))}
+                        </FlexBox>
+                      </FlexBox>
+                    )}
                   <FlexBox gap='0.3rem' aItems='center'>
                     <Pin />
                     <Text size={16}>Офис: {rieltor?.officeName}</Text>
@@ -107,13 +122,6 @@ const RieltorPage = () => {
                     })}
                   </FlexBox>
                 </S.RieltorPageContacts>
-                <Text size={16}>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Tenetur reprehenderit repellendus blanditiis nisi sapiente
-                  aspernatur consectetur quod obcaecati est illo pariatur
-                  aliquid excepturi in ea, repellat, sequi placeat dignissimos
-                  omnis.
-                </Text>
                 {rieltor?.aboutUs && <Text size={16}>{rieltor.aboutUs}</Text>}
               </FlexBox>
             </S.RieltorPageInfo>
@@ -132,6 +140,7 @@ const RieltorPage = () => {
                 phone={rieltor?.phones || []}
                 email={rieltor?.email || ''}
                 socNetworks={rieltor?.socNetworks || []}
+                specialisation={rieltor?.specialisation || []}
               />
               <FormNamePhoneSmall
                 text='или оставьте номер, риелтор вам перезвонит'

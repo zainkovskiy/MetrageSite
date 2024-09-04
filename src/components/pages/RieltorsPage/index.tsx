@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import CenterContainer from '../../containers/CenterContainer';
 import PaddingSide from '../../containers/PaddingSide';
-
 import * as S from './style';
 import Text from '../../ui/Text';
 import { useAppDispatch, useAppSelector } from '../../../core/hooks/storeHook';
@@ -97,6 +96,7 @@ const RieltorsPage = () => {
                 <Pagination
                   count={data.pagesCount}
                   onChange={hanleChangePage}
+                  page={data.curPage || 1}
                 />
               </S.RieltorsPagePagination>
             )}

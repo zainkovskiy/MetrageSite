@@ -18,13 +18,21 @@ import { IRealtorInfoSmall } from './type';
 import HorizontLine from '../HorizontLine';
 
 const RealtorInfoSmall = (props: IRealtorInfoSmall) => {
-  const { office, phone, email, socNetworks } = props;
+  const { office, phone, email, socNetworks, specialisation } = props;
   return (
     <S.RealtorInfoSmall>
-      {/* <FlexBox>
-        <Home />
-        <Text size={16}>Спец по загородным домам</Text>
-      </FlexBox> */}
+      {specialisation && specialisation.length > 0 && (
+        <FlexBox gap='0.3rem' aItems='flex-start'>
+          <Home />
+          <FlexBox column gap='0.5rem'>
+            {specialisation.map((spec) => (
+              <Text key={spec} size={16}>
+                {spec}
+              </Text>
+            ))}
+          </FlexBox>
+        </FlexBox>
+      )}
       <FlexBox gap='0.3rem' aItems='center'>
         <Pin />
         <Text size={16}>Офис: {office}</Text>

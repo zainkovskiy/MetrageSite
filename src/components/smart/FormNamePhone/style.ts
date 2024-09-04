@@ -24,6 +24,7 @@ export const ButtonWrapper = styled.div`
   position: relative;
   width: 100%;
   margin-left: 0.5rem;
+  min-width: 270px;
   @media (max-width: 768px) {
     margin-left: 0;
   }

@@ -23,6 +23,8 @@ export interface IRealtorFull {
   socNetworks: ISocNetworkAndReview[];
   objects: IRieltorObject[];
   reviews: ISocNetworkAndReview[];
+  specialisation: string[];
+  rewards: IRieltorRewards[];
 }
 export interface ISocNetworkAndReview {
   image: string;
@@ -41,6 +43,10 @@ export interface IRieltorChef {
   firstName: string;
   lastName: string;
   avatar: string;
+}
+export interface IRieltorRewards {
+  image: string;
+  title: string;
 }
 
 export interface IRealtorsSearch {
