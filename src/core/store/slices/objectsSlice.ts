@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { IAPI, IRegion } from '../../models/api';
+import { IAPI, IGetObjects, IGetObjectsRaw } from '../../models/api';
 import axios from 'axios';
 import { IObjectsSlice } from '../typesStore/sliceType';
 import { defaultFilter } from '../../constants/filter';
@@ -8,20 +8,21 @@ const API = 'https://crm.metragegroup.com/API/site.php';
 
 export const getObjects = createAsyncThunk(
   'objects/getObjects',
-  async (_, {}) => {
-    const res = await axios.post(API, {
+  async (raw: IGetObjectsRaw, {}) => {
+    const res = await axios.post<IAPI<IGetObjects>>(API, {
       method: 'site.objects.find',
-      fields: {},
+      fields: raw,
     });
     if (res?.statusText === 'OK') {
-      console.log(res);
+      return res.data.result || null;
     }
+    return null;
   }
 );
 
 const initialState: IObjectsSlice = {
   filter: defaultFilter,
-  objects: [],
+  data: null,
 };
 
 const objectsSlice = createSlice({
@@ -33,7 +34,9 @@ const objectsSlice = createSlice({
     },
   },
   extraReducers(builder) {
-    builder.addCase(getObjects.fulfilled, (state, action) => {});
+    builder.addCase(getObjects.fulfilled, (state, action) => {
+      state.data = action.payload;
+    });
   },
 });
 

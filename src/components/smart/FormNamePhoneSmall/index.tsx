@@ -117,7 +117,7 @@ const FormNamePhoneSmall = (props: IFormNamePhoneSmallProps) => {
         {buttonText || 'отправить'}
       </Button>
       <Text size={12} color='greyDark'>
-        Нажимая кнопку «Отправить», вы соглашаетесь с
+        Нажимая кнопку «Отправить», вы соглашаетесь с{' '}
         <ButtonLink
           size={12}
           color='greyDark'

@@ -1,6 +1,7 @@
 // import { IData } from '../types/data';
 
-import { INewBuildings, IRealtors } from './main';
+import { IFilterFormData, INewBuildings, IRealtors } from './main';
+import { IObjects } from './objects';
 
 export interface IAPI<I> {
   meta: IMeta;
@@ -35,3 +36,17 @@ export interface IGetRealtors {
   itemsCount: number;
   pagesCount: number;
 }
+export interface IGetObjects {
+  curPage: number;
+  centroid: [string, string];
+  items: IObjects[];
+  itemsCount: number;
+  pagesCount: number;
+}
+export type IGetObjectsRaw = IFilterFormData & {
+  location: string;
+  direction: string;
+  page: number;
+  mode: string;
+  bBox?: string[];
+};

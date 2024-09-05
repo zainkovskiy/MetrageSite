@@ -8,7 +8,7 @@ const RieltorObject = ({ photo, price, address }: IRieltorObject) => {
   return (
     <S.RieltorObject>
       <S.RieltorObjectImg src={photo} />
-      <Text size={24}>От {useNumberTriad(price)} &#8381;</Text>
+      <Text size={24}>{useNumberTriad(price)} &#8381;</Text>
       <Text size={14}>{address}</Text>
     </S.RieltorObject>
   );

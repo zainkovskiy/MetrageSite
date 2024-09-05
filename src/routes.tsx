@@ -3,6 +3,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import App from './App';
 import MainPage from './components/pages/MainPage';
 const BuyPage = lazy(() => import('./components/pages/BuyPage'));
+const BuyPageFull = lazy(() => import('./components/pages/BuyPageFull'));
 const RieltorPage = lazy(() => import('./components/pages/RieltorPage'));
 const RieltorsPage = lazy(() => import('./components/pages/RieltorsPage'));
 
@@ -20,6 +21,14 @@ export const routes = createBrowserRouter([
         element: (
           <Suspense>
             <BuyPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'buy/:type/:id',
+        element: (
+          <Suspense>
+            <BuyPageFull />
           </Suspense>
         ),
       },

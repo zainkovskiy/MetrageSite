@@ -9,6 +9,9 @@ export const BuyFilter = styled.div`
   box-sizing: border-box;
 `;
 export const BuyCards = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 3rem 2rem;
   padding-top: 2.5rem;
   box-sizing: border-box;
 `;

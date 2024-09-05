@@ -69,6 +69,10 @@ export const Button = styled.button<IButtonStyleProps>`
 const buttonOutlineCss = css`
   background-color: ${({ theme }) => theme.palette.white};
   color: ${({ theme }) => theme.palette.primary};
+  box-shadow: rgba(0, 0, 0, 0.02) 0 2px 3px 0, rgba(0, 0, 0, 0.03) 0 6px 5px 0,
+    rgba(0, 0, 0, 0.04) 0 12px 10px 0, rgba(0, 0, 0, 0.04) 0 22px 16px 0,
+    rgba(0, 0, 0, 0.05) 0 40px 32px 0, rgba(0, 0, 0, 0.06) 0 100px 80px 0,
+    rgba(0, 0, 0, 0.05) 0 0 20px 0;
   @media (hover: hover) {
     &:hover {
       border: 1px solid ${({ theme }) => theme.palette.primaryLite};

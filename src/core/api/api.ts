@@ -6,6 +6,7 @@ import {
   IRealtorFull,
   IRealtorsSearch,
 } from '../models/main';
+import { IObjectsFull } from '../models/objects';
 const API = 'https://crm.metragegroup.com/API/site.php';
 
 export const subscribe = async (form: ISetForm<IEmailData>) => {
@@ -58,6 +59,19 @@ export const getOneRealtor = async (UID: string) => {
     method: 'site.team.getFullCard',
     fields: {
       UID: UID,
+    },
+  });
+  if (res.statusText === 'OK') {
+    return res.data.result;
+  }
+  return null;
+};
+export const getObjectFull = async (UID: string, type: string) => {
+  const res = await axios.post<IAPI<IObjectsFull>>(API, {
+    method: 'site.objects.getFullCard',
+    fields: {
+      UID: UID,
+      typeCard: type,
     },
   });
   if (res.statusText === 'OK') {

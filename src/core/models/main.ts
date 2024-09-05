@@ -48,7 +48,6 @@ export interface IRieltorRewards {
   image: string;
   title: string;
 }
-
 export interface IRealtorsSearch {
   UID: number;
   firstName: string;

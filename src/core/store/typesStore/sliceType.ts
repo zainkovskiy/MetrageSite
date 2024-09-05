@@ -1,4 +1,4 @@
-import { IGetRealtors } from '../../models/api';
+import { IGetObjects, IGetRealtors } from '../../models/api';
 import { IFilterFormData, INewBuildings, IRealtors } from '../../models/main';
 
 export interface IMainSlice {
@@ -7,8 +7,8 @@ export interface IMainSlice {
   realtors: IRealtors[] | [];
 }
 export interface IObjectsSlice {
-  objects: [];
   filter: IFilterFormData;
+  data: IGetObjects | null;
 }
 export interface IRealtorsSlice {
   data: IGetRealtors | null;

@@ -24,12 +24,9 @@ const RieltorsPage = () => {
   const [rieltorsList, setRieltorsList] = useState<IRealtorsSearch[]>([]);
   useEffect(() => {
     getRieltorsList();
-  }, []);
-  useEffect(() => {
-    getRieltorsList();
   }, [region]);
   const getRieltorsList = () => {
-    dispatch(getRieltors(1));
+    dispatch(getRieltors(data?.curPage || 1));
   };
   const _search = (value: string) => {
     findRealtors({

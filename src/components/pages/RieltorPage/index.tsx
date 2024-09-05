@@ -16,10 +16,17 @@ import { ReactComponent as Pin } from '../../../assets/images/pin_small.svg';
 import { ReactComponent as Phone } from '../../../assets/images/phone_small.svg';
 import { ReactComponent as Home } from '../../../assets/images/home_small.svg';
 import HorizontLine from '../../simple/HorizontLine';
+import Tooltip from '../../ui/Tooltip';
+import WindowDialog from '../../ui/WindowDialog';
+import FormNamePhone from '../../smart/FormNamePhone';
+import LogoWithLine from '../../simple/LogoWithLine';
 
 const RieltorPage = () => {
   const params = useParams();
   const [rieltor, setRealtor] = useState<IRealtorFull | null>(null);
+  const [reward, setReward] = useState<string | null>(null);
+  console.log(rieltor);
+
   useEffect(() => {
     getRieltor();
   }, []);
@@ -32,7 +39,15 @@ const RieltorPage = () => {
       });
     }
   };
-
+  const openReward = (image: string) => {
+    setReward(image);
+  };
+  const closeReward = () => {
+    setReward(null);
+  };
+  if (!rieltor) {
+    return;
+  }
   return (
     <CenterContainer>
       <PaddingSide>
@@ -56,7 +71,16 @@ const RieltorPage = () => {
                     <Text size={16}>Документы и награды</Text>
                     <S.RieltorPageRewards>
                       {rieltor.rewards.map((reward) => (
-                        <S.RieltorPageRewardImg src={reward.image} />
+                        <Tooltip
+                          key={reward.title}
+                          title={reward.title}
+                          position='right'
+                        >
+                          <S.RieltorPageRewardImg
+                            src={reward.image}
+                            onClick={() => openReward(reward.image)}
+                          />
+                        </Tooltip>
                       ))}
                     </S.RieltorPageRewards>
                   </S.RieltorPageRewardsWrap>
@@ -125,6 +149,19 @@ const RieltorPage = () => {
                 {rieltor?.aboutUs && <Text size={16}>{rieltor.aboutUs}</Text>}
               </FlexBox>
             </S.RieltorPageInfo>
+            {rieltor?.reviews && rieltor.reviews.length > 0 && (
+              <S.RieltorPageReviewBlock>
+                <Text size={24}>Отзывы</Text>
+                <S.RieltorPageReviews>
+                  {rieltor.reviews.map((review) => (
+                    <S.RieltorPageReview href={review.URL} target='_blank'>
+                      <Text size={18}>{review.title}</Text>
+                      <S.RieltorPageReviewLogo src={review.image} />
+                    </S.RieltorPageReview>
+                  ))}
+                </S.RieltorPageReviews>
+              </S.RieltorPageReviewBlock>
+            )}
             <Text size={24}>Объекты риелтора</Text>
             <S.RieltorPageObjects>
               {rieltor?.objects &&
@@ -150,6 +187,19 @@ const RieltorPage = () => {
             </S.RieltorPageFixForm>
           </div>
         </S.RieltorPage>
+        <S.RieltorPageCallMe>
+          <LogoWithLine fullFill />
+          <FormNamePhone
+            text='Оставьте номер, риелтор вам перезвонит'
+            buttonText='Перезвоните мне'
+          />
+        </S.RieltorPageCallMe>
+        <WindowDialog open={Boolean(reward)}>
+          <S.RieltorPageRewardFullImg
+            onClick={closeReward}
+            src={reward || ''}
+          />
+        </WindowDialog>
       </PaddingSide>
     </CenterContainer>
   );

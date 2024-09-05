@@ -7,7 +7,7 @@ const MainSignConsultation = () => {
   return (
     <S.MainSignConsultation>
       <LogoWithLine fullFill />
-      <FormNamePhone text='Записаться на бесплатную консультацию' />
+      <FormNamePhone name text='Записаться на бесплатную консультацию' />
       <HorizontLine />
     </S.MainSignConsultation>
   );

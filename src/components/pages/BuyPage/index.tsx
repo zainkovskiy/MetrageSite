@@ -7,16 +7,29 @@ import Text from '../../ui/Text';
 import FlexBox from '../../ui/FlexBox';
 import { useAppDispatch, useAppSelector } from '../../../core/hooks/storeHook';
 import { getObjects } from '../../../core/store/slices/objectsSlice';
+import ObjectCard from '../../smart/ObjectCard';
+import Pagination from '../../ui/Pagination';
 
 const BuyPage = () => {
   const dispatch = useAppDispatch();
-  const { filter } = useAppSelector((state) => state.object);
+  const { filter, data } = useAppSelector((state) => state.object);
+  const { region } = useAppSelector((state) => state.main);
   useEffect(() => {
-    console.log(filter);
     getObjectsList();
-  }, []);
-  const getObjectsList = () => {
-    dispatch(getObjects());
+  }, [filter, region]);
+  const getObjectsList = (page?: number) => {
+    const raw = {
+      location: region,
+      direction: 'buy',
+      page: page || 1,
+      mode: 'card',
+      ...filter,
+    };
+    dispatch(getObjects(raw));
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   };
   return (
     <CenterContainer>
@@ -30,12 +43,17 @@ const BuyPage = () => {
             sortFilter
           </FlexBox>
           <S.BuyCards>
-            <div>card</div>
+            {data?.items &&
+              data.items.length > 0 &&
+              data.items.map((object) => (
+                <ObjectCard {...object} key={object.UID} />
+              ))}
           </S.BuyCards>
-          <S.BuyPagination>
-            <span>1</span>
-            <span>2</span>
-          </S.BuyPagination>
+          {data?.pagesCount && (
+            <S.BuyPagination>
+              <Pagination count={data.pagesCount} onChange={getObjectsList} />
+            </S.BuyPagination>
+          )}
         </S.BuyPage>
       </PaddingSide>
     </CenterContainer>

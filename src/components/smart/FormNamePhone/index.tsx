@@ -9,8 +9,10 @@ import Input from '../../ui/Input';
 import { IFormNamePhoneData } from '../../../core/models/main';
 import { sendNamePhoneForm } from '../../../core/api/api';
 import { useAppSelector } from '../../../core/hooks/storeHook';
+import { IFormNamePhoneProps } from './type';
 
-const FormNamePhone = ({ text }: { text: string }) => {
+const FormNamePhone = (props: IFormNamePhoneProps) => {
+  const { name, text, buttonText } = props;
   const { region } = useAppSelector((state) => state.main);
   const { control, handleSubmit, watch, getValues, reset } = useForm({
     defaultValues: {
@@ -73,18 +75,20 @@ const FormNamePhone = ({ text }: { text: string }) => {
     <S.FormNamePhone>
       <Text size={20}>{text}</Text>
       <S.InputsWrap onSubmit={handleSubmit(onSubmit)}>
-        <Controller
-          name='name'
-          control={control}
-          render={({ field }) => (
-            <Input
-              fullWidth
-              value={field.value}
-              placeholder='Ваше имя'
-              onChange={field.onChange}
-            />
-          )}
-        />
+        {name && (
+          <Controller
+            name='name'
+            control={control}
+            render={({ field }) => (
+              <Input
+                fullWidth
+                value={field.value}
+                placeholder='Ваше имя'
+                onChange={field.onChange}
+              />
+            )}
+          />
+        )}
         <Controller
           name='phone'
           control={control}
@@ -102,7 +106,7 @@ const FormNamePhone = ({ text }: { text: string }) => {
         />
         <S.ButtonWrapper>
           <Button fullWidth disabled={isDisabledButton()} type='submit'>
-            отправить
+            {buttonText || 'отправить'}
           </Button>
           <S.ButtonTextWrapper>
             <Text size={12} color='greyDark'>
@@ -110,7 +114,7 @@ const FormNamePhone = ({ text }: { text: string }) => {
               <ButtonLink
                 size={12}
                 color='greyDark'
-                label='Политикой обработки персональных данных'
+                label=' Политикой обработки персональных данных'
                 as={Link}
                 to='/privacy-policy'
                 underline
