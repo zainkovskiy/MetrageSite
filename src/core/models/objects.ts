@@ -13,6 +13,7 @@ export interface IObjects {
 }
 
 export interface IObjectsFull {
+  // [key: string]: any;
   type: string;
   UID: number;
   category: string;
@@ -27,18 +28,19 @@ export interface IObjectsFull {
   floor: number;
   floors: number;
   address: string;
-  lat: string;
-  lng: string;
+  lat: number;
+  lng: number;
   description: string;
   buildingTotalArea: string;
   landStatus: string;
   waterPipesCount: string;
   realtor: IRealtors;
-  // complex: null;
+  complex: null;
   images: string[];
   possibleKeys: IPossibleKeys[];
   similar: ISimilarObject[];
 }
+
 export interface ISimilarObject {
   UID: number;
   address: string;
@@ -47,6 +49,6 @@ export interface ISimilarObject {
   price: string;
 }
 export interface IPossibleKeys {
-  [key: string]: string;
+  key: string;
   title: string;
 }

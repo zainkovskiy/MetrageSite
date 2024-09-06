@@ -56,6 +56,13 @@ export const GlobalStyle = createGlobalStyle`
   .react-dadata__suggestion-note{
     margin-bottom: 1rem;
   }
+  .leaflet-container{
+    width: 100%;
+    height: 100%;
+  }
+  .leaflet-control-attribution{
+    display: none;
+  }
   @font-face {
     font-family: 'CeraCY';
     src: local('CeraCY'), local('CeraCY'),

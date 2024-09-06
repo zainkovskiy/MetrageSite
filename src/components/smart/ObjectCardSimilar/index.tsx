@@ -1,29 +1,26 @@
 import React from 'react';
 import * as S from './style';
-import { IObjects } from '../../../core/models/objects';
+import { IObjects, ISimilarObject } from '../../../core/models/objects';
 import Text from '../../ui/Text';
 import { useNumberTriad } from '../../../core/hooks/numberTriade';
 import HorizontLine from '../../simple/HorizontLine';
 import FlexBox from '../../ui/FlexBox';
 
-const ObjectCard = (props: IObjects) => {
-  const { photo, price, pricePerMeter, address, UID, typeCard } = props;
+const ObjectCardSimilar = (props: ISimilarObject) => {
+  const { photo, price, address, UID, typeCard } = props;
 
   return (
-    <S.ObjectCard>
-      <S.ObjectCardImgWrap to={`${typeCard}/${UID}`}>
+    <S.ObjectCardSimilar>
+      <S.ObjectCardImgWrap to={`/buy/${typeCard}/${UID}`}>
         <S.ObjectCardImg src={photo} />
       </S.ObjectCardImgWrap>
       <FlexBox column>
         <Text size={24}>От {useNumberTriad(price)} &#8381;</Text>
-        <Text size={16}>
-          {useNumberTriad(pricePerMeter)} &#8381;/м<sup>2</sup>
-        </Text>
       </FlexBox>
       <HorizontLine />
       <Text size={16}>{address}</Text>
-    </S.ObjectCard>
+    </S.ObjectCardSimilar>
   );
 };
 
-export default ObjectCard;
+export default ObjectCardSimilar;

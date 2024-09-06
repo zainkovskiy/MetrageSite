@@ -21,7 +21,7 @@ const BuyPage = () => {
     const raw = {
       location: region,
       direction: 'buy',
-      page: page || 1,
+      page: page || data?.curPage || 1,
       mode: 'card',
       ...filter,
     };
@@ -51,7 +51,11 @@ const BuyPage = () => {
           </S.BuyCards>
           {data?.pagesCount && (
             <S.BuyPagination>
-              <Pagination count={data.pagesCount} onChange={getObjectsList} />
+              <Pagination
+                count={data.pagesCount}
+                page={data?.curPage || 1}
+                onChange={getObjectsList}
+              />
             </S.BuyPagination>
           )}
         </S.BuyPage>
