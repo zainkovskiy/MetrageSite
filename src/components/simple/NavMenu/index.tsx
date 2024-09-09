@@ -5,7 +5,6 @@ import FlexBox from '../../ui/FlexBox';
 import Text from '../../ui/Text';
 import ButtonLink from '../../ui/ButtonLink';
 import { Link } from 'react-router-dom';
-import CenterContainer from '../../containers/CenterContainer';
 import { useWindowSize } from '../../../core/hooks/windowSize';
 import { desktopAnimate, mobileAnimate } from './animate';
 

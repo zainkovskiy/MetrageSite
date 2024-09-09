@@ -2,6 +2,7 @@ import React, { cloneElement, useEffect } from 'react';
 import { IListBoxProps } from './type';
 import * as S from './style';
 import { v4 as uuidv4 } from 'uuid';
+import { IListBoxItemOwnProps } from '../ListBoxItem/type';
 const ListBox = (props: IListBoxProps) => {
   const {
     title,
@@ -11,6 +12,9 @@ const ListBox = (props: IListBoxProps) => {
     isHover = false,
     open = false,
     children,
+    size,
+    padding,
+    hightlight,
     onClick,
   } = props;
   useEffect(() => {
@@ -33,11 +37,19 @@ const ListBox = (props: IListBoxProps) => {
       }
     }
   };
-  const setElementId = (elem: React.ReactNode, isIcon?: string) => {
-    if (elem && React.isValidElement(elem)) {
+  const setElementId = (elem: React.ReactNode) => {
+    if (elem && React.isValidElement(elem) && typeof elem.type === 'function') {
+      if (elem.type.name === 'ListBoxItem') {
+        return React.cloneElement(elem, {
+          'data-name': `list_box_${newId}`,
+          isActive: hightlight === elem.props.id,
+          size: size,
+          ...elem.props,
+        });
+      }
+
       return React.cloneElement(elem, {
         'data-name': `list_box_${newId}`,
-        id: isIcon === 'icon' ? 'icon' : elem.props?.id,
         ...elem.props,
       });
     }
@@ -52,17 +64,22 @@ const ListBox = (props: IListBoxProps) => {
   return (
     <S.ListBox
       $isHover={isHover}
+      $size={size}
       onClick={onClick}
       data-name={`list_box_${newId}`}
     >
-      {iconStart && setElementId(iconStart, 'icon')}
+      {iconStart && setElementId(iconStart)}
       {title}
-      {iconEnd && setElementId(iconEnd, 'icon')}
+      {iconEnd && setElementId(iconEnd)}
       {arrow && (
-        <S.IconArrow $isActive={open} data-name={`list_box_${newId}`} />
+        <S.IconArrow
+          $isActive={open}
+          data-name={`list_box_${newId}`}
+          data-arrow='arrow'
+        />
       )}
       {open && (
-        <S.ListBoxContainer data-name={`list_box_${newId}`}>
+        <S.ListBoxContainer data-name={`list_box_${newId}`} $padding={padding}>
           {childrenWithId}
         </S.ListBoxContainer>
       )}

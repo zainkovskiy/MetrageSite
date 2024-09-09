@@ -4,10 +4,18 @@ import { IRieltorObject } from '../../../core/models/main';
 import Text from '../../ui/Text';
 import { useNumberTriad } from '../../../core/hooks/numberTriade';
 
-const RieltorObject = ({ photo, price, address }: IRieltorObject) => {
+const RieltorObject = ({
+  photo,
+  price,
+  address,
+  UID,
+  typeCard,
+}: IRieltorObject) => {
   return (
     <S.RieltorObject>
-      <S.RieltorObjectImg src={photo} />
+      <S.RieltorObjectImgLink to={`/buy/${typeCard}/${UID}/`}>
+        <S.RieltorObjectImg src={photo} />
+      </S.RieltorObjectImgLink>
       <Text size={24}>{useNumberTriad(price)} &#8381;</Text>
       <Text size={14}>{address}</Text>
     </S.RieltorObject>

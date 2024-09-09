@@ -1,9 +1,13 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const RieltorObject = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+`;
+export const RieltorObjectImgLink = styled(Link)`
+  display: flex;
 `;
 export const RieltorObjectImg = styled.img`
   border-radius: 40px 0;

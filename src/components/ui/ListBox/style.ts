@@ -1,20 +1,20 @@
 import styled, { css } from 'styled-components';
 import { ReactComponent as Arrow } from '../../../assets/images/arrow_small.svg';
-export const ListBox = styled.div<{ $isHover: boolean }>`
+export const ListBox = styled.div<{ $isHover: boolean; $size?: number }>`
   position: relative;
   display: flex;
   align-items: center;
   gap: 0.5rem;
   font-family: ${({ theme }) => theme.font.regular};
   color: ${({ theme }) => theme.palette.black};
-  font-size: 14px;
+  font-size: ${({ $size }) => ($size ? `${$size}px` : '14px')};
   transition: color 0.3s;
   cursor: pointer;
   & > svg {
     pointer-events: none;
   }
-  &:hover > #icon > * {
-    stroke: ${({ theme }) => theme.palette.primary};
+  &:hover > [data-arrow] > * {
+    fill: ${({ theme }) => theme.palette.primary};
   }
   ${(props) =>
     props.$isHover &&
@@ -34,9 +34,9 @@ export const IconArrow = styled(Arrow)<{ $isActive: boolean }>`
       transform: rotate(180deg);
     `}
 `;
-export const ListBoxContainer = styled.div`
+export const ListBoxContainer = styled.div<{ $padding?: string }>`
   position: absolute;
-  padding: 0.5rem;
+  padding: ${({ $padding }) => ($padding ? $padding : '0.5rem')};
   box-sizing: border-box;
   border-radius: 4px;
   background-color: #fff;
@@ -46,4 +46,5 @@ export const ListBoxContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  width: max-content;
 `;

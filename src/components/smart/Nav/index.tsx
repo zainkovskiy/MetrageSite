@@ -62,21 +62,6 @@ const Nav = () => {
     { axis: 'y' }
   );
   const handleListener = (e: MouseEvent) => {
-    const target = e.target as HTMLElement;
-    const className = target.className;
-
-    if (!className) {
-      setOpenMenu(false);
-    }
-    if (navRef.current) {
-      const elemColection = navRef.current.getElementsByClassName(
-        `${className}`
-      );
-      if (elemColection.length > 0) {
-        return;
-      }
-      setOpenMenu(false);
-    }
     setOpenMenu(false);
   };
   const _active = () => {

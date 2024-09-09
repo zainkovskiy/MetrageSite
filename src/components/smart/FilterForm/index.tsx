@@ -120,6 +120,13 @@ const FilterForm = ({ filterActive }: { filterActive?: string }) => {
   const _reset = () => {
     method.reset(defaultFilter);
   };
+
+  const pathRegExp = new RegExp('map', 'i');
+  const isPathMap = pathRegExp.test(location.pathname);
+  const toPage = () => {
+    isPathMap ? navigate(filterActive ? '/rent' : '/buy') : navigate('map');
+  };
+
   method.watch('subTypeEstate');
   method.watch('priceFrom');
   method.watch('priceTo');
@@ -168,8 +175,8 @@ const FilterForm = ({ filterActive }: { filterActive?: string }) => {
             )}
           </div>
           <S.FileterButtonsWrapRight>
-            <Button fullWidth variant='outline'>
-              На карте
+            <Button fullWidth variant='outline' onClick={toPage}>
+              {isPathMap ? 'В список' : 'На карте'}
             </Button>
             <Button fullWidth type='submit'>
               Найти

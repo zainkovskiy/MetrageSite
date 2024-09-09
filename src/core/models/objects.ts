@@ -8,8 +8,8 @@ export interface IObjects {
   price: string;
   pricePerMeter: number;
   floor: string;
-  lat: string;
-  lng: string;
+  lat: number;
+  lng: number;
 }
 
 export interface IObjectsFull {

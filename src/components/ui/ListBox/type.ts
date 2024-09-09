@@ -2,12 +2,15 @@ import React from 'react';
 
 type IListBoxDefaultProps = {
   title: string;
+  size?: number;
+  padding?: string;
   children?: React.ReactNode;
   iconEnd?: React.ReactNode;
   iconStart?: React.ReactNode;
   arrow?: boolean;
   isHover?: boolean;
   open?: boolean;
+  hightlight?: string;
   onClick?: () => void;
 };
 type IListBoxPropsIcon = IListBoxDefaultProps & {
