@@ -1,5 +1,6 @@
 // import { IData } from '../types/data';
 
+import { LatLngBounds } from 'leaflet';
 import { IFilterFormData, INewBuildings, IRealtors } from './main';
 import { IObjects } from './objects';
 
@@ -48,5 +49,5 @@ export type IGetObjectsRaw = IFilterFormData & {
   direction: string;
   page: number;
   mode: string;
-  bBox?: string[];
+  bBox?: LatLngBounds | null;
 };

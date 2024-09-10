@@ -62,6 +62,11 @@ const Nav = () => {
     { axis: 'y' }
   );
   const handleListener = (e: MouseEvent) => {
+    const target = e.target as HTMLElement;
+    const id = target.id;
+    if (id === 'nav-menu') {
+      return;
+    }
     setOpenMenu(false);
   };
   const _active = () => {
@@ -91,7 +96,7 @@ const Nav = () => {
         <S.NavWrapper>
           {windowSize >= 1200 && (
             <FlexBox gap='20px' aItems='center'>
-              <ButtonMenu onClick={_openMenu} open={openMenu} />
+              <ButtonMenu onClick={_openMenu} open={openMenu} id='nav-menu' />
               <ButtonLink
                 label='Купить'
                 as={Link}

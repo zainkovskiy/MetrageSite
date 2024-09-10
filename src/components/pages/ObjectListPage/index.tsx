@@ -7,29 +7,35 @@ import Text from '../../ui/Text';
 import FlexBox from '../../ui/FlexBox';
 import { ReactComponent as Sort } from '../../../assets/images/sorting.svg';
 import { sortFilter, sortFilterList } from '../../../core/constants/sortFilter';
-import { useAppSelector } from '../../../core/hooks/storeHook';
+import { useAppDispatch, useAppSelector } from '../../../core/hooks/storeHook';
 import * as S from './style';
-import { useObjectOutletProps } from '../BuyPage/hookOutlet';
+import { useObjectOutletProps } from '../ObjectPage/hookOutlet';
 import PaddingSide from '../../containers/PaddingSide';
 import CenterContainer from '../../containers/CenterContainer';
+import { setSort } from '../../../core/store/slices/objectsSlice';
+import { useLocation } from 'react-router-dom';
 
-const BuyPageList = () => {
-  const { sort, setSort, setNewPage } = useObjectOutletProps();
-  const { data } = useAppSelector((state) => state.object);
+const ObjectListPage = () => {
+  const location = useLocation();
+  const buyRegExp = new RegExp('buy', 'i');
+  const isBuy = buyRegExp.test(location.pathname);
+  const { getObjectsList } = useObjectOutletProps();
+  const { data, sort } = useAppSelector((state) => state.object);
+  const dispatch = useAppDispatch();
   const [active, setActive] = useState(false);
   const _active = () => {
     setActive(!active);
   };
   const setNewSort: React.MouseEventHandler<HTMLSpanElement> = (e) => {
     const id = e.currentTarget.id;
-    setSort(id);
+    dispatch(setSort(id));
   };
   return (
     <CenterContainer>
       <PaddingSide>
-        <S.BuyPageList>
+        <S.ObjectListPage>
           <FlexBox jContent='space-between' aItems='flex-end'>
-            <Text size={56}>Купить</Text>
+            <Text size={56}>{isBuy ? 'Купить' : 'Снять'}</Text>
 
             <ListBox
               title={sortFilter[sort]}
@@ -47,26 +53,26 @@ const BuyPageList = () => {
               ))}
             </ListBox>
           </FlexBox>
-          <S.BuyPageListCards>
+          <S.ObjectListPageCards>
             {data?.items &&
               data.items.length > 0 &&
               data.items.map((object) => (
                 <ObjectCard {...object} key={object.UID} />
               ))}
-          </S.BuyPageListCards>
+          </S.ObjectListPageCards>
           {data?.pagesCount && (
-            <S.BuyPageListPagination>
+            <S.ObjectListPagePagination>
               <Pagination
                 count={data.pagesCount}
                 page={data?.curPage || 1}
-                onChange={setNewPage}
+                onChange={getObjectsList}
               />
-            </S.BuyPageListPagination>
+            </S.ObjectListPagePagination>
           )}
-        </S.BuyPageList>
+        </S.ObjectListPage>
       </PaddingSide>
     </CenterContainer>
   );
 };
 
-export default BuyPageList;
+export default ObjectListPage;

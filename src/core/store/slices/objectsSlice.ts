@@ -4,6 +4,7 @@ import axios from 'axios';
 import { IObjectsSlice } from '../typesStore/sliceType';
 import { defaultFilter } from '../../constants/filter';
 import { IFilterFormData } from '../../models/main';
+import { LatLngBounds } from 'leaflet';
 const API = 'https://crm.metragegroup.com/API/site.php';
 
 export const getObjects = createAsyncThunk(
@@ -23,6 +24,8 @@ export const getObjects = createAsyncThunk(
 const initialState: IObjectsSlice = {
   filter: defaultFilter,
   data: null,
+  sort: 'default',
+  bBox: null,
 };
 
 const objectsSlice = createSlice({
@@ -32,6 +35,17 @@ const objectsSlice = createSlice({
     setFilter(state, action: PayloadAction<IFilterFormData>) {
       state.filter = action.payload;
     },
+    setSort(state, action: PayloadAction<string>) {
+      state.sort = action.payload;
+    },
+    setBBox(state, action) {
+      state.bBox = action.payload;
+    },
+    cleareState(state) {
+      state.bBox = null;
+      state.data = null;
+      state.sort = 'default';
+    },
   },
   extraReducers(builder) {
     builder.addCase(getObjects.fulfilled, (state, action) => {
@@ -40,5 +54,6 @@ const objectsSlice = createSlice({
   },
 });
 
-export const { setFilter } = objectsSlice.actions;
+export const { setFilter, setSort, setBBox, cleareState } =
+  objectsSlice.actions;
 export default objectsSlice.reducer;

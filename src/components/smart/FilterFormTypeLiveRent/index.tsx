@@ -12,23 +12,6 @@ const FilterFormTypeLiveRent = () => {
         control={control}
         render={({ field }) => (
           <Checkbox
-            label='Квартира в новостройке'
-            value='newBuildingFlat'
-            onChange={(e) => {
-              field.value === 'newBuildingFlat'
-                ? field.onChange('')
-                : field.onChange(e.target.value);
-            }}
-            checked={field.value === 'newBuildingFlat'}
-          />
-        )}
-      />
-      <HorizontLine color='#989898' />
-      <Controller
-        name='subTypeEstate'
-        control={control}
-        render={({ field }) => (
-          <Checkbox
             label='Квартира во вторичке'
             value='flat'
             onChange={(e) => {

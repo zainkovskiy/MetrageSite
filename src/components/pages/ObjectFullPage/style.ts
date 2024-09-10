@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const BuyPageFullTop = styled.div`
+export const ObjectFullTop = styled.div`
   padding-top: 120px;
   padding-bottom: 2rem;
   box-sizing: border-box;
@@ -9,7 +9,7 @@ export const BuyPageFullTop = styled.div`
     padding-bottom: 1.5rem;
   }
 `;
-export const BuyPageFull = styled.div`
+export const ObjectFullPage = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   padding-top: 2rem;
@@ -20,11 +20,11 @@ export const BuyPageFull = styled.div`
     gap: 0;
   }
 `;
-export const BuyPageFullRight = styled.div`
+export const ObjectFullRight = styled.div`
   grid-column-start: 1;
   grid-column-end: 4;
 `;
-export const BuyPageFullAddress = styled.div`
+export const ObjectFullAddress = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 2rem;
@@ -33,7 +33,7 @@ export const BuyPageFullAddress = styled.div`
     flex-direction: column;
   }
 `;
-export const BuyPageFullPrice = styled.div`
+export const ObjectFullPrice = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -42,40 +42,40 @@ export const BuyPageFullPrice = styled.div`
     align-items: flex-start;
   }
 `;
-export const BuyPageFullPhotoWrap = styled.div`
+export const ObjectFulllPhotoWrap = styled.div`
   border-radius: 0 0 0 40px;
   overflow: hidden;
   display: flex;
   width: 100%;
 `;
-export const BuyPageFullPhotoContainer = styled.div`
+export const ObjectFullPhotoContainer = styled.div`
   display: flex;
   gap: 0.5rem;
   max-height: 600px;
 `;
-export const BuyPageFullPhotoSmallContainer = styled.div`
+export const ObjectFullPhotoSmallContainer = styled.div`
   display: grid;
   grid-template-rows: repeat(4, 1fr);
   width: 25%;
   gap: 0.5rem;
 `;
-export const BuyPageFullPhotoSmallWrap = styled.div`
+export const ObjectFullPhotoSmallWrap = styled.div`
   overflow: hidden;
   display: flex;
   &:first-child {
     border-radius: 0 40px 0 0;
   }
 `;
-export const BuyPageFullPhotoImg = styled.img`
+export const ObjectFullPhotoImg = styled.img`
   width: 100%;
   object-fit: cover;
 `;
-export const BuyPageFullPhotoSmallImg = styled.img`
+export const ObjectFullPhotoSmallImg = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
 `;
-export const BuyPageFullCharacteristics = styled.div`
+export const ObjectFullCharacteristics = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -86,27 +86,27 @@ export const BuyPageFullCharacteristics = styled.div`
     width: 25rem;
   }
 `;
-export const BuyPageFullCharacteristicsItem = styled.div`
+export const ObjectFullCharacteristicsItem = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 0.5rem;
 `;
 
-export const BuyPageFullDescription = styled.div`
+export const ObjectFullDescription = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
   padding-bottom: 4rem;
   box-sizing: border-box;
 `;
-export const BuyPageFulSimilar = styled.div`
+export const ObjectFullSimilar = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
   padding-bottom: 4rem;
   box-sizing: border-box;
 `;
-export const BuyPageFulSimilarItems = styled.div`
+export const ObjectFullSimilarItems = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 2rem;
@@ -117,7 +117,7 @@ export const BuyPageFulSimilarItems = styled.div`
     grid-template-columns: 1fr;
   }
 `;
-export const BuyPageFullContacts = styled.div`
+export const ObjectFullContacts = styled.div`
   position: sticky;
   top: 76px;
   display: grid;
@@ -134,7 +134,7 @@ export const BuyPageFullContacts = styled.div`
     padding-bottom: 4rem;
   }
 `;
-export const BuyPageFullMap = styled.div`
+export const ObjectFullMap = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;

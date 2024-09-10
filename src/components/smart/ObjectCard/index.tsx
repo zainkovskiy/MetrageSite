@@ -15,7 +15,7 @@ const ObjectCard = (props: IObjects) => {
         <S.ObjectCardImg src={photo} />
       </S.ObjectCardImgWrap>
       <FlexBox column>
-        <Text size={24}>От {useNumberTriad(price)} &#8381;</Text>
+        <Text size={24}>{useNumberTriad(price)} &#8381;</Text>
         <Text size={16}>
           {useNumberTriad(pricePerMeter)} &#8381;/м<sup>2</sup>
         </Text>

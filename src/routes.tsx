@@ -2,10 +2,10 @@ import React, { lazy, Suspense } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import App from './App';
 import MainPage from './components/pages/MainPage';
-const BuyPage = lazy(() => import('./components/pages/BuyPage'));
-const BuyPageList = lazy(() => import('./components/pages/BuyPageList'));
-const BuyPageMap = lazy(() => import('./components/pages/BuyPageMap'));
-const BuyPageFull = lazy(() => import('./components/pages/BuyPageFull'));
+const ObjectPage = lazy(() => import('./components/pages/ObjectPage'));
+const ObjectListPage = lazy(() => import('./components/pages/ObjectListPage'));
+const ObjectMapPage = lazy(() => import('./components/pages/ObjectMapPage'));
+const ObjectFullPage = lazy(() => import('./components/pages/ObjectFullPage'));
 const RieltorPage = lazy(() => import('./components/pages/RieltorPage'));
 const RieltorsPage = lazy(() => import('./components/pages/RieltorsPage'));
 
@@ -22,17 +22,17 @@ export const routes = createBrowserRouter([
         path: 'buy',
         element: (
           <Suspense>
-            <BuyPage />
+            <ObjectPage />
           </Suspense>
         ),
         children: [
           {
             index: true,
-            element: <BuyPageList />,
+            element: <ObjectListPage />,
           },
           {
             path: 'map',
-            element: <BuyPageMap />,
+            element: <ObjectMapPage />,
           },
         ],
       },
@@ -40,7 +40,34 @@ export const routes = createBrowserRouter([
         path: 'buy/:type/:id',
         element: (
           <Suspense>
-            <BuyPageFull />
+            <ObjectFullPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'rent',
+        element: (
+          <Suspense>
+            {' '}
+            <ObjectPage />{' '}
+          </Suspense>
+        ),
+        children: [
+          {
+            index: true,
+            element: <ObjectListPage />,
+          },
+          {
+            path: 'map',
+            element: <ObjectMapPage />,
+          },
+        ],
+      },
+      {
+        path: 'rent/:type/:id',
+        element: (
+          <Suspense>
+            <ObjectFullPage />
           </Suspense>
         ),
       },

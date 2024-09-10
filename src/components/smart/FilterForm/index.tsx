@@ -25,6 +25,11 @@ const FilterForm = ({ filterActive }: { filterActive?: string }) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const location = useLocation();
+  const mapRegExp = new RegExp('map', 'i');
+  const buyRegExp = new RegExp('buy', 'i');
+  const isMap = mapRegExp.test(location.pathname);
+  const isBuy = buyRegExp.test(location.pathname);
+
   const { filter } = useAppSelector((state) => state.object);
   const method = useForm({
     defaultValues: filter,
@@ -120,11 +125,16 @@ const FilterForm = ({ filterActive }: { filterActive?: string }) => {
   const _reset = () => {
     method.reset(defaultFilter);
   };
-
-  const pathRegExp = new RegExp('map', 'i');
-  const isPathMap = pathRegExp.test(location.pathname);
   const toPage = () => {
-    isPathMap ? navigate(filterActive ? '/rent' : '/buy') : navigate('map');
+    if (location.pathname === '/') {
+      navigate(`/${filterActive ? 'rent' : 'buy'}/map`);
+      return;
+    }
+    if (isMap) {
+      navigate(isBuy ? '/buy' : '/rent');
+      return;
+    }
+    navigate('map');
   };
 
   method.watch('subTypeEstate');
@@ -134,12 +144,15 @@ const FilterForm = ({ filterActive }: { filterActive?: string }) => {
   method.watch('areaTo');
   method.watch('roomsCount');
   method.watch('isStudio');
+
   return (
     <FormProvider {...method}>
       <S.FilterForm onSubmit={method.handleSubmit(onSubmit)}>
         <S.FilterFormInputs $columns={getColumns()}>
           <InputButton label={getTypeLabel()}>
-            <FilterFormType filterActive={filterActive} />
+            <FilterFormType
+              filterActive={filterActive || isBuy ? undefined : 'rent'}
+            />
           </InputButton>
           {(method.getValues('subTypeEstate') === 'flat' ||
             method.getValues('subTypeEstate') === 'newBuildingFlat') && (
@@ -166,7 +179,9 @@ const FilterForm = ({ filterActive }: { filterActive?: string }) => {
         </S.FilterFormInputs>
         <S.FileterButtonsWrap>
           <div>
-            {method.formState.isDirty ? (
+            {method.formState.isDirty ||
+            JSON.stringify(defaultFilter) !==
+              JSON.stringify(method.formState.defaultValues) ? (
               <Button type='reset' onClick={_reset} variant='text'>
                 Сбросить
               </Button>
@@ -176,7 +191,7 @@ const FilterForm = ({ filterActive }: { filterActive?: string }) => {
           </div>
           <S.FileterButtonsWrapRight>
             <Button fullWidth variant='outline' onClick={toPage}>
-              {isPathMap ? 'В список' : 'На карте'}
+              {isMap ? 'В список' : 'На карте'}
             </Button>
             <Button fullWidth type='submit'>
               Найти

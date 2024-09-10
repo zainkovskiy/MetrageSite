@@ -27,7 +27,7 @@ export const IconArrow = styled(Arrow)`
 `;
 export const InputButtonList = styled(motion.div)`
   position: absolute;
-  z-index: 99;
+  z-index: 999;
   width: max-content;
   top: calc(100% + 0.5rem);
   left: 0;

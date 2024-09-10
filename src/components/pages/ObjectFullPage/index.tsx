@@ -3,7 +3,7 @@ import CenterContainer from '../../containers/CenterContainer';
 import PaddingSide from '../../containers/PaddingSide';
 import * as S from './style';
 import Text from '../../ui/Text';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useLocation } from 'react-router-dom';
 import { getObjectFull } from '../../../core/api/api';
 import ButtonLink from '../../ui/ButtonLink';
 import { IObjectsFull } from '../../../core/models/objects';
@@ -13,8 +13,11 @@ import FormNamePhoneSmall from '../../smart/FormNamePhoneSmall';
 import RealtorContactCard from '../../smart/RealtorContactCard';
 import MapOneObject from '../../smart/MapOneObject';
 
-const BuyPageFull = () => {
+const ObjectFullPage = () => {
   const params = useParams();
+  const location = useLocation();
+  const buyRegExp = new RegExp('buy', 'i');
+  const isBuy = buyRegExp.test(location.pathname);
   const mapRef = useRef<HTMLDivElement>(null);
   const [object, setObject] = useState<IObjectsFull | null>(null);
   useEffect(() => {
@@ -24,7 +27,6 @@ const BuyPageFull = () => {
     if (params?.id && params?.type) {
       getObjectFull(params.id, params.type).then((fullObject) => {
         if (fullObject) {
-          console.log(fullObject);
           setObject(fullObject);
         }
       });
@@ -56,77 +58,77 @@ const BuyPageFull = () => {
     }
   };
   return (
-    <CenterContainer>
+    <CenterContainer key={object.UID}>
       <PaddingSide>
-        <S.BuyPageFullTop>
+        <S.ObjectFullTop>
           <ButtonLink
             arrow='left'
             label='к списку'
             uppercase
             as={Link}
-            to='/buy'
+            to={isBuy ? '/buy' : '/rent'}
             color='primary'
           />
-        </S.BuyPageFullTop>
-        <S.BuyPageFullAddress>
+        </S.ObjectFullTop>
+        <S.ObjectFullAddress>
           <Text sizeStr='clamp(22px, 5vw, 32px)'>{object.address}</Text>
-          <S.BuyPageFullPrice>
+          <S.ObjectFullPrice>
             <Text size={32}>{useNumberTriad(object.price)} &#8381;</Text>
             <Text>
               {useNumberTriad(object.pricePerMeter)} &#8381;/м<sup>2</sup>
             </Text>
-          </S.BuyPageFullPrice>
-        </S.BuyPageFullAddress>
+          </S.ObjectFullPrice>
+        </S.ObjectFullAddress>
         {object?.lat && object?.lng && (
           <ButtonLink label='На карте' color='primary' onClick={scrollToMap} />
         )}
-        <S.BuyPageFull>
-          <S.BuyPageFullRight>
-            <S.BuyPageFullPhotoContainer>
-              <S.BuyPageFullPhotoWrap>
-                <S.BuyPageFullPhotoImg src={object.images[0]} />
-              </S.BuyPageFullPhotoWrap>
-              <S.BuyPageFullPhotoSmallContainer>
+        <S.ObjectFullPage>
+          <S.ObjectFullRight>
+            <S.ObjectFullPhotoContainer>
+              <S.ObjectFulllPhotoWrap>
+                <S.ObjectFullPhotoImg src={object.images[0]} />
+              </S.ObjectFulllPhotoWrap>
+              <S.ObjectFullPhotoSmallContainer>
                 {object.images.map((image, idx) => {
                   if (idx >= 1 && idx <= 4) {
                     return (
-                      <S.BuyPageFullPhotoSmallWrap key={idx}>
-                        <S.BuyPageFullPhotoSmallImg src={image} />
-                      </S.BuyPageFullPhotoSmallWrap>
+                      <S.ObjectFullPhotoSmallWrap key={idx}>
+                        <S.ObjectFullPhotoSmallImg src={image} />
+                      </S.ObjectFullPhotoSmallWrap>
                     );
                   }
                 })}
-              </S.BuyPageFullPhotoSmallContainer>
-            </S.BuyPageFullPhotoContainer>
-            <S.BuyPageFullCharacteristics>
+              </S.ObjectFullPhotoSmallContainer>
+            </S.ObjectFullPhotoContainer>
+            <S.ObjectFullCharacteristics>
               <Text size={20}>Характеристики</Text>
               {object?.possibleKeys &&
                 object.possibleKeys.map((item) => (
-                  <S.BuyPageFullCharacteristicsItem key={item.key}>
+                  <S.ObjectFullCharacteristicsItem key={item.key}>
                     <Text size={16} color='greyDark'>
                       {item.title}
                     </Text>
                     <Text size={16}>
                       {getCharacteristicsValue(item.key as keyof IObjectsFull)}
                     </Text>
-                  </S.BuyPageFullCharacteristicsItem>
+                  </S.ObjectFullCharacteristicsItem>
                 ))}
-            </S.BuyPageFullCharacteristics>
+            </S.ObjectFullCharacteristics>
             {object?.description && (
-              <S.BuyPageFullDescription>
+              <S.ObjectFullDescription>
                 <Text size={20}>Характеристики</Text>
                 <Text size={16}>{object.description}</Text>
-              </S.BuyPageFullDescription>
+              </S.ObjectFullDescription>
             )}
             {object?.lat && object?.lng && (
-              <S.BuyPageFullMap ref={mapRef}>
+              <S.ObjectFullMap ref={mapRef}>
                 <Text sizeStr='clamp(26px, 4vw, 44px)'>На карте</Text>
                 <MapOneObject lat={object.lat} lng={object.lng} />
-              </S.BuyPageFullMap>
+              </S.ObjectFullMap>
             )}
-          </S.BuyPageFullRight>
+          </S.ObjectFullRight>
           <div>
-            <S.BuyPageFullContacts>
+            <S.ObjectFullContacts>
               {object?.realtor && <RealtorContactCard {...object.realtor} />}
               <FormNamePhoneSmall
                 name={!object.realtor}
@@ -138,24 +140,24 @@ const BuyPageFull = () => {
                 fontSize={object.realtor && 14}
                 buttonText={object.realtor && 'Перезвоните мне'}
               />
-            </S.BuyPageFullContacts>
+            </S.ObjectFullContacts>
           </div>
-        </S.BuyPageFull>
+        </S.ObjectFullPage>
         {object?.similar && (
-          <S.BuyPageFulSimilar>
+          <S.ObjectFullSimilar>
             <Text sizeStr='clamp(26px, 4vw, 44px)'>
               Вас могут заинтересовать
             </Text>
-            <S.BuyPageFulSimilarItems>
+            <S.ObjectFullSimilarItems>
               {object.similar.map((similar) => (
                 <ObjectCardSimilar key={similar.UID} {...similar} />
               ))}
-            </S.BuyPageFulSimilarItems>
-          </S.BuyPageFulSimilar>
+            </S.ObjectFullSimilarItems>
+          </S.ObjectFullSimilar>
         )}
       </PaddingSide>
     </CenterContainer>
   );
 };
 
-export default BuyPageFull;
+export default ObjectFullPage;

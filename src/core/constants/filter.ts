@@ -1,6 +1,6 @@
 export const defaultFilter = {
   typeEstate: 'live',
-  subTypeEstate: 'newBuildingFlat',
+  subTypeEstate: '',
   roomsCount: [],
   isStudio: false,
   priceFrom: null,
