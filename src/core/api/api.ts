@@ -1,7 +1,8 @@
 import axios from 'axios';
-import { IAPI, ISetForm, ISimleAnswer } from '../models/api';
+import { IAPI, ISetForm, ISimpleAnswer } from '../models/api';
 import {
   IEmailData,
+  IFilterSellFormData,
   IFormNamePhoneData,
   IRealtorFull,
   IRealtorsSearch,
@@ -10,7 +11,7 @@ import { IObjectsFull } from '../models/objects';
 const API = 'https://crm.metragegroup.com/API/site.php';
 
 export const subscribe = async (form: ISetForm<IEmailData>) => {
-  const res = await axios.post<IAPI<ISimleAnswer>>(API, {
+  const res = await axios.post<IAPI<ISimpleAnswer>>(API, {
     method: 'site.client.setForm',
     fields: form,
   });
@@ -20,7 +21,7 @@ export const subscribe = async (form: ISetForm<IEmailData>) => {
   return false;
 };
 export const sendNamePhoneForm = async (form: ISetForm<IFormNamePhoneData>) => {
-  const res = await axios.post<IAPI<ISimleAnswer>>(API, {
+  const res = await axios.post<IAPI<ISimpleAnswer>>(API, {
     method: 'site.client.setForm',
     fields: form,
   });
@@ -78,4 +79,14 @@ export const getObjectFull = async (UID: string, type: string) => {
     return res.data.result;
   }
   return null;
+};
+export const sellFilterForm = async (form: ISetForm<IFilterSellFormData>) => {
+  const res = await axios.post<IAPI<ISimpleAnswer>>(API, {
+    method: 'site.client.setForm',
+    fields: form,
+  });
+  if (res.statusText === 'OK') {
+    return res.data.result;
+  }
+  return false;
 };

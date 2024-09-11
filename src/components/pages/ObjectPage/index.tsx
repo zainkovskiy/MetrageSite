@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import CenterContainer from '../../containers/CenterContainer';
 import PaddingSide from '../../containers/PaddingSide';
 import FilterForm from '../../smart/FilterForm';
@@ -10,8 +10,8 @@ import {
 } from '../../../core/store/slices/objectsSlice';
 import { Outlet, useLocation } from 'react-router-dom';
 import { ContextOtletType } from './type';
-import { LatLngBounds } from 'leaflet';
 const ObjectPage = () => {
+  const firstMount = useRef(true);
   const dispatch = useAppDispatch();
   const location = useLocation();
   const mapRegExp = new RegExp('map', 'i');
@@ -23,14 +23,19 @@ const ObjectPage = () => {
   const { region } = useAppSelector((state) => state.main);
   useEffect(() => {
     getObjectsList();
-    //bbox делает запрос 2 раза при запуске карты
   }, [filter, region, sort, bBox]);
   useEffect(() => {
+    if (firstMount.current) {
+      firstMount.current = false;
+    }
     return () => {
       dispatch(cleareState());
     };
   }, []);
   const getObjectsList = (page?: number) => {
+    if (isMap && firstMount.current) {
+      return;
+    }
     const raw = {
       location: region,
       direction: isBuy ? 'buy' : 'rent',

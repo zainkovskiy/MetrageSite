@@ -84,3 +84,7 @@ export interface IFilterFormData {
   areaTo: number | null;
   address: DaDataSuggestion<DaDataAddress> | undefined;
 }
+export interface IFilterSellFormData {
+  objectType: string;
+  phone: string;
+}

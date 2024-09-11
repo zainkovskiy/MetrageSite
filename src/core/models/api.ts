@@ -16,7 +16,7 @@ interface IMeta {
   stTime: number;
 }
 
-export type ISimleAnswer = boolean;
+export type ISimpleAnswer = boolean;
 
 export interface IRegion {
   region: string;

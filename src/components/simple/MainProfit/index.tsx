@@ -39,7 +39,7 @@ const MainProfit = () => {
             <S.VerticalLine />
             <MainProfitCard
               label='Специальные предложения от банков и застройщиков'
-              linkTitle='Подробности и запись'
+              // linkTitle='Подробности и запись'
               id='rieltors'
               onClick={handleClick}
             />

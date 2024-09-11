@@ -104,7 +104,7 @@ const Nav = () => {
                 isMatch
                 uppercase
               />
-              <ButtonLink
+              {/* <ButtonLink
                 label='Продать'
                 as={Link}
                 to='/sell'
@@ -117,7 +117,7 @@ const Nav = () => {
                 to='/mortgage'
                 isMatch
                 uppercase
-              />
+              /> */}
             </FlexBox>
           )}
           {windowSize < 1200 && (
@@ -127,13 +127,13 @@ const Nav = () => {
           <FlexBox gap='20px' aItems='center'>
             {windowSize >= 1200 && (
               <>
-                <ButtonLink
+                {/* <ButtonLink
                   label='Сервисы'
                   as={Link}
                   to='/services'
                   isMatch
                   uppercase
-                />
+                /> */}
                 <ButtonLink
                   label='Передать клиента'
                   uppercase
@@ -164,7 +164,7 @@ const Nav = () => {
             )}
             {/* <NavButtonFavorites /> */}
             {windowSize < 1200 && (
-              <ButtonMenu onClick={_openMenu} open={openMenu} />
+              <ButtonMenu onClick={_openMenu} open={openMenu} id='nav-menu' />
             )}
           </FlexBox>
         </S.NavWrapper>

@@ -29,6 +29,7 @@ const InputButton = (props: InputButtonProps) => {
       const elemColection = containerRef.current.getElementsByClassName(
         `${className}`
       );
+
       let isMatch = false;
       for (let item of elemColection) {
         if (item === target) {

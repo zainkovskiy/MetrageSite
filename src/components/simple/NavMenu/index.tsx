@@ -26,10 +26,10 @@ const NavMenu = ({ open, ...otherProps }: { open: boolean }) => {
               <FlexBox column gap='1rem'>
                 <Text bold>Для клиентов</Text>
                 <FlexBox column gap='0.5rem'>
-                  <ButtonLink as={Link} to='/sell' label='Продать' />
+                  {/* <ButtonLink as={Link} to='/sell' label='Продать' /> */}
                   <ButtonLink as={Link} to='/buy' label='Купить' />
-                  <ButtonLink as={Link} to='/mortgage' label='Ипотека' />
-                  <ButtonLink as={Link} to='/help' label='Помощь' />
+                  {/* <ButtonLink as={Link} to='/mortgage' label='Ипотека' /> */}
+                  {/* <ButtonLink as={Link} to='/help' label='Помощь' /> */}
                   <ButtonLink
                     as={Link}
                     to='/rieltors'
@@ -54,7 +54,7 @@ const NavMenu = ({ open, ...otherProps }: { open: boolean }) => {
                   />
                 </FlexBox>
               </FlexBox>
-              <FlexBox column gap='1rem'>
+              {/* <FlexBox column gap='1rem'>
                 <Text bold>Сервисы</Text>
                 <FlexBox column gap='0.5rem'>
                   <ButtonLink as={Link} to='/services/1' label='Страхование' />
@@ -77,7 +77,7 @@ const NavMenu = ({ open, ...otherProps }: { open: boolean }) => {
                   />
                   <ButtonLink as={Link} to='/services/7' label='Франшиза' />
                 </FlexBox>
-              </FlexBox>
+              </FlexBox> */}
             </S.NavMenuLeftSide>
             <FlexBox column gap='0.5rem' aItems='flex-end'>
               <ButtonLink

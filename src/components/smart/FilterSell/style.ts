@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const FilterSell = styled.div`
+export const FilterSell = styled.form`
   padding: 0.5rem 1rem;
   box-sizing: border-box;
   background-color: #fff;

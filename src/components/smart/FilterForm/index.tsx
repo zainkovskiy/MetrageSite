@@ -137,6 +137,19 @@ const FilterForm = ({ filterActive }: { filterActive?: string }) => {
     navigate('map');
   };
 
+  const getFilterActive = () => {
+    if (filterActive) {
+      return filterActive;
+    }
+    if (location.pathname === '/') {
+      return;
+    }
+    if (isBuy) {
+      return;
+    }
+    return 'rent';
+  };
+
   method.watch('subTypeEstate');
   method.watch('priceFrom');
   method.watch('priceTo');
@@ -150,9 +163,7 @@ const FilterForm = ({ filterActive }: { filterActive?: string }) => {
       <S.FilterForm onSubmit={method.handleSubmit(onSubmit)}>
         <S.FilterFormInputs $columns={getColumns()}>
           <InputButton label={getTypeLabel()}>
-            <FilterFormType
-              filterActive={filterActive || isBuy ? undefined : 'rent'}
-            />
+            <FilterFormType filterActive={getFilterActive()} />
           </InputButton>
           {(method.getValues('subTypeEstate') === 'flat' ||
             method.getValues('subTypeEstate') === 'newBuildingFlat') && (
