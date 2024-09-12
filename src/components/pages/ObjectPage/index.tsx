@@ -46,10 +46,12 @@ const ObjectPage = () => {
       ...filter,
     };
     dispatch(getObjects(raw));
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
+    if (!isMap) {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    }
   };
   return (
     <>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ObjectCard from '../../smart/ObjectCard';
 import Pagination from '../../ui/Pagination';
 import ListBox from '../../ui/ListBox';
@@ -23,6 +23,12 @@ const ObjectListPage = () => {
   const { data, sort } = useAppSelector((state) => state.object);
   const dispatch = useAppDispatch();
   const [active, setActive] = useState(false);
+  useEffect(() => {
+    if (data?.mode) {
+      getObjectsList();
+    }
+  }, []);
+
   const _active = () => {
     setActive(!active);
   };

@@ -1,5 +1,12 @@
-import React, { useEffect, useMemo, useRef } from 'react';
-import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet';
+import React, { ForwardRefExoticComponent, useEffect, useState } from 'react';
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  useMapEvents,
+  MarkerProps,
+  Popup,
+} from 'react-leaflet';
 import { useAppDispatch, useAppSelector } from '../../../core/hooks/storeHook';
 import MarkerClusterGroup from 'react-leaflet-cluster';
 import { defultCords } from '../../../core/constants/map';
@@ -9,6 +16,7 @@ import PaddingSide from '../../containers/PaddingSide';
 import * as S from './style';
 import { LatLngBounds } from 'leaflet';
 import { setBBox } from '../../../core/store/slices/objectsSlice';
+import ObjectPopup from '../../simple/ObjectPopup';
 
 const ObjectMapPage = () => {
   const { region } = useAppSelector((state) => state.main);
@@ -44,21 +52,43 @@ const ObjectMapPage = () => {
                 />
               ))}
           </MarkerClusterGroup> */}
-          <MarkerClusterGroup>
-            <MapControl />
-          </MarkerClusterGroup>
+          <MapControl />
         </MapContainer>
       </S.ObjectMapPageWrap>
     </S.ObjectMapPage>
   );
 };
 const MapControl = () => {
-  const { data, bBox } = useAppSelector((state) => state.object);
-  const firstMount = useRef(true);
   const dispatch = useAppDispatch();
+  const { data, bBox } = useAppSelector((state) => state.object);
+  // TODO: по возможности убрать any
+  const [layers, setLayers] = useState<any>([]);
+  useEffect(() => {
+    if (data?.items && data?.items.length > 0) {
+      setLayers(
+        data.items.map((item) => (
+          <Marker
+            key={item.UID}
+            position={{
+              lat: item.lat,
+              lng: item.lng,
+            }}
+          >
+            <Popup>
+              <ObjectPopup {...item} />
+            </Popup>
+          </Marker>
+        ))
+      );
+      return;
+    }
+    setLayers([]);
+  }, [data]);
+
   useEffect(() => {
     setNewBound(map.getBounds());
   }, []);
+
   const setNewBound = (latlng: LatLngBounds) => {
     const bounds = JSON.parse(JSON.stringify(latlng));
     if (JSON.stringify(bBox) === JSON.stringify(bounds)) {
@@ -73,18 +103,22 @@ const MapControl = () => {
     },
   });
   return (
-    <MarkerClusterGroup>
-      {data?.items &&
-        data.items.map((object) => (
-          <Marker
-            key={object.UID}
-            position={{
-              lat: object.lat,
-              lng: object.lng,
-            }}
-          />
-        ))}
-    </MarkerClusterGroup>
+    <>
+      {data?.items && (
+        <MarkerClusterGroup>
+          {layers}
+          {/* {data.items.map((object) => (
+            <Marker
+              key={object.UID}
+              position={{
+                lat: object.lat,
+                lng: object.lng,
+              }}
+            />
+          ))} */}
+        </MarkerClusterGroup>
+      )}
+    </>
   );
 };
 export default ObjectMapPage;

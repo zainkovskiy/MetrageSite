@@ -43,6 +43,7 @@ export interface IGetObjects {
   items: IObjects[];
   itemsCount: number;
   pagesCount: number;
+  mode: string;
 }
 export type IGetObjectsRaw = IFilterFormData & {
   location: string;

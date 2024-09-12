@@ -20,7 +20,7 @@ export const ButtonLink = styled.a<IButtonLinkStyleProps>`
   gap: 0.5rem;
   font-family: ${(props) => getFont(props)};
   color: ${({ theme, $color }) =>
-    $color ? theme.palette[$color] : theme.palette.black};
+    $color ? theme.palette[$color] : theme.palette.black} !important;
   font-size: ${({ $size }) => ($size ? `${$size}px` : '14px')};
   cursor: pointer;
   transition: color 0.3s;
@@ -42,15 +42,15 @@ export const ButtonLink = styled.a<IButtonLinkStyleProps>`
     `}
   @media (hover: hover) {
     &:hover {
-      color: ${({ theme }) => theme.palette.primaryLite};
+      color: ${({ theme }) => theme.palette.primaryLite} !important;
     }
     &:active {
-      color: ${({ theme }) => theme.palette.primaryDark};
+      color: ${({ theme }) => theme.palette.primaryDark} !important;
     }
   }
   @media (hover: none) {
     &:active {
-      color: ${({ theme }) => theme.palette.primaryDark};
+      color: ${({ theme }) => theme.palette.primaryDark} !important;
     }
   }
 `;

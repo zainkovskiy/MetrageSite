@@ -202,7 +202,7 @@ const FilterForm = ({ filterActive }: { filterActive?: string }) => {
           </div>
           <S.FileterButtonsWrapRight>
             <Button fullWidth variant='outline' onClick={toPage}>
-              {isMap ? 'В список' : 'На карте'}
+              {isMap ? 'списком' : 'На карте'}
             </Button>
             <Button fullWidth type='submit'>
               Найти

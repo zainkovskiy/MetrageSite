@@ -62,6 +62,7 @@ export const ObjectFullPhotoSmallContainer = styled.div`
 export const ObjectFullPhotoSmallWrap = styled.div`
   overflow: hidden;
   display: flex;
+  position: relative;
   &:first-child {
     border-radius: 0 40px 0 0;
   }
@@ -69,11 +70,23 @@ export const ObjectFullPhotoSmallWrap = styled.div`
 export const ObjectFullPhotoImg = styled.img`
   width: 100%;
   object-fit: cover;
+  cursor: pointer;
 `;
 export const ObjectFullPhotoSmallImg = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  cursor: pointer;
+`;
+export const ObjectFullCountImage = styled.span`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 44px;
+  color: #fff;
+  font-family: ${({ theme }) => theme.font.dinpro};
+  pointer-events: none;
 `;
 export const ObjectFullCharacteristics = styled.div`
   width: 100%;

@@ -4,7 +4,6 @@ import axios from 'axios';
 import { IObjectsSlice } from '../typesStore/sliceType';
 import { defaultFilter } from '../../constants/filter';
 import { IFilterFormData } from '../../models/main';
-import { LatLngBounds } from 'leaflet';
 const API = 'https://crm.metragegroup.com/API/site.php';
 
 export const getObjects = createAsyncThunk(

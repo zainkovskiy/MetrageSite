@@ -4,9 +4,6 @@ import Text from '../../ui/Text';
 import MainProfitCard from '../MainProfitCard';
 import { useNavigate } from 'react-router-dom';
 import CenterContainer from '../../containers/CenterContainer';
-import PaddingSide from '../../containers/PaddingSide';
-const imgLink =
-  'https://metragegroup.com/_ipx/f_webp&q_90/https://api.metragegroup.com/storage/files/117e245586fc6c38981f5eb7227b0890.png';
 
 const MainProfit = () => {
   const navigate = useNavigate();
@@ -20,7 +17,7 @@ const MainProfit = () => {
   return (
     <S.MainProfit>
       <S.MainProfitImgWrap>
-        <S.MainProfitImg src={imgLink} />
+        <S.MainProfitImg src={'http://89.111.131.154/resources/two.webp'} />
         <S.MainProfitTitleWrap>
           <Text sizeStr='clamp(26px, 4vw, 44px)' color='white'>
             С METRAGE выгодно

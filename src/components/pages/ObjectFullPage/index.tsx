@@ -12,6 +12,8 @@ import ObjectCardSimilar from '../../smart/ObjectCardSimilar';
 import FormNamePhoneSmall from '../../smart/FormNamePhoneSmall';
 import RealtorContactCard from '../../smart/RealtorContactCard';
 import MapOneObject from '../../smart/MapOneObject';
+import WindowDialog from '../../ui/WindowDialog';
+import ObjectGalary from '../../smart/ObjectGalary';
 
 const ObjectFullPage = () => {
   const params = useParams();
@@ -20,6 +22,7 @@ const ObjectFullPage = () => {
   const isBuy = buyRegExp.test(location.pathname);
   const mapRef = useRef<HTMLDivElement>(null);
   const [object, setObject] = useState<IObjectsFull | null>(null);
+  const [open, setOpen] = useState(false);
   useEffect(() => {
     getObject();
   }, [params]);
@@ -57,6 +60,12 @@ const ObjectFullPage = () => {
       });
     }
   };
+  const openGalary = () => {
+    setOpen(true);
+  };
+  const closeGalary = () => {
+    setOpen(false);
+  };
   return (
     <CenterContainer key={object.UID}>
       <PaddingSide>
@@ -86,14 +95,25 @@ const ObjectFullPage = () => {
           <S.ObjectFullRight>
             <S.ObjectFullPhotoContainer>
               <S.ObjectFulllPhotoWrap>
-                <S.ObjectFullPhotoImg src={object.images[0]} />
+                <S.ObjectFullPhotoImg
+                  src={object.images[0]}
+                  onClick={openGalary}
+                />
               </S.ObjectFulllPhotoWrap>
               <S.ObjectFullPhotoSmallContainer>
                 {object.images.map((image, idx) => {
                   if (idx >= 1 && idx <= 4) {
                     return (
                       <S.ObjectFullPhotoSmallWrap key={idx}>
-                        <S.ObjectFullPhotoSmallImg src={image} />
+                        <S.ObjectFullPhotoSmallImg
+                          src={image}
+                          onClick={openGalary}
+                        />
+                        {idx === 4 && object.images.length > 3 && (
+                          <S.ObjectFullCountImage>
+                            +{object.images.length - 4}
+                          </S.ObjectFullCountImage>
+                        )}
                       </S.ObjectFullPhotoSmallWrap>
                     );
                   }
@@ -154,6 +174,11 @@ const ObjectFullPage = () => {
               ))}
             </S.ObjectFullSimilarItems>
           </S.ObjectFullSimilar>
+        )}
+        {object.images.length > 0 && (
+          <WindowDialog open={open}>
+            <ObjectGalary onClose={closeGalary} images={object.images} />
+          </WindowDialog>
         )}
       </PaddingSide>
     </CenterContainer>
