@@ -17,7 +17,7 @@ const MainProfit = () => {
   return (
     <S.MainProfit>
       <S.MainProfitImgWrap>
-        <S.MainProfitImg src={'http://89.111.131.154/resources/two.webp'} />
+        <S.MainProfitImg src={'https://metragegroup.com/resources/two.webp'} />
         <S.MainProfitTitleWrap>
           <Text sizeStr='clamp(26px, 4vw, 44px)' color='white'>
             С METRAGE выгодно

@@ -8,6 +8,7 @@ const ObjectMapPage = lazy(() => import('./components/pages/ObjectMapPage'));
 const ObjectFullPage = lazy(() => import('./components/pages/ObjectFullPage'));
 const RieltorPage = lazy(() => import('./components/pages/RieltorPage'));
 const RieltorsPage = lazy(() => import('./components/pages/RieltorsPage'));
+const СontactsPage = lazy(() => import('./components/pages/СontactsPage'));
 
 export const routes = createBrowserRouter([
   {
@@ -92,6 +93,14 @@ export const routes = createBrowserRouter([
         element: (
           <Suspense>
             <RieltorPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'contacts/',
+        element: (
+          <Suspense>
+            <СontactsPage />
           </Suspense>
         ),
       },

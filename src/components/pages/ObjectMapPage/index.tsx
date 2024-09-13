@@ -17,16 +17,22 @@ import * as S from './style';
 import { LatLngBounds } from 'leaflet';
 import { setBBox } from '../../../core/store/slices/objectsSlice';
 import ObjectPopup from '../../simple/ObjectPopup';
+import { useLocation } from 'react-router-dom';
 
 const ObjectMapPage = () => {
   const { region } = useAppSelector((state) => state.main);
   const defultCenter = defultCords[region];
   const defaultZoom = 12;
+  const location = useLocation();
+  const buyRegExp = new RegExp('buy', 'i');
+  const isBuy = buyRegExp.test(location.pathname);
   return (
     <S.ObjectMapPage>
       <CenterContainer>
         <PaddingSide>
-          <Text size={56}>Купить</Text>
+          <Text sizeStr='clamp(32px, 5vw, 56px)'>
+            {isBuy ? 'Купить' : 'Снять'}
+          </Text>
         </PaddingSide>
       </CenterContainer>
       <S.ObjectMapPageWrap>

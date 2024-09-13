@@ -41,7 +41,9 @@ const ObjectListPage = () => {
       <PaddingSide>
         <S.ObjectListPage>
           <FlexBox jContent='space-between' aItems='flex-end'>
-            <Text size={56}>{isBuy ? 'Купить' : 'Снять'}</Text>
+            <Text sizeStr='clamp(32px, 5vw, 56px)'>
+              {isBuy ? 'Купить' : 'Снять'}
+            </Text>
 
             <ListBox
               title={sortFilter[sort]}

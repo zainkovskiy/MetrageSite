@@ -1,17 +1,10 @@
 import React from 'react';
 import * as S from './style';
 import Text from '../../ui/Text';
-import Button from '../../ui/Button';
 import ButtonLink from '../../ui/ButtonLink';
-import { Link } from 'react-router-dom';
-import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-import Input from '../../ui/Input';
-import { IFormNamePhoneData } from '../../../core/models/main';
-import { sendNamePhoneForm } from '../../../core/api/api';
-import { useAppSelector } from '../../../core/hooks/storeHook';
 import { ReactComponent as Mail } from '../../../assets/images/mail_small.svg';
-import { ReactComponent as Pin } from '../../../assets/images/pin_small.svg';
 import { ReactComponent as Phone } from '../../../assets/images/phone_small.svg';
+import { ReactComponent as Pin } from '../../../assets/images/pin_small.svg';
 import { ReactComponent as Home } from '../../../assets/images/home_small.svg';
 import FlexBox from '../../ui/FlexBox';
 import { IRealtorInfoSmall } from './type';

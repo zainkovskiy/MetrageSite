@@ -25,7 +25,6 @@ const RieltorPage = () => {
   const params = useParams();
   const [rieltor, setRealtor] = useState<IRealtorFull | null>(null);
   const [reward, setReward] = useState<string | null>(null);
-  console.log(rieltor);
 
   useEffect(() => {
     getRieltor();

@@ -26,7 +26,7 @@ const MainProfTeam = () => {
           />
         </S.MainProfTeamLink>
       </S.MainProfTeamWrap>
-      <S.MainProfTeamImage src='http://89.111.131.154/resources/all.webp' />
+      <S.MainProfTeamImage src='https://metragegroup.com/resources/all.webp' />
     </S.MainProfTeam>
   );
 };
