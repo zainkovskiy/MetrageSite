@@ -38,6 +38,7 @@ const initialState: IMainSlice = {
   region: 'msk',
   newBuildings: [],
   realtors: [],
+  loading: true,
 };
 
 const MainInfoSlice = createSlice({
@@ -58,6 +59,7 @@ const MainInfoSlice = createSlice({
       .addCase(fetchData.fulfilled, (state, action) => {
         state.newBuildings = action.payload?.newbuildings || [];
         state.realtors = action.payload?.team || [];
+        state.loading = false;
       });
   },
 });

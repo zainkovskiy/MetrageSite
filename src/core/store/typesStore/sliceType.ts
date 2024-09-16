@@ -7,6 +7,7 @@ export interface IMainSlice {
   region: string;
   newBuildings: INewBuildings[] | [];
   realtors: IRealtors[] | [];
+  loading: boolean;
 }
 export interface IObjectsSlice {
   filter: IFilterFormData;
