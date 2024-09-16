@@ -5,6 +5,9 @@ import { useAppDispatch } from './core/hooks/storeHook';
 import { getRegion } from './core/store/slices/MainInfoSlice';
 import Footer from './components/smart/Footer';
 const App = () => {
+  console.log(globalReferer);
+  console.log(globalRefererId);
+
   const dispatch = useAppDispatch();
   useEffect(() => {
     getData();

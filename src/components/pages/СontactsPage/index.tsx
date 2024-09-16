@@ -15,8 +15,6 @@ import ContactsMap from '../../smart/ContactsMap';
 const СontactsPage = () => {
   const dispatch = useAppDispatch();
   const { data, loading, index } = useAppSelector((state) => state.contacts);
-  console.log(data);
-
   useEffect(() => {
     if (data) {
       return;

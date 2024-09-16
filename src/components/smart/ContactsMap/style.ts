@@ -5,6 +5,10 @@ export const ContactsMap = styled.div`
   grid-template-columns: 1fr 320px;
   gap: 1.5rem;
   height: 750px;
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 400px 300px;
+  }
 `;
 export const ContactsMapListWrap = styled.div`
   display: flex;
@@ -15,4 +19,7 @@ export const ContactsMapList = styled.div`
   flex-direction: column;
   width: 320px;
   overflow: auto;
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
 `;
