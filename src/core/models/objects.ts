@@ -10,6 +10,8 @@ export interface IObjects {
   floor: string;
   lat: number;
   lng: number;
+  typeObject: string;
+  totalArea: number;
 }
 
 export interface IObjectsFull {
@@ -47,6 +49,8 @@ export interface ISimilarObject {
   photo: string;
   typeCard: string;
   price: string;
+  typeObject: string;
+  totalArea: number;
 }
 export interface IPossibleKeys {
   key: string;

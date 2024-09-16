@@ -37,6 +37,8 @@ export interface IRieltorObject {
   photo: string;
   typeCard: string;
   price: string;
+  typeObject: string;
+  totalArea: number;
 }
 export interface IRieltorChef {
   UID: number;

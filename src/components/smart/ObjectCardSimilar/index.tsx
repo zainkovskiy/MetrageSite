@@ -7,7 +7,7 @@ import HorizontLine from '../../simple/HorizontLine';
 import FlexBox from '../../ui/FlexBox';
 
 const ObjectCardSimilar = (props: ISimilarObject) => {
-  const { photo, price, address, UID, typeCard } = props;
+  const { photo, price, address, UID, typeCard, typeObject, totalArea } = props;
 
   return (
     <S.ObjectCardSimilar>
@@ -16,6 +16,9 @@ const ObjectCardSimilar = (props: ISimilarObject) => {
       </S.ObjectCardImgWrap>
       <FlexBox column>
         <Text size={24}>{useNumberTriad(price)} &#8381;</Text>
+        <Text size={16}>
+          {typeObject} &#183; {totalArea}м<sup>2</sup>
+        </Text>
       </FlexBox>
       <HorizontLine />
       <Text size={16}>{address}</Text>

@@ -7,7 +7,16 @@ import HorizontLine from '../../simple/HorizontLine';
 import FlexBox from '../../ui/FlexBox';
 
 const ObjectCard = (props: IObjects) => {
-  const { photo, price, pricePerMeter, address, UID, typeCard } = props;
+  const {
+    photo,
+    price,
+    pricePerMeter,
+    address,
+    UID,
+    typeCard,
+    typeObject,
+    totalArea,
+  } = props;
 
   return (
     <S.ObjectCard>
@@ -20,6 +29,9 @@ const ObjectCard = (props: IObjects) => {
           {useNumberTriad(pricePerMeter)} &#8381;/м<sup>2</sup>
         </Text>
       </FlexBox>
+      <Text size={16}>
+        {typeObject} &#183; {totalArea}м<sup>2</sup>
+      </Text>
       <HorizontLine />
       <Text size={16}>{address}</Text>
     </S.ObjectCard>
