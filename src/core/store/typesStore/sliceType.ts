@@ -1,7 +1,8 @@
 import { LatLngBounds } from 'leaflet';
-import { IGetObjects, IGetRealtors } from '../../models/api';
-import { IFilterFormData, INewBuildings, IRealtors } from '../../models/main';
+import { IGetNewBuildings, IGetObjects, IGetRealtors } from '../../models/api';
+import { IFilterFormData, IRealtors } from '../../models/main';
 import { IContactsClusters } from '../../models/contacts';
+import { INewBuildings } from '../../models/newBuildings';
 
 export interface IMainSlice {
   region: string;
@@ -22,4 +23,9 @@ export interface IContactsSlice {
   data: IContactsClusters[] | null;
   loading: boolean;
   index: number;
+}
+export interface INewBuildingsSlice {
+  data: IGetNewBuildings | null;
+  stateFilter: string;
+  bBox: LatLngBounds | null;
 }

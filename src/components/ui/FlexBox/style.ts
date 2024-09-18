@@ -28,4 +28,9 @@ export const FlexBox = styled.div<IFlexBoxPropsStyle>`
     css`
       flex-direction: column;
     `}
+  ${(props) =>
+    props.$wrap &&
+    css`
+      flex-wrap: wrap;
+    `}
 `;

@@ -1,8 +1,9 @@
 // import { IData } from '../types/data';
 
 import { LatLngBounds } from 'leaflet';
-import { IFilterFormData, INewBuildings, IRealtors } from './main';
+import { IFilterFormData, IRealtors } from './main';
 import { IObjects } from './objects';
+import { INewBuildings } from './newBuildings';
 
 export interface IAPI<I> {
   meta: IMeta;
@@ -39,7 +40,7 @@ export interface IGetRealtors {
 }
 export interface IGetObjects {
   curPage: number;
-  centroid: [string, string];
+  centroid: [number, number];
   items: IObjects[];
   itemsCount: number;
   pagesCount: number;
@@ -50,5 +51,20 @@ export type IGetObjectsRaw = IFilterFormData & {
   direction: string;
   page: number;
   mode: string;
+  bBox?: LatLngBounds | null;
+};
+export interface IGetNewBuildings {
+  buildingState: string;
+  centroid: [number, number];
+  curPage: number;
+  items: INewBuildings[];
+  itemsCount: number;
+  pagesCount: number;
+}
+export type IGetNewBuildingsRaw = {
+  location: string;
+  state: string;
+  page: number;
+  isMap: boolean;
   bBox?: LatLngBounds | null;
 };

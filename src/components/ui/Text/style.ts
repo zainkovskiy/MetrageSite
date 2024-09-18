@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { ITextStyleProps } from './types';
 
 export const Text = styled.span<ITextStyleProps>`
@@ -8,4 +8,9 @@ export const Text = styled.span<ITextStyleProps>`
     $color ? theme.palette[$color] : theme.palette.black};
   font-size: ${({ $size, $sizeStr }) =>
     $size ? `${$size}px` : $sizeStr ? $sizeStr : '14px'};
+  ${({ $nowrap }) =>
+    $nowrap &&
+    css`
+      white-space: nowrap;
+    `};
 `;

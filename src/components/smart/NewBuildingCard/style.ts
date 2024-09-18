@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const NewBuildingCard = styled.div`
@@ -11,6 +12,9 @@ export const NewBuildingCardImage = styled.img`
   height: 20rem;
   width: 100%;
   object-fit: cover;
+`;
+export const NewBuildingCardImageWrap = styled(Link)`
+  display: flex;
 `;
 export const NewBuildingCardWrap = styled.div`
   display: flex;

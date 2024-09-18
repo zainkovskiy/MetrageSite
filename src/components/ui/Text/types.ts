@@ -3,6 +3,7 @@ import React, { ComponentProps } from 'react';
 interface ITextDefaultOwnProps {
   children: React.ReactNode;
   bold?: boolean;
+  nowrap?: boolean;
   color?:
     | 'primary'
     | 'primaryLite'
@@ -28,6 +29,7 @@ export type ITextProps = ITextSizeNumberProps | ITextSizeStringProps;
 
 export interface ITextStyleProps {
   $bold?: boolean;
+  $nowrap?: boolean;
   $size?: number;
   $sizeStr?: string;
   $color?:

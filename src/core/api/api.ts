@@ -8,6 +8,11 @@ import {
   IRealtorsSearch,
 } from '../models/main';
 import { IObjectsFull } from '../models/objects';
+import {
+  IAppartmentDetail,
+  IAppartmentItems,
+  INewBuildingsFull,
+} from '../models/newBuildings';
 const API = 'https://crm.metragegroup.com/API/site.php';
 
 export const subscribe = async (form: ISetForm<IEmailData>) => {
@@ -89,4 +94,26 @@ export const sellFilterForm = async (form: ISetForm<IFilterSellFormData>) => {
     return res.data.result;
   }
   return false;
+};
+export const getNewBuildingsFull = async (UID: string) => {
+  const res = await axios.post<IAPI<INewBuildingsFull>>(API, {
+    method: 'site.newbuildings.getFullCard',
+    fields: {
+      UID: UID,
+    },
+  });
+  if (res.statusText === 'OK') {
+    return res.data.result;
+  }
+  return null;
+};
+export const getNewBuildingsAppartment = async (raw: IAppartmentItems) => {
+  const res = await axios.post<IAPI<IAppartmentDetail[]>>(API, {
+    method: 'site.newbuildings.getAppartments',
+    fields: raw,
+  });
+  if (res.statusText === 'OK') {
+    return res.data.result;
+  }
+  return null;
 };

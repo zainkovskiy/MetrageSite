@@ -10,4 +10,7 @@ export const ObjectMapPage = styled.div`
 export const ObjectMapPageWrap = styled.div`
   width: 100%;
   height: 800px;
+  @media (max-width: 768px) {
+    height: 400px;
+  }
 `;

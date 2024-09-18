@@ -21,7 +21,7 @@ const getValue = (value: string | string[] | undefined, multiple: boolean) => {
 
 const ToggleButtonGroup = (props: IToggleButtonGroupProps) => {
   const firstMount = useRef(true);
-  const { children, onChange, multiple = false, value } = props;
+  const { children, onChange, multiple = false, value, wrap } = props;
   const [valueState, setValueState] = useState<string | string[]>(
     getValue(value, multiple)
   );
@@ -63,7 +63,7 @@ const ToggleButtonGroup = (props: IToggleButtonGroupProps) => {
     setValueState(newValue);
   };
   return (
-    <S.ToggleButtonGroup>
+    <S.ToggleButtonGroup $wrap={wrap}>
       {Children.map(childsArr, (child) => {
         if (React.isValidElement(child) && typeof child.type === 'function') {
           if (child.type.name === 'ToggleButton') {

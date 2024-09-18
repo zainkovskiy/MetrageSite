@@ -55,16 +55,6 @@ export interface IRealtorsSearch {
   firstName: string;
   lastName: string;
 }
-export interface INewBuildings {
-  UID: number;
-  address: string;
-  deadLine: string;
-  description: string;
-  image: string;
-  lat: string;
-  lng: string;
-  name: string;
-}
 
 export interface IEmailData {
   email: string;

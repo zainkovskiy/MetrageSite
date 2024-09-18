@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import ToggleButton from '../../ui/ToggleButton';
 import ToggleButtonGroup from '../../ui/ToggleButtonGroup';
 import FlexBox from '../../ui/FlexBox';

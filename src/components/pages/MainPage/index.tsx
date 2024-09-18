@@ -21,7 +21,7 @@ const MainPage = () => {
         <PaddingSide>
           <MainProfTeam />
           <MainCredo />
-          {/* <MainNewBuild /> */}
+          <MainNewBuild />
           <MainRealtors />
         </PaddingSide>
       </CenterContainer>

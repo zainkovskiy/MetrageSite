@@ -28,6 +28,11 @@ const NavMenu = ({ open, ...otherProps }: { open: boolean }) => {
                 <FlexBox column gap='0.5rem'>
                   {/* <ButtonLink as={Link} to='/sell' label='Продать' /> */}
                   <ButtonLink as={Link} to='/buy' label='Купить' />
+                  <ButtonLink
+                    as={Link}
+                    to='/newbuildings'
+                    label='Новостройки'
+                  />
                   {/* <ButtonLink as={Link} to='/mortgage' label='Ипотека' /> */}
                   {/* <ButtonLink as={Link} to='/help' label='Помощь' /> */}
                   <ButtonLink
@@ -40,8 +45,8 @@ const NavMenu = ({ open, ...otherProps }: { open: boolean }) => {
               <FlexBox column gap='1rem'>
                 <Text bold>О нас</Text>
                 <FlexBox column gap='0.5rem'>
-                  <ButtonLink as={Link} to='/about' label='О компании' />
-                  <ButtonLink as={Link} to='/journal' label='Журнал' />
+                  {/* <ButtonLink as={Link} to='/about' label='О компании' />
+                  <ButtonLink as={Link} to='/journal' label='Журнал' /> */}
                   <ButtonLink as={Link} to='/contacts' label='Контакты' />
                 </FlexBox>
               </FlexBox>

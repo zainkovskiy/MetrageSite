@@ -1,14 +1,15 @@
 import React from 'react';
 import * as S from './style';
-import { INewBuildings } from '../../../core/models/main';
 import Text from '../../ui/Text';
-import Button from '../../ui/Button';
+import { INewBuildings } from '../../../core/models/newBuildings';
 
 const NewBuildingCard = (props: INewBuildings) => {
-  const { image, deadLine, name, address, description } = props;
+  const { image, deadLine, name, address, description, UID } = props;
   return (
     <S.NewBuildingCard>
-      <S.NewBuildingCardImage src={image} />
+      <S.NewBuildingCardImageWrap to={`/newbuildings/${UID}`}>
+        <S.NewBuildingCardImage src={image} />
+      </S.NewBuildingCardImageWrap>
       <S.NewBuildingCardWrap>
         <S.NewBuildingCardTextWrap>
           <Text>{deadLine}</Text>
@@ -20,11 +21,9 @@ const NewBuildingCard = (props: INewBuildings) => {
             {description}
           </S.NewBuildingDescriptionText>
         </S.NewBuildingCardTextWrap>
-        <Button>Перезвоните мне</Button>
       </S.NewBuildingCardWrap>
     </S.NewBuildingCard>
   );
 };
 
 export default NewBuildingCard;
-// Резиденция на Покровском бульваре

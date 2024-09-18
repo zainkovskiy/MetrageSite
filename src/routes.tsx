@@ -9,6 +9,18 @@ const ObjectFullPage = lazy(() => import('./components/pages/ObjectFullPage'));
 const RieltorPage = lazy(() => import('./components/pages/RieltorPage'));
 const RieltorsPage = lazy(() => import('./components/pages/RieltorsPage'));
 const СontactsPage = lazy(() => import('./components/pages/СontactsPage'));
+const NewBuildingsPage = lazy(
+  () => import('./components/pages/NewBuildingsPage')
+);
+const NewBuildingsListPage = lazy(
+  () => import('./components/pages/NewBuildingsListPage')
+);
+const NewBuildingsMapPage = lazy(
+  () => import('./components/pages/NewBuildingsMapPage')
+);
+const NewBuildingsFullPage = lazy(
+  () => import('./components/pages/NewBuildingsFullPage')
+);
 
 export const routes = createBrowserRouter([
   {
@@ -101,6 +113,32 @@ export const routes = createBrowserRouter([
         element: (
           <Suspense>
             <СontactsPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'newbuildings/',
+        element: (
+          <Suspense>
+            <NewBuildingsPage />
+          </Suspense>
+        ),
+        children: [
+          {
+            index: true,
+            element: <NewBuildingsListPage />,
+          },
+          {
+            path: 'map',
+            element: <NewBuildingsMapPage />,
+          },
+        ],
+      },
+      {
+        path: 'newbuildings/:id',
+        element: (
+          <Suspense>
+            <NewBuildingsFullPage />
           </Suspense>
         ),
       },

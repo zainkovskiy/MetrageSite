@@ -136,7 +136,7 @@ const ObjectFullPage = () => {
             </S.ObjectFullCharacteristics>
             {object?.description && (
               <S.ObjectFullDescription>
-                <Text size={20}>Характеристики</Text>
+                <Text size={20}>Описание</Text>
                 <Text size={16}>{object.description}</Text>
               </S.ObjectFullDescription>
             )}

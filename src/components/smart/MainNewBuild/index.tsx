@@ -4,6 +4,7 @@ import Text from '../../ui/Text';
 import ButtonLink from '../../ui/ButtonLink';
 import { useAppSelector } from '../../../core/hooks/storeHook';
 import NewBuildingCard from '../NewBuildingCard';
+import { Link } from 'react-router-dom';
 
 const MainNewBuild = () => {
   const { newBuildings } = useAppSelector((state) => state.main);
@@ -17,6 +18,8 @@ const MainNewBuild = () => {
           size={16}
           label='Все новостройки'
           color='primaryDark'
+          as={Link}
+          to='/newbuildings'
           uppercase
           bold
           arrow='right'
