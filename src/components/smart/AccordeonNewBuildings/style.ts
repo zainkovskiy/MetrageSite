@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import styled, { css } from 'styled-components';
 import { ReactComponent as ArrowBoldLeft } from '../../../assets/images/arrowBoldLeft.svg';
+import { ReactComponent as Close } from '../../../assets/images/icon_cross_primary.svg';
 
 export const AccordeonNewBuildings = styled(motion.div)`
   border-bottom: 1px solid ${({ theme }) => theme.palette.greyDark};
@@ -61,7 +62,7 @@ export const Arrow = styled(ArrowBoldLeft)`
 export const ArrowAmimate = styled(motion.div)``;
 export const AccordeonNewBuildingsContext = styled(motion.div)`
   background-color: ${({ theme }) => theme.palette.grey};
-  max-height: 510px;
+  max-height: 450px;
   display: flex;
   flex-direction: column;
   @media (max-width: 768px) {
@@ -97,4 +98,21 @@ export const AccordeonNewBuildingsContextItem = styled(motion.div)`
       grid-row-end: 4;
     }
   }
+`;
+
+export const AccordeonNewBuildingsImg = styled.img`
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  cursor: pointer;
+`;
+export const AccordeonNewBuildingsFullImg = styled.img`
+  height: 80vh;
+  width: 80vw;
+  object-fit: contain;
+`;
+export const IconClose = styled(Close)`
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
 `;

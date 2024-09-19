@@ -24,6 +24,7 @@ import AccordeonNewBuildings from '../../smart/AccordeonNewBuildings';
 
 const NewBuildingsFullPage = () => {
   const params = useParams();
+  const mapRef = useRef<HTMLDivElement>(null);
   const [object, setObject] = useState<INewBuildingsFull | null>(null);
   const [open, setOpen] = useState(false);
   useEffect(() => {
@@ -53,6 +54,14 @@ const NewBuildingsFullPage = () => {
   const closeGalary = () => {
     setOpen(false);
   };
+  const scrollToMap = () => {
+    if (mapRef.current) {
+      mapRef.current.scrollIntoView({
+        block: 'center',
+        behavior: 'smooth',
+      });
+    }
+  };
   return (
     <CenterContainer key={object.UID}>
       <PaddingSide>
@@ -72,6 +81,7 @@ const NewBuildingsFullPage = () => {
             <Text size={24}>{object.priceRange} &#8381;</Text>
           )}
         </S.NewBuildingsFullTitle>
+        <ButtonLink label='На карте' color='primary' onClick={scrollToMap} />
         <S.NewBuildingsFullPage>
           <S.NewBuildingsFullRight>
             <S.NewBuildingsFullPhotoContainer>
@@ -154,28 +164,30 @@ const NewBuildingsFullPage = () => {
                 )}
               </S.NewBuildingsFullCharacteristicsItems>
             </S.NewBuildingsFullCharacteristics>
-            <S.NewBuildingsFullWrapper>
-              <Text sizeStr='clamp(26px, 4vw, 44px)'>Способы покупки</Text>
-              <S.NewBuildingsFullBuyMethodCards>
-                {object?.buyMethods?.hasMortgage && (
-                  <InfoCard icon='cross' title='Ипотека' />
-                )}
-                {object?.buyMethods?.hasVoenMortgage && (
-                  <InfoCard
-                    icon='around'
-                    title='Военная ипотека'
-                    text='Сниженная ставка по ипотеке'
-                  />
-                )}
-                {object?.buyMethods?.hasSubsidy && (
-                  <InfoCard
-                    icon='arrow'
-                    title='Субсидирование'
-                    text='Сниженная ставка по ипотеке'
-                  />
-                )}
-              </S.NewBuildingsFullBuyMethodCards>
-            </S.NewBuildingsFullWrapper>
+            {object?.buyMethods && (
+              <S.NewBuildingsFullWrapper>
+                <Text sizeStr='clamp(26px, 4vw, 44px)'>Способы покупки</Text>
+                <S.NewBuildingsFullBuyMethodCards>
+                  {object.buyMethods?.hasMortgage && (
+                    <InfoCard icon='cross' title='Ипотека' />
+                  )}
+                  {object.buyMethods?.hasVoenMortgage && (
+                    <InfoCard
+                      icon='around'
+                      title='Военная ипотека'
+                      text='Сниженная ставка по ипотеке'
+                    />
+                  )}
+                  {object.buyMethods?.hasSubsidy && (
+                    <InfoCard
+                      icon='arrow'
+                      title='Субсидирование'
+                      text='Сниженная ставка по ипотеке'
+                    />
+                  )}
+                </S.NewBuildingsFullBuyMethodCards>
+              </S.NewBuildingsFullWrapper>
+            )}
             {object?.appartmentItems && object?.appartmentItems.length > 0 && (
               <S.NewBuildingsFullWrapper>
                 <Text sizeStr='clamp(26px, 4vw, 44px)'>Квартиры ЖК</Text>
@@ -186,10 +198,10 @@ const NewBuildingsFullPage = () => {
                 </FlexBox>
               </S.NewBuildingsFullWrapper>
             )}
-            {object?.developerName && (
-              <S.NewBuildingsFullWrapper>
-                <Text sizeStr='clamp(26px, 4vw, 44px)'>Застройщик</Text>
-                <Text size={28}>{object.developerName}</Text>
+            {object?.centroid && (
+              <S.NewBuildingsFullWrapper ref={mapRef}>
+                <Text sizeStr='clamp(26px, 4vw, 44px)'>На карте</Text>
+                <MapOneObject {...object.centroid} />
               </S.NewBuildingsFullWrapper>
             )}
           </S.NewBuildingsFullRight>

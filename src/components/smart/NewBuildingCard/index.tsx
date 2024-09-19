@@ -2,6 +2,8 @@ import React from 'react';
 import * as S from './style';
 import Text from '../../ui/Text';
 import { INewBuildings } from '../../../core/models/newBuildings';
+import ButtonLink from '../../ui/ButtonLink';
+import { Link } from 'react-router-dom';
 
 const NewBuildingCard = (props: INewBuildings) => {
   const { image, deadLine, name, address, description, UID } = props;
@@ -13,9 +15,13 @@ const NewBuildingCard = (props: INewBuildings) => {
       <S.NewBuildingCardWrap>
         <S.NewBuildingCardTextWrap>
           <Text>{deadLine}</Text>
-          <Text size={24} color='primary'>
-            {name}
-          </Text>
+          <ButtonLink
+            size={24}
+            label={name}
+            color='primary'
+            as={Link}
+            to={`/newbuildings/${UID}`}
+          />
           <Text>{address}</Text>
           <S.NewBuildingDescriptionText>
             {description}

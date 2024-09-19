@@ -130,14 +130,18 @@ const Footer = () => {
               <FlexBox
                 column
                 aItems={windowSize > 768 ? 'flex-end' : 'flex-start'}
+                itemScope
+                itemType='http://schema.org/Organization'
               >
                 <ButtonLink
+                  itemProp='telephone'
                   size={16}
                   color='primaryLite'
                   label='8-800-222-85-28'
                   href='tel:8-800-222-85-28'
                 />
                 <ButtonLink
+                  itemProp='email'
                   size={16}
                   color='primaryLite'
                   label='Dunauskas.o@metragegroup.com'

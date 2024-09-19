@@ -11,6 +11,7 @@ import { getNewBuildingsAppartment } from '../../../core/api/api';
 import { useWindowSize } from '../../../core/hooks/windowSize';
 import ButtonLink from '../../ui/ButtonLink';
 import { useFreezeBody, useUnfreezeBody } from '../../../core/hooks/freezeBody';
+import WindowDialog from '../../ui/WindowDialog';
 
 const AccordeonNewBuildings = (props: IAppartmentItems) => {
   const windowSize = useWindowSize();
@@ -18,6 +19,7 @@ const AccordeonNewBuildings = (props: IAppartmentItems) => {
   const [open, setOpen] = useState(false);
   const [data, setData] = useState<IAppartmentDetail[] | null>(null);
   const [loading, setLoading] = useState(true);
+  const [image, setImage] = useState<string | null>(null);
   useEffect(() => {
     if (open && windowSize <= 768) {
       useFreezeBody();
@@ -44,6 +46,12 @@ const AccordeonNewBuildings = (props: IAppartmentItems) => {
   }, [open]);
   const toggleOpne = () => {
     setOpen(!open);
+  };
+  const openFullImage = (image: string) => {
+    setImage(image);
+  };
+  const closeFullImage = () => {
+    setImage(null);
   };
   return (
     <S.AccordeonNewBuildings>
@@ -89,7 +97,10 @@ const AccordeonNewBuildings = (props: IAppartmentItems) => {
                 data &&
                 data.map((item) => (
                   <S.AccordeonNewBuildingsContextItem key={item.UID}>
-                    <img src={item.image} style={{ height: 40 }} />
+                    <S.AccordeonNewBuildingsImg
+                      src={item.image}
+                      onClick={() => openFullImage(item.image)}
+                    />
                     <Text size={16}>{item.floor}</Text>
                     <Text size={16}>{item.price}</Text>
                     <Text size={16}>{item.areaTotal}</Text>
@@ -100,6 +111,12 @@ const AccordeonNewBuildings = (props: IAppartmentItems) => {
           </S.AccordeonNewBuildingsContext>
         )}
       </AnimatePresence>
+      <WindowDialog open={Boolean(image)}>
+        <FlexBox column aItems='flex-end'>
+          <S.IconClose onClick={closeFullImage} />
+          <S.AccordeonNewBuildingsFullImg src={image || ''} />
+        </FlexBox>
+      </WindowDialog>
     </S.AccordeonNewBuildings>
   );
 };
