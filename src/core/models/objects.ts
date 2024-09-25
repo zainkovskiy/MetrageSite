@@ -1,4 +1,4 @@
-import { IRealtors } from './main';
+import { IMetro, IRealtors } from './main';
 
 export interface IObjects {
   UID: number;
@@ -37,10 +37,16 @@ export interface IObjectsFull {
   landStatus: string;
   waterPipesCount: string;
   realtor: IRealtors;
-  complex: null;
+  complex: IObjectsFullComplex;
   images: string[];
   possibleKeys: IPossibleKeys[];
   similar: ISimilarObject[];
+  metro: IMetro[];
+}
+export interface IObjectsFullComplex {
+  UID: string;
+  name: string;
+  picture: string;
 }
 
 export interface ISimilarObject {

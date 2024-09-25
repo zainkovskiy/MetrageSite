@@ -7,6 +7,7 @@ const ButtonLink = <E extends ElementType = typeof defaultTag>(
   props: IButtonLinkProps<E>
 ) => {
   const {
+    icon,
     label,
     as,
     uppercase = false,
@@ -40,6 +41,7 @@ const ButtonLink = <E extends ElementType = typeof defaultTag>(
       $isNumber={isNumber}
     >
       {arrow === 'left' && <S.ArrowIconLeft $color={color} />}
+      {icon && icon}
       {label}
       {arrow === 'right' && <S.ArrowIconRight $color={color} />}
     </S.ButtonLink>

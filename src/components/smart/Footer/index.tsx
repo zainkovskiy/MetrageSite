@@ -6,6 +6,9 @@ import PaddingSide from '../../containers/PaddingSide';
 import FlexBox from '../../ui/FlexBox';
 import Text from '../../ui/Text';
 import { ReactComponent as Logo } from '../../../assets/images/logo.svg';
+import { ReactComponent as VK } from '../../../assets/images/VK.svg';
+import { ReactComponent as YouTube } from '../../../assets/images/youtube.svg';
+import { ReactComponent as Telegram } from '../../../assets/images/telegram.svg';
 import ButtonLink from '../../ui/ButtonLink';
 import Button from '../../ui/Button';
 import Input from '../../ui/Input';
@@ -153,11 +156,40 @@ const Footer = () => {
                 color='primaryLite'
                 label='Письмо директору'
               />
+              <FlexBox column gap='1rem'>
+                <Text size={16}>Мы с соц.сетях:</Text>
+                <FlexBox column gap='0.3rem'>
+                  <ButtonLink
+                    size={16}
+                    color='primaryLite'
+                    label='Вконтакте'
+                    href='https://vk.com/metragegroup'
+                    icon={<VK />}
+                    target='_blank'
+                  />
+                  <ButtonLink
+                    size={16}
+                    color='primaryLite'
+                    label='Telegram'
+                    href='https://t.me/s/Metragegroup'
+                    icon={<Telegram />}
+                    target='_blank'
+                  />
+                  <ButtonLink
+                    size={16}
+                    color='primaryLite'
+                    label='Youtube'
+                    href='https://www.youtube.com/channel/UCMDrKciab21zLfxUXzBX_6w'
+                    icon={<YouTube />}
+                    target='_blank'
+                  />
+                </FlexBox>
+              </FlexBox>
             </FlexBox>
           </S.FooterWrap>
           <FlexBox aItems='center' jContent='space-between'>
             {windowSize > 768 && <Logo />}
-            <Text>© ООО «Вдоме», 2022</Text>
+            <Text>© ООО «Вдоме», 2024</Text>
           </FlexBox>
         </S.Footer>
       </PaddingSide>

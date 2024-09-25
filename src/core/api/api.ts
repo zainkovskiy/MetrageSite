@@ -4,6 +4,7 @@ import {
   IEmailData,
   IFilterSellFormData,
   IFormNamePhoneData,
+  IFormTakeNewBuilding,
   IRealtorFull,
   IRealtorsSearch,
 } from '../models/main';
@@ -26,6 +27,16 @@ export const subscribe = async (form: ISetForm<IEmailData>) => {
   return false;
 };
 export const sendNamePhoneForm = async (form: ISetForm<IFormNamePhoneData>) => {
+  const res = await axios.post<IAPI<ISimpleAnswer>>(API, {
+    method: 'site.client.setForm',
+    fields: form,
+  });
+  if (res.statusText === 'OK') {
+    return res.data.result;
+  }
+  return false;
+};
+export const takeNewBuilding = async (form: ISetForm<IFormTakeNewBuilding>) => {
   const res = await axios.post<IAPI<ISimpleAnswer>>(API, {
     method: 'site.client.setForm',
     fields: form,

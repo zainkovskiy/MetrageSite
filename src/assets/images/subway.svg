@@ -1,0 +1,14 @@
+<svg width="16.000000" height="16.000000" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<clipPath id="clip3313_42267">
+			<rect id="Icon / Subway" rx="-0.500000" width="15.000000" height="15.000000" transform="translate(0.500000 0.500000)" fill="white" fill-opacity="0"/>
+		</clipPath>
+	</defs>
+	<rect id="Icon / Subway" rx="-0.500000" width="15.000000" height="15.000000" transform="translate(0.500000 0.500000)" fill="#FFFFFF" fill-opacity="0"/>
+	<g clip-path="url(#clip3313_42267)">
+		<path id="Vector" d="M4.5 3L1 13L3.91 13L5.08 8.62L8 14L10.91 8.62L12.08 13L15 13L11.5 3L10.91 3L8 8.06L5.08 3L4.5 3Z" fill="#DC1035" fill-opacity="1.000000" fill-rule="evenodd"/>
+	</g>
+</svg>

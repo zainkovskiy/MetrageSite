@@ -63,6 +63,9 @@ export interface IFormNamePhoneData {
   name?: string;
   phone: string;
 }
+export interface IFormTakeNewBuilding extends IFormNamePhoneData {
+  erid: string;
+}
 
 export interface IFilterFormData {
   typeEstate: string;
@@ -79,4 +82,9 @@ export interface IFilterFormData {
 export interface IFilterSellFormData {
   objectType: string;
   phone: string;
+}
+export interface IMetro {
+  name: string;
+  iconDist: string;
+  distantion: string;
 }

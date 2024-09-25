@@ -79,17 +79,21 @@ export const AccordeonNewBuildingsContext = styled(motion.div)`
 export const AccordeonNewBuildingsContextItems = styled.div`
   overflow: auto;
 `;
-
-export const AccordeonNewBuildingsContextItem = styled(motion.div)`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  padding: 1rem;
-  box-sizing: border-box;
+export const AccordeonNewBuildingsContextItemWrap = styled.div`
+  display: flex;
   align-items: center;
   border-bottom: 1px solid ${({ theme }) => theme.palette.greyDark};
+  padding: 1rem;
+  box-sizing: border-box;
   &:last-child {
     border-bottom: none;
   }
+`;
+export const AccordeonNewBuildingsContextItem = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  align-items: center;
   @media (max-width: 768px) {
     grid-template-columns: 1fr 1fr 2fr;
     column-gap: 1rem;
@@ -99,7 +103,6 @@ export const AccordeonNewBuildingsContextItem = styled(motion.div)`
     }
   }
 `;
-
 export const AccordeonNewBuildingsImg = styled.img`
   width: 60px;
   height: 60px;
@@ -115,4 +118,10 @@ export const IconClose = styled(Close)`
   width: 24px;
   height: 24px;
   cursor: pointer;
+`;
+export const ArrowButton = styled.div`
+  cursor: pointer;
+  & > {
+    pointer-events: none;
+  }
 `;

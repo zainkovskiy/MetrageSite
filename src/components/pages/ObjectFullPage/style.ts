@@ -88,6 +88,13 @@ export const ObjectFullCountImage = styled.span`
   font-family: ${({ theme }) => theme.font.dinpro};
   pointer-events: none;
 `;
+export const ObjectFullMetroWrap = styled.div`
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-top: 1rem;
+  box-sizing: border-box;
+`;
 export const ObjectFullCharacteristics = styled.div`
   width: 100%;
   display: flex;

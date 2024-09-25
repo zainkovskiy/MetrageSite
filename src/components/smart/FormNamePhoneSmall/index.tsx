@@ -12,7 +12,14 @@ import { useAppSelector } from '../../../core/hooks/storeHook';
 import { IFormNamePhoneSmallProps } from './type';
 
 const FormNamePhoneSmall = (props: IFormNamePhoneSmallProps) => {
-  const { text, buttonText, fontSize, back = false, name = false } = props;
+  const {
+    text,
+    buttonText,
+    fontSize,
+    back = false,
+    name = false,
+    onSubmitRaw,
+  } = props;
   const { region } = useAppSelector((state) => state.main);
   const { control, handleSubmit, watch, getValues, reset } = useForm({
     defaultValues: {
@@ -21,11 +28,16 @@ const FormNamePhoneSmall = (props: IFormNamePhoneSmallProps) => {
     },
   });
   const onSubmit: SubmitHandler<IFormNamePhoneData> = (data) => {
-    sendNamePhoneForm({
+    const raw = {
       URL: window.location.href,
       location: region,
       formData: data,
-    }).then((answer) => {
+    };
+    if (onSubmitRaw) {
+      onSubmitRaw(raw);
+      return;
+    }
+    sendNamePhoneForm(raw).then((answer) => {
       if (answer) {
         reset();
       }

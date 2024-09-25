@@ -7,16 +7,24 @@ import {
 import { AnimatePresence } from 'framer-motion';
 import Text from '../../ui/Text';
 import FlexBox from '../../ui/FlexBox';
-import { getNewBuildingsAppartment } from '../../../core/api/api';
+import {
+  getNewBuildingsAppartment,
+  takeNewBuilding,
+} from '../../../core/api/api';
 import { useWindowSize } from '../../../core/hooks/windowSize';
 import ButtonLink from '../../ui/ButtonLink';
 import { useFreezeBody, useUnfreezeBody } from '../../../core/hooks/freezeBody';
 import WindowDialog from '../../ui/WindowDialog';
+import { ReactComponent as Arrow } from '../../../assets/images/arrowBoldRight.svg';
+import FormNamePhoneSmall from '../FormNamePhoneSmall';
+import { ISetForm } from '../../../core/models/api';
+import { IFormNamePhoneData } from '../../../core/models/main';
 
 const AccordeonNewBuildings = (props: IAppartmentItems) => {
   const windowSize = useWindowSize();
   const { name, priceFrom, areaFrom, countItems } = props;
   const [open, setOpen] = useState(false);
+  const [take, setTake] = useState<string | null>(null);
   const [data, setData] = useState<IAppartmentDetail[] | null>(null);
   const [loading, setLoading] = useState(true);
   const [image, setImage] = useState<string | null>(null);
@@ -36,7 +44,6 @@ const AccordeonNewBuildings = (props: IAppartmentItems) => {
     if (open) {
       getNewBuildingsAppartment(props)
         .then((data) => {
-          console.log(data);
           setData(data);
         })
         .finally(() => {
@@ -52,6 +59,18 @@ const AccordeonNewBuildings = (props: IAppartmentItems) => {
   };
   const closeFullImage = () => {
     setImage(null);
+  };
+  const openTake = (erid: string) => {
+    setTake(erid);
+  };
+  const closeTake = () => {
+    setTake(null);
+  };
+  const takeObject = (raw: ISetForm<IFormNamePhoneData>) => {
+    if (take) {
+      takeNewBuilding({ ...raw, formData: { ...raw.formData, erid: take } });
+      closeTake();
+    }
   };
   return (
     <S.AccordeonNewBuildings>
@@ -96,15 +115,20 @@ const AccordeonNewBuildings = (props: IAppartmentItems) => {
               ) : (
                 data &&
                 data.map((item) => (
-                  <S.AccordeonNewBuildingsContextItem key={item.UID}>
-                    <S.AccordeonNewBuildingsImg
-                      src={item.image}
-                      onClick={() => openFullImage(item.image)}
-                    />
-                    <Text size={16}>{item.floor}</Text>
-                    <Text size={16}>{item.price}</Text>
-                    <Text size={16}>{item.areaTotal}</Text>
-                  </S.AccordeonNewBuildingsContextItem>
+                  <S.AccordeonNewBuildingsContextItemWrap>
+                    <S.AccordeonNewBuildingsContextItem key={item.UID}>
+                      <S.AccordeonNewBuildingsImg
+                        src={item.image}
+                        onClick={() => openFullImage(item.image)}
+                      />
+                      <Text size={16}>{item.floor}</Text>
+                      <Text size={16}>{item.price}</Text>
+                      <Text size={16}>{item.areaTotal}</Text>
+                    </S.AccordeonNewBuildingsContextItem>
+                    <S.ArrowButton onClick={() => openTake(item.erid)}>
+                      <Arrow />
+                    </S.ArrowButton>
+                  </S.AccordeonNewBuildingsContextItemWrap>
                 ))
               )}
             </S.AccordeonNewBuildingsContextItems>
@@ -115,6 +139,16 @@ const AccordeonNewBuildings = (props: IAppartmentItems) => {
         <FlexBox column aItems='flex-end'>
           <S.IconClose onClick={closeFullImage} />
           <S.AccordeonNewBuildingsFullImg src={image || ''} />
+        </FlexBox>
+      </WindowDialog>
+      <WindowDialog open={Boolean(take)}>
+        <FlexBox column aItems='flex-end'>
+          <S.IconClose onClick={closeTake} />
+          <FormNamePhoneSmall
+            text='Оставьте ваш номер, и мы вам перезвоним'
+            onSubmitRaw={takeObject}
+            back
+          />
         </FlexBox>
       </WindowDialog>
     </S.AccordeonNewBuildings>

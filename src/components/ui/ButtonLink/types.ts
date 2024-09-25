@@ -16,6 +16,7 @@ interface IButtonLinkOwnProps<E extends ElementType = ElementType> {
   isNumber?: boolean;
   arrow?: 'left' | 'right';
   size?: number;
+  icon?: React.ReactNode;
   color?:
     | 'primary'
     | 'primaryLite'

@@ -14,6 +14,8 @@ import RealtorContactCard from '../../smart/RealtorContactCard';
 import MapOneObject from '../../smart/MapOneObject';
 import WindowDialog from '../../ui/WindowDialog';
 import ObjectGalary from '../../smart/ObjectGalary';
+import ComplexContactCard from '../../smart/ComplexContactCard';
+import MetroLine from '../../simple/MetroLine';
 
 const ObjectFullPage = () => {
   const params = useParams();
@@ -65,6 +67,14 @@ const ObjectFullPage = () => {
   };
   const closeGalary = () => {
     setOpen(false);
+  };
+  const getCard = () => {
+    if (object.type === 'external' && object?.complex) {
+      return <ComplexContactCard {...object.complex} />;
+    }
+    if (object?.realtor) {
+      return <RealtorContactCard {...object.realtor} />;
+    }
   };
   return (
     <CenterContainer key={object.UID}>
@@ -120,6 +130,10 @@ const ObjectFullPage = () => {
                 })}
               </S.ObjectFullPhotoSmallContainer>
             </S.ObjectFullPhotoContainer>
+            <S.ObjectFullMetroWrap>
+              {object?.metro &&
+                object.metro.map((metro) => <MetroLine {...metro} />)}
+            </S.ObjectFullMetroWrap>
             <S.ObjectFullCharacteristics>
               <Text size={20}>Характеристики</Text>
               {object?.possibleKeys &&
@@ -149,7 +163,7 @@ const ObjectFullPage = () => {
           </S.ObjectFullRight>
           <div>
             <S.ObjectFullContacts>
-              {object?.realtor && <RealtorContactCard {...object.realtor} />}
+              {getCard()}
               <FormNamePhoneSmall
                 name={!object.realtor}
                 text={

@@ -74,6 +74,13 @@ export const NewBuildingsFullAddressWrap = styled.div`
   padding-top: 1rem;
   box-sizing: border-box;
 `;
+export const NewBuildingsFullMetroWrap = styled.div`
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-top: 1rem;
+  box-sizing: border-box;
+`;
 export const NewBuildingsFullDescription = styled.div`
   display: flex;
   flex-direction: column;

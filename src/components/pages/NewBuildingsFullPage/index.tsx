@@ -21,6 +21,7 @@ import { ReactComponent as Count } from '../../../assets/images/count.svg';
 import { ReactComponent as Material } from '../../../assets/images/material.svg';
 import InfoCard from '../../simple/InfoCard';
 import AccordeonNewBuildings from '../../smart/AccordeonNewBuildings';
+import MetroLine from '../../simple/MetroLine';
 
 const NewBuildingsFullPage = () => {
   const params = useParams();
@@ -34,8 +35,6 @@ const NewBuildingsFullPage = () => {
     if (params?.id) {
       getNewBuildingsFull(params.id).then((fullObject) => {
         if (fullObject) {
-          console.log(fullObject);
-
           setObject(fullObject);
         }
       });
@@ -114,6 +113,10 @@ const NewBuildingsFullPage = () => {
             <S.NewBuildingsFullAddressWrap>
               <Text size={16}>{object.address} </Text>
             </S.NewBuildingsFullAddressWrap>
+            <S.NewBuildingsFullMetroWrap>
+              {object?.metro &&
+                object.metro.map((metro) => <MetroLine {...metro} />)}
+            </S.NewBuildingsFullMetroWrap>
             {object?.description && (
               <S.NewBuildingsFullDescription>
                 <Text size={20}>Описание</Text>

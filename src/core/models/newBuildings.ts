@@ -1,3 +1,5 @@
+import { IMetro } from './main';
+
 export interface INewBuildings {
   UID: number;
   address: string;
@@ -31,6 +33,7 @@ export interface INewBuildingsFull {
   images: string[];
   name: string;
   priceRange: string;
+  metro: IMetro[];
 }
 
 export interface IAppartmentItems {
@@ -47,4 +50,5 @@ export interface IAppartmentDetail {
   floor: string;
   image: string;
   price: string;
+  erid: string;
 }
