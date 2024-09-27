@@ -39,6 +39,7 @@ const initialState: IMainSlice = {
   newBuildings: [],
   realtors: [],
   loading: true,
+  letterCheff: false,
 };
 
 const MainInfoSlice = createSlice({
@@ -47,6 +48,12 @@ const MainInfoSlice = createSlice({
   reducers: {
     setRegion(state, action: PayloadAction<string>) {
       state.region = action.payload;
+    },
+    openLetterCheff(state) {
+      state.letterCheff = true;
+    },
+    closeLetterCheff(state) {
+      state.letterCheff = false;
     },
   },
   extraReducers(builder) {
@@ -64,5 +71,6 @@ const MainInfoSlice = createSlice({
   },
 });
 
-export const { setRegion } = MainInfoSlice.actions;
+export const { setRegion, openLetterCheff, closeLetterCheff } =
+  MainInfoSlice.actions;
 export default MainInfoSlice.reducer;

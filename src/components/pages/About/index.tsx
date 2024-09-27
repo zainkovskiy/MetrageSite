@@ -13,6 +13,7 @@ import AboutLive from '../../smart/AboutLive';
 const About = () => {
   const dispatch = useAppDispatch();
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     getAboutData();
   }, []);
   const getAboutData = () => {

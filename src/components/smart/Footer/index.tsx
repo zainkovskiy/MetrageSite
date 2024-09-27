@@ -19,9 +19,11 @@ import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { regExpMail } from '../../../core/constants/regExp';
 import { subscribe } from '../../../core/api/api';
 import { IEmailData } from '../../../core/models/main';
-import { useAppSelector } from '../../../core/hooks/storeHook';
+import { useAppDispatch, useAppSelector } from '../../../core/hooks/storeHook';
+import { openLetterCheff } from '../../../core/store/slices/MainInfoSlice';
 
 const Footer = () => {
+  const dispatch = useAppDispatch();
   const { handleSubmit, watch, getValues, control, reset } = useForm({
     defaultValues: { email: '' },
   });
@@ -37,6 +39,9 @@ const Footer = () => {
         reset();
       }
     });
+  };
+  const handleClickLetter = () => {
+    dispatch(openLetterCheff());
   };
   watch('email');
 
@@ -156,6 +161,7 @@ const Footer = () => {
                 size={16}
                 color='primaryLite'
                 label='Письмо директору'
+                onClick={handleClickLetter}
               />
               <FlexBox column gap='1rem'>
                 <Text size={16}>Мы с соц.сетях:</Text>

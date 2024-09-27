@@ -63,6 +63,11 @@ export interface IFormNamePhoneData {
   name?: string;
   phone: string;
 }
+export interface IFormLetterCheff {
+  name: string;
+  phone: string;
+  text: string;
+}
 export interface IFormTakeNewBuilding extends IFormNamePhoneData {
   erid: string;
 }

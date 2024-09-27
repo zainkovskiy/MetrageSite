@@ -3,6 +3,7 @@ import { IAPI, ISetForm, ISimpleAnswer } from '../models/api';
 import {
   IEmailData,
   IFilterSellFormData,
+  IFormLetterCheff,
   IFormNamePhoneData,
   IFormTakeNewBuilding,
   IRealtorFull,
@@ -27,6 +28,16 @@ export const subscribe = async (form: ISetForm<IEmailData>) => {
   return false;
 };
 export const sendNamePhoneForm = async (form: ISetForm<IFormNamePhoneData>) => {
+  const res = await axios.post<IAPI<ISimpleAnswer>>(API, {
+    method: 'site.client.setForm',
+    fields: form,
+  });
+  if (res.statusText === 'OK') {
+    return res.data.result;
+  }
+  return false;
+};
+export const sendLetterCheff = async (form: ISetForm<IFormLetterCheff>) => {
   const res = await axios.post<IAPI<ISimpleAnswer>>(API, {
     method: 'site.client.setForm',
     fields: form,

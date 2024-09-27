@@ -7,9 +7,15 @@ import ButtonLink from '../../ui/ButtonLink';
 import { Link } from 'react-router-dom';
 import { useWindowSize } from '../../../core/hooks/windowSize';
 import { desktopAnimate, mobileAnimate } from './animate';
+import { useAppDispatch } from '../../../core/hooks/storeHook';
+import { openLetterCheff } from '../../../core/store/slices/MainInfoSlice';
 
 const NavMenu = ({ open, ...otherProps }: { open: boolean }) => {
   const windowSize = useWindowSize();
+  const dispatch = useAppDispatch();
+  const handleClickLetter = () => {
+    dispatch(openLetterCheff());
+  };
   return (
     <AnimatePresence>
       {open && (
@@ -45,8 +51,8 @@ const NavMenu = ({ open, ...otherProps }: { open: boolean }) => {
               <FlexBox column gap='1rem'>
                 <Text bold>О нас</Text>
                 <FlexBox column gap='0.5rem'>
-                  {/* <ButtonLink as={Link} to='/about' label='О компании' />
-                  <ButtonLink as={Link} to='/journal' label='Журнал' /> */}
+                  <ButtonLink as={Link} to='/about' label='О компании' />
+                  {/* <ButtonLink as={Link} to='/journal' label='Журнал' /> */}
                   <ButtonLink as={Link} to='/contacts' label='Контакты' />
                 </FlexBox>
               </FlexBox>
@@ -96,7 +102,11 @@ const NavMenu = ({ open, ...otherProps }: { open: boolean }) => {
                 label='Dunauskas.o@metragegroup.com'
                 href='mailto:Dunauskas.o@metragegroup.com'
               />
-              <ButtonLink color='primaryLite' label='Письмо директору' />
+              <ButtonLink
+                color='primaryLite'
+                label='Письмо директору'
+                onClick={handleClickLetter}
+              />
             </FlexBox>
           </S.NavMenuWrap>
         </S.NavMenu>

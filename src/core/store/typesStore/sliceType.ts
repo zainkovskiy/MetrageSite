@@ -14,6 +14,7 @@ export interface IMainSlice {
   newBuildings: INewBuildings[] | [];
   realtors: IRealtors[] | [];
   loading: boolean;
+  letterCheff: boolean;
 }
 export interface IObjectsSlice {
   filter: IFilterFormData;

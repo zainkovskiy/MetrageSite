@@ -111,6 +111,13 @@ const Nav = () => {
                 isMatch
                 uppercase
               />
+              <ButtonLink
+                label='О компании'
+                as={Link}
+                to='/about'
+                isMatch
+                uppercase
+              />
               {/* <ButtonLink
                 label='Продать'
                 as={Link}

@@ -5,9 +5,11 @@ import { useAppDispatch, useAppSelector } from './core/hooks/storeHook';
 import { getRegion } from './core/store/slices/MainInfoSlice';
 import Footer from './components/smart/Footer';
 import styled from 'styled-components';
+import WindowDialog from './components/ui/WindowDialog';
+import LetterCheff from './components/smart/LetterCheff';
 const App = () => {
   const dispatch = useAppDispatch();
-  const { loading } = useAppSelector((state) => state.main);
+  const { loading, letterCheff } = useAppSelector((state) => state.main);
   const navigate = useNavigate();
   useEffect(() => {
     getData();
@@ -31,6 +33,9 @@ const App = () => {
       <Nav />
       <Outlet />
       <Footer />
+      <WindowDialog open={letterCheff}>
+        <LetterCheff />
+      </WindowDialog>
     </>
   );
 };
