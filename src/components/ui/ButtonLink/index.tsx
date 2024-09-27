@@ -17,6 +17,7 @@ const ButtonLink = <E extends ElementType = typeof defaultTag>(
     color = 'black',
     arrow,
     size,
+    sizeStr,
     isNumber = false,
     ...otherProps
   } = props;
@@ -38,6 +39,7 @@ const ButtonLink = <E extends ElementType = typeof defaultTag>(
       $bold={bold}
       $color={color}
       $size={size}
+      $sizeStr={sizeStr}
       $isNumber={isNumber}
     >
       {arrow === 'left' && <S.ArrowIconLeft $color={color} />}

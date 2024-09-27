@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import App from './App';
 import MainPage from './components/pages/MainPage';
+import About from './components/pages/About';
 const ObjectPage = lazy(() => import('./components/pages/ObjectPage'));
 const ObjectListPage = lazy(() => import('./components/pages/ObjectListPage'));
 const ObjectMapPage = lazy(() => import('./components/pages/ObjectMapPage'));
@@ -30,6 +31,14 @@ export const routes = createBrowserRouter([
       {
         path: '/',
         element: <MainPage />,
+      },
+      {
+        path: '/about',
+        element: (
+          <Suspense>
+            <About />
+          </Suspense>
+        ),
       },
       {
         path: 'buy',

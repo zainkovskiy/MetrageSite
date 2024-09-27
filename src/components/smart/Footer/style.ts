@@ -1,4 +1,9 @@
 import styled from 'styled-components';
+export const IconDzen = styled.img`
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+`;
 
 export const Footer = styled.div`
   display: flex;

@@ -4,6 +4,7 @@ import { LatLngBounds } from 'leaflet';
 import { IFilterFormData, IRealtors } from './main';
 import { IObjects } from './objects';
 import { INewBuildings } from './newBuildings';
+import { IAboutDiploms, IAboutLivePhotos, IAboutPartners } from './about';
 
 export interface IAPI<I> {
   meta: IMeta;
@@ -67,4 +68,12 @@ export type IGetNewBuildingsRaw = {
   page: number;
   isMap: boolean;
   bBox?: LatLngBounds | null;
+};
+export type IGetAboutPage = {
+  countDealDays: number;
+  countDepartmants: number;
+  countEmploees: number;
+  diploms: IAboutDiploms[];
+  livePhotos: IAboutLivePhotos[];
+  partners: IAboutPartners;
 };

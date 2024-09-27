@@ -16,6 +16,7 @@ interface IButtonLinkOwnProps<E extends ElementType = ElementType> {
   isNumber?: boolean;
   arrow?: 'left' | 'right';
   size?: number;
+  sizeStr?: string;
   icon?: React.ReactNode;
   color?:
     | 'primary'
@@ -37,6 +38,7 @@ export interface IButtonLinkStyleProps {
   $bold: boolean;
   $isNumber: boolean;
   $size?: number;
+  $sizeStr?: string;
   $color?:
     | 'primary'
     | 'primaryLite'

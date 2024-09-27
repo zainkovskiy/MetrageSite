@@ -21,7 +21,8 @@ export const ButtonLink = styled.a<IButtonLinkStyleProps>`
   font-family: ${(props) => getFont(props)};
   color: ${({ theme, $color }) =>
     $color ? theme.palette[$color] : theme.palette.black} !important;
-  font-size: ${({ $size }) => ($size ? `${$size}px` : '14px')};
+  font-size: ${({ $size, $sizeStr }) =>
+    $size ? `${$size}px` : $sizeStr ? $sizeStr : '14px'};
   cursor: pointer;
   transition: color 0.3s;
   text-decoration: none;

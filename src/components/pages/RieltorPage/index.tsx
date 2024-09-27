@@ -62,9 +62,16 @@ const RieltorPage = () => {
         </S.RieltorPageTop>
         <S.RieltorPage>
           <S.RieltorPageRight>
-            <S.RieltorPageInfo>
+            <S.RieltorPageInfo
+              itemScope
+              itemType='http://schema.org/ImageObject'
+            >
               <S.RieltorPageImgWrap>
-                <S.RieltorPageImg src={rieltor?.avatar} />
+                <S.RieltorPageImg
+                  src={rieltor?.avatar}
+                  itemProp='contentUrl'
+                  alt={`Агентство Metrage. ${rieltor?.firstName} ${rieltor?.lastName}`}
+                />
                 {rieltor?.rewards && rieltor?.rewards.length > 0 && (
                   <S.RieltorPageRewardsWrap>
                     <Text size={16}>Документы и награды</Text>
@@ -87,7 +94,7 @@ const RieltorPage = () => {
               </S.RieltorPageImgWrap>
               <FlexBox column gap='1.5rem'>
                 <FlexBox column gap='0.5rem'>
-                  <Text sizeStr='clamp(32px, 5vw, 56px)'>
+                  <Text sizeStr='clamp(32px, 5vw, 56px)' itemProp='description'>
                     {rieltor?.firstName} {rieltor?.lastName}
                   </Text>
                   <Text size={18}>{rieltor?.officeName}</Text>

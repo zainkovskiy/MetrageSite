@@ -4,6 +4,7 @@ import objectsSlice from './slices/objectsSlice';
 import rieltorsSlice from './slices/rieltorsSlice';
 import contactsSlice from './slices/contactsSlice';
 import newBuildingsSlice from './slices/newBuildingsSlice';
+import aboutSlice from './slices/aboutSlice';
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
     rieltors: rieltorsSlice,
     contacts: contactsSlice,
     newbuildings: newBuildingsSlice,
+    about: aboutSlice,
   },
 });
 

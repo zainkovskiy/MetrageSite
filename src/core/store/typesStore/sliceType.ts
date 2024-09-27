@@ -1,5 +1,10 @@
 import { LatLngBounds } from 'leaflet';
-import { IGetNewBuildings, IGetObjects, IGetRealtors } from '../../models/api';
+import {
+  IGetAboutPage,
+  IGetNewBuildings,
+  IGetObjects,
+  IGetRealtors,
+} from '../../models/api';
 import { IFilterFormData, IRealtors } from '../../models/main';
 import { IContactsClusters } from '../../models/contacts';
 import { INewBuildings } from '../../models/newBuildings';
@@ -28,4 +33,7 @@ export interface INewBuildingsSlice {
   data: IGetNewBuildings | null;
   stateFilter: string;
   bBox: LatLngBounds | null;
+}
+export interface IAboutSlice {
+  data: IGetAboutPage | null;
 }

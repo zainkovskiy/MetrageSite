@@ -9,6 +9,7 @@ import { ReactComponent as Logo } from '../../../assets/images/logo.svg';
 import { ReactComponent as VK } from '../../../assets/images/VK.svg';
 import { ReactComponent as YouTube } from '../../../assets/images/youtube.svg';
 import { ReactComponent as Telegram } from '../../../assets/images/telegram.svg';
+import dzenUrl from '../../../assets/images/dzen.svg';
 import ButtonLink from '../../ui/ButtonLink';
 import Button from '../../ui/Button';
 import Input from '../../ui/Input';
@@ -181,6 +182,14 @@ const Footer = () => {
                     label='Youtube'
                     href='https://www.youtube.com/channel/UCMDrKciab21zLfxUXzBX_6w'
                     icon={<YouTube />}
+                    target='_blank'
+                  />
+                  <ButtonLink
+                    size={16}
+                    color='primaryLite'
+                    label='Дзен'
+                    href='https://dzen.ru/id/66f529b9874b806732645965'
+                    icon={<S.IconDzen src={dzenUrl} />}
                     target='_blank'
                   />
                 </FlexBox>

@@ -14,6 +14,7 @@ export const rootTheme: DefaultTheme = {
     error: '#DC1035',
     grey: '#eeefef',
     greyDark: '#989898',
+    greyLight: '#F6F7F7',
     black: '#1B0020',
     white: '#fff',
   },
