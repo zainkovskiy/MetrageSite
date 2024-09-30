@@ -1,8 +1,7 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { IAPI, IGetAboutPage } from '../../models/api';
 import axios from 'axios';
 import { IAboutSlice } from '../typesStore/sliceType';
-import { IContactsClusters } from '../../models/contacts';
 const API = 'https://crm.metragegroup.com/API/site.php';
 
 export const getAboutPage = createAsyncThunk('about/getAboutPage', async () => {
@@ -19,9 +18,7 @@ const initialState: IAboutSlice = {
 const aboutSlice = createSlice({
   name: 'about',
   initialState,
-  reducers: {
-    setIndex(state, action: PayloadAction<number>) {},
-  },
+  reducers: {},
   extraReducers(builder) {
     builder.addCase(getAboutPage.fulfilled, (state, action) => {
       state.data = action.payload;

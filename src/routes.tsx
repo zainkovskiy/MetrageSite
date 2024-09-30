@@ -22,6 +22,10 @@ const NewBuildingsMapPage = lazy(
 const NewBuildingsFullPage = lazy(
   () => import('./components/pages/NewBuildingsFullPage')
 );
+const ArticlesPage = lazy(() => import('./components/pages/ArticlesPage'));
+const ArticleDetailPage = lazy(
+  () => import('./components/pages/ArticleDetailPage')
+);
 
 export const routes = createBrowserRouter([
   {
@@ -142,6 +146,22 @@ export const routes = createBrowserRouter([
             element: <NewBuildingsMapPage />,
           },
         ],
+      },
+      {
+        path: 'articles/',
+        element: (
+          <Suspense>
+            <ArticlesPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'articles/:id',
+        element: (
+          <Suspense>
+            <ArticleDetailPage />
+          </Suspense>
+        ),
       },
       {
         path: 'newbuildings/:id',

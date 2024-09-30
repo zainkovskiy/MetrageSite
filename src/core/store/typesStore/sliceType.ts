@@ -8,6 +8,7 @@ import {
 import { IFilterFormData, IRealtors } from '../../models/main';
 import { IContactsClusters } from '../../models/contacts';
 import { INewBuildings } from '../../models/newBuildings';
+import { IArticleSection } from '../../models/article';
 
 export interface IMainSlice {
   region: string;
@@ -37,4 +38,7 @@ export interface INewBuildingsSlice {
 }
 export interface IAboutSlice {
   data: IGetAboutPage | null;
+}
+export interface IArticleSlice {
+  sections: IArticleSection[] | [];
 }

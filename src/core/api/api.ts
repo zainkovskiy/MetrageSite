@@ -15,6 +15,7 @@ import {
   IAppartmentItems,
   INewBuildingsFull,
 } from '../models/newBuildings';
+import { IArticleDetail } from '../models/article';
 const API = 'https://crm.metragegroup.com/API/site.php';
 
 export const subscribe = async (form: ISetForm<IEmailData>) => {
@@ -133,6 +134,19 @@ export const getNewBuildingsAppartment = async (raw: IAppartmentItems) => {
   const res = await axios.post<IAPI<IAppartmentDetail[]>>(API, {
     method: 'site.newbuildings.getAppartments',
     fields: raw,
+  });
+  if (res.statusText === 'OK') {
+    return res.data.result;
+  }
+  return null;
+};
+
+export const getArticleDetail = async (UID: string) => {
+  const res = await axios.post<IAPI<IArticleDetail>>(API, {
+    method: 'site.articles.getCard',
+    fields: {
+      UID: UID,
+    },
   });
   if (res.statusText === 'OK') {
     return res.data.result;

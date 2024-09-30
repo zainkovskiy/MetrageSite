@@ -5,6 +5,7 @@ import { IFilterFormData, IRealtors } from './main';
 import { IObjects } from './objects';
 import { INewBuildings } from './newBuildings';
 import { IAboutDiploms, IAboutLivePhotos, IAboutPartners } from './about';
+import { IArticleSection } from './article';
 
 export interface IAPI<I> {
   meta: IMeta;
@@ -76,4 +77,8 @@ export type IGetAboutPage = {
   diploms: IAboutDiploms[];
   livePhotos: IAboutLivePhotos[];
   partners: IAboutPartners;
+};
+export type IGetArticlePage = {
+  countSections: number;
+  data: IArticleSection[] | null;
 };

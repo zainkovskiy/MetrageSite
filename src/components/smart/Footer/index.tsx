@@ -82,16 +82,23 @@ const Footer = () => {
                   label='Контакты'
                 />
               </FlexBox>
-              {/* <FlexBox gap='1rem' column>
-                <ButtonLink
+              <FlexBox gap='1rem' column>
+                {/* <ButtonLink
                   as={Link}
                   to='/services'
                   size={16}
                   label='Сервисы'
                 />
                 <ButtonLink as={Link} to='/help' size={16} label='Помощь' />
-                <ButtonLink as={Link} to='/journal' size={16} label='Журнал' />
-              </FlexBox> */}
+                <ButtonLink as={Link} to='/journal' size={16} label='Журнал' /> */}
+                <ButtonLink
+                  as={Link}
+                  to='/articles'
+                  size={16}
+                  label='Статьи'
+                  rel='nofollow'
+                />
+              </FlexBox>
             </S.FooterLinksWrap>
             <FlexBox column gap='1rem'>
               <S.FooterSubscribe onSubmit={handleSubmit(onSubmit)}>
