@@ -4,11 +4,10 @@ import * as S from './style';
 import ArticlesItem from '../ArticlesItem';
 
 const ArticlesSection = (props: IArticleSection) => {
-  const { sectionShemaType, sectionTitle, sectionDescription, articles } =
-    props;
+  const { sectionShemaType, sectionTitle, articles } = props;
   return (
     <S.ArticlesSection itemScope itemType={sectionShemaType}>
-      <S.ArticlesSectionTitle itemProp={sectionDescription}>
+      <S.ArticlesSectionTitle itemProp='description'>
         {sectionTitle}
       </S.ArticlesSectionTitle>
       {articles.length > 0 && (

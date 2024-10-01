@@ -13,8 +13,11 @@ export const ArticleDetailPage = styled.article`
 `;
 export const ArticleDetailPageBread = styled.article`
   padding-top: 120px;
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   @media (max-width: 480px) {
     padding-top: 80px;
   }
@@ -58,6 +61,7 @@ export const ArticleDetailPageText = styled.span<{ $type: string }>`
   font-family: ${({ theme }) => theme.font.regular};
   color: ${({ theme }) => theme.palette.black};
   font-size: ${({ $type }) => ($type ? getFontSizeText($type) : '14px')};
+  text-align: justify;
 `;
 export const ArticleDetailPageImg = styled.img`
   width: 100%;

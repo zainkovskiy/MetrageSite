@@ -7,6 +7,8 @@ import { Link, useParams } from 'react-router-dom';
 import { IArticleBody, IArticleDetail } from '../../../core/models/article';
 import FlexBox from '../../ui/FlexBox';
 import ButtonLink from '../../ui/ButtonLink';
+import Text from '../../ui/Text';
+import moment from 'moment';
 
 const ArticleDetailPage = () => {
   const params = useParams();
@@ -42,9 +44,8 @@ const ArticleDetailPage = () => {
           <S.ArticleDetailPageText
             $type={compoenent.type}
             key={compoenent.order}
-          >
-            {compoenent.content}
-          </S.ArticleDetailPageText>
+            dangerouslySetInnerHTML={{ __html: compoenent.content }}
+          />
         );
       case 'img':
         return (
@@ -85,6 +86,9 @@ const ArticleDetailPage = () => {
             to='/articles'
             color='primary'
           />
+          <Text size={12} color='greyDark'>
+            {moment(article.published).format('HH:mm DD.MM.YYYY')}
+          </Text>
         </S.ArticleDetailPageBread>
         <S.ArticleDetailPage itemScope itemType={article.articleSchema}>
           <meta itemProp='headline' content={article.headline} />

@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const ArticlesItem = styled.article`
+export const ArticlesItem = styled.article<{ $image: string }>`
   border-radius: 20px 0px 20px 0px;
   padding: 32px 24px;
   box-sizing: border-box;
@@ -9,6 +9,16 @@ export const ArticlesItem = styled.article`
   flex-direction: column;
   gap: 0.5rem;
   cursor: pointer;
+  position: relative;
+  ${({ $image }) =>
+    $image &&
+    css`
+      background-image: url(${$image});
+      background-repeat: no-repeat;
+      background-position: 100% 0;
+      background-size: 30%;
+    `}
+
   & > * {
     transition: color 0.3s;
   }
@@ -45,4 +55,12 @@ export const ArticlesItemDescription = styled.span`
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
+`;
+export const ArticlesItemDate = styled.span`
+  font-family: ${({ theme }) => theme.font.regular};
+  font-size: 12px;
+  color: ${({ theme }) => theme.palette.greyDark};
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
 `;
