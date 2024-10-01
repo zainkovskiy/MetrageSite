@@ -1,15 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import Nav from './components/smart/Nav';
 import { useAppDispatch, useAppSelector } from './core/hooks/storeHook';
-import { getRegion } from './core/store/slices/MainInfoSlice';
+import { closeSnackBar, getRegion } from './core/store/slices/MainInfoSlice';
 import Footer from './components/smart/Footer';
 import styled from 'styled-components';
 import WindowDialog from './components/ui/WindowDialog';
 import LetterCheff from './components/smart/LetterCheff';
+import Snackbar from './components/ui/Snackbar';
 const App = () => {
   const dispatch = useAppDispatch();
-  const { loading, letterCheff } = useAppSelector((state) => state.main);
+  const { loading, letterCheff, snackBar } = useAppSelector(
+    (state) => state.main
+  );
   const navigate = useNavigate();
   useEffect(() => {
     getData();
@@ -25,6 +28,9 @@ const App = () => {
   const getData = () => {
     dispatch(getRegion());
   };
+  const onCloseSnackBar = () => {
+    dispatch(closeSnackBar());
+  };
   if (loading) {
     return <LoadingTime>Загрузка...</LoadingTime>;
   }
@@ -33,6 +39,7 @@ const App = () => {
       <Nav />
       <Outlet />
       <Footer />
+      <Snackbar open={snackBar} onClose={onCloseSnackBar} />
       <WindowDialog open={letterCheff}>
         <LetterCheff />
       </WindowDialog>

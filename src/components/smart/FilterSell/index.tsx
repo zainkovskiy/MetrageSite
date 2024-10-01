@@ -10,9 +10,11 @@ import Select from '../../ui/Select';
 import SelectItem from '../../ui/SelectItem';
 import { IFilterSellFormData } from '../../../core/models/main';
 import { sellFilterForm } from '../../../core/api/api';
-import { useAppSelector } from '../../../core/hooks/storeHook';
+import { useAppDispatch, useAppSelector } from '../../../core/hooks/storeHook';
+import { openSnackBar } from '../../../core/store/slices/MainInfoSlice';
 
 const FilterSell = () => {
+  const dispatch = useAppDispatch();
   const { region } = useAppSelector((state) => state.main);
   const { control, handleSubmit, getValues, watch } = useForm({
     defaultValues: {
@@ -57,6 +59,8 @@ const FilterSell = () => {
       location: region,
       URL: window.location.href,
       formData: data,
+    }).then(() => {
+      dispatch(openSnackBar());
     });
   };
   watch('phone');

@@ -41,17 +41,18 @@ const NavMenu = ({ open, ...otherProps }: { open: boolean }) => {
                   />
                   {/* <ButtonLink as={Link} to='/mortgage' label='Ипотека' /> */}
                   {/* <ButtonLink as={Link} to='/help' label='Помощь' /> */}
-                  <ButtonLink
-                    as={Link}
-                    to='/rieltors'
-                    label='Наши специалисты'
-                  />
+                  <ButtonLink as={Link} to='/articles/' label='Статьи' />
                 </FlexBox>
               </FlexBox>
               <FlexBox column gap='1rem'>
                 <Text bold>О нас</Text>
                 <FlexBox column gap='0.5rem'>
                   <ButtonLink as={Link} to='/about' label='О компании' />
+                  <ButtonLink
+                    as={Link}
+                    to='/rieltors'
+                    label='Наши специалисты'
+                  />
                   {/* <ButtonLink as={Link} to='/journal' label='Журнал' /> */}
                   <ButtonLink as={Link} to='/contacts' label='Контакты' />
                 </FlexBox>

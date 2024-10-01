@@ -8,10 +8,12 @@ import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import Input from '../../ui/Input';
 import { IFormNamePhoneData } from '../../../core/models/main';
 import { sendNamePhoneForm } from '../../../core/api/api';
-import { useAppSelector } from '../../../core/hooks/storeHook';
+import { useAppDispatch, useAppSelector } from '../../../core/hooks/storeHook';
 import { IFormNamePhoneProps } from './type';
+import { openSnackBar } from '../../../core/store/slices/MainInfoSlice';
 
 const FormNamePhone = (props: IFormNamePhoneProps) => {
+  const dispatch = useAppDispatch();
   const { name, text, buttonText } = props;
   const { region } = useAppSelector((state) => state.main);
   const { control, handleSubmit, watch, getValues, reset } = useForm({
@@ -27,6 +29,7 @@ const FormNamePhone = (props: IFormNamePhoneProps) => {
       formData: data,
     }).then((answer) => {
       if (answer) {
+        dispatch(openSnackBar());
         reset();
       }
     });

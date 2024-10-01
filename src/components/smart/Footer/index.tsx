@@ -20,7 +20,10 @@ import { regExpMail } from '../../../core/constants/regExp';
 import { subscribe } from '../../../core/api/api';
 import { IEmailData } from '../../../core/models/main';
 import { useAppDispatch, useAppSelector } from '../../../core/hooks/storeHook';
-import { openLetterCheff } from '../../../core/store/slices/MainInfoSlice';
+import {
+  openLetterCheff,
+  openSnackBar,
+} from '../../../core/store/slices/MainInfoSlice';
 
 const Footer = () => {
   const dispatch = useAppDispatch();
@@ -36,6 +39,7 @@ const Footer = () => {
       formData: data,
     }).then((answer) => {
       if (answer) {
+        dispatch(openSnackBar());
         reset();
       }
     });
@@ -93,10 +97,9 @@ const Footer = () => {
                 <ButtonLink as={Link} to='/journal' size={16} label='Журнал' /> */}
                 <ButtonLink
                   as={Link}
-                  to='/articles'
+                  to='/articles/'
                   size={16}
                   label='Статьи'
-                  rel='nofollow'
                 />
               </FlexBox>
             </S.FooterLinksWrap>

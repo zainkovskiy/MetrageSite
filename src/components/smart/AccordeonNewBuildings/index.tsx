@@ -19,9 +19,12 @@ import { ReactComponent as Arrow } from '../../../assets/images/arrowBoldRight.s
 import FormNamePhoneSmall from '../FormNamePhoneSmall';
 import { ISetForm } from '../../../core/models/api';
 import { IFormNamePhoneData } from '../../../core/models/main';
+import { openSnackBar } from '../../../core/store/slices/MainInfoSlice';
+import { useAppDispatch } from '../../../core/hooks/storeHook';
 
 const AccordeonNewBuildings = (props: IAppartmentItems) => {
   const windowSize = useWindowSize();
+  const dispatch = useAppDispatch();
   const { name, priceFrom, areaFrom, countItems } = props;
   const [open, setOpen] = useState(false);
   const [take, setTake] = useState<string | null>(null);
@@ -68,7 +71,12 @@ const AccordeonNewBuildings = (props: IAppartmentItems) => {
   };
   const takeObject = (raw: ISetForm<IFormNamePhoneData>) => {
     if (take) {
-      takeNewBuilding({ ...raw, formData: { ...raw.formData, erid: take } });
+      takeNewBuilding({
+        ...raw,
+        formData: { ...raw.formData, erid: take },
+      }).then(() => {
+        dispatch(openSnackBar());
+      });
       closeTake();
     }
   };

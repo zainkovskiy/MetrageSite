@@ -12,6 +12,8 @@ export const rootTheme: DefaultTheme = {
     primaryLite: '#9D19DB',
     primaryDark: '#700184',
     error: '#DC1035',
+    green: '#22C813',
+    greenDark: '#0E9A02',
     grey: '#eeefef',
     greyDark: '#989898',
     greyLight: '#F6F7F7',

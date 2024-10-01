@@ -10,7 +10,10 @@ import Input from '../../ui/Input';
 import { IFormLetterCheff } from '../../../core/models/main';
 import FlexBox from '../../ui/FlexBox';
 import TextArea from '../../ui/TextArea';
-import { closeLetterCheff } from '../../../core/store/slices/MainInfoSlice';
+import {
+  closeLetterCheff,
+  openSnackBar,
+} from '../../../core/store/slices/MainInfoSlice';
 import { sendLetterCheff } from '../../../core/api/api';
 
 const LetterCheff = () => {
@@ -24,7 +27,9 @@ const LetterCheff = () => {
       location: region,
       formData: data,
     };
-    sendLetterCheff(raw);
+    sendLetterCheff(raw).then(() => {
+      dispatch(openSnackBar());
+    });
     handleClose();
   };
   const validateValuePhone = (value: string) => {

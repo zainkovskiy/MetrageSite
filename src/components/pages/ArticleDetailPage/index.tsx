@@ -83,7 +83,7 @@ const ArticleDetailPage = () => {
             label='к списку'
             uppercase
             as={Link}
-            to='/articles'
+            to='/articles/'
             color='primary'
           />
           <Text size={12} color='greyDark'>

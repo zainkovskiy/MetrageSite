@@ -16,6 +16,7 @@ export interface IMainSlice {
   realtors: IRealtors[] | [];
   loading: boolean;
   letterCheff: boolean;
+  snackBar: boolean;
 }
 export interface IObjectsSlice {
   filter: IFilterFormData;

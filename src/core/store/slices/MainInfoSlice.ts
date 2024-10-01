@@ -40,6 +40,7 @@ const initialState: IMainSlice = {
   realtors: [],
   loading: true,
   letterCheff: false,
+  snackBar: false,
 };
 
 const MainInfoSlice = createSlice({
@@ -54,6 +55,12 @@ const MainInfoSlice = createSlice({
     },
     closeLetterCheff(state) {
       state.letterCheff = false;
+    },
+    openSnackBar(state) {
+      state.snackBar = true;
+    },
+    closeSnackBar(state) {
+      state.snackBar = false;
     },
   },
   extraReducers(builder) {
@@ -71,6 +78,11 @@ const MainInfoSlice = createSlice({
   },
 });
 
-export const { setRegion, openLetterCheff, closeLetterCheff } =
-  MainInfoSlice.actions;
+export const {
+  setRegion,
+  openLetterCheff,
+  closeLetterCheff,
+  openSnackBar,
+  closeSnackBar,
+} = MainInfoSlice.actions;
 export default MainInfoSlice.reducer;

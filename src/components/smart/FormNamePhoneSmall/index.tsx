@@ -8,8 +8,9 @@ import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import Input from '../../ui/Input';
 import { IFormNamePhoneData } from '../../../core/models/main';
 import { sendNamePhoneForm } from '../../../core/api/api';
-import { useAppSelector } from '../../../core/hooks/storeHook';
+import { useAppDispatch, useAppSelector } from '../../../core/hooks/storeHook';
 import { IFormNamePhoneSmallProps } from './type';
+import { openSnackBar } from '../../../core/store/slices/MainInfoSlice';
 
 const FormNamePhoneSmall = (props: IFormNamePhoneSmallProps) => {
   const {
@@ -20,6 +21,7 @@ const FormNamePhoneSmall = (props: IFormNamePhoneSmallProps) => {
     name = false,
     onSubmitRaw,
   } = props;
+  const dispatch = useAppDispatch();
   const { region } = useAppSelector((state) => state.main);
   const { control, handleSubmit, watch, getValues, reset } = useForm({
     defaultValues: {
@@ -39,6 +41,7 @@ const FormNamePhoneSmall = (props: IFormNamePhoneSmallProps) => {
     }
     sendNamePhoneForm(raw).then((answer) => {
       if (answer) {
+        dispatch(openSnackBar());
         reset();
       }
     });
