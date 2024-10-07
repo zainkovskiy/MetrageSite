@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import WindowDialog from './components/ui/WindowDialog';
 import LetterCheff from './components/smart/LetterCheff';
 import Snackbar from './components/ui/Snackbar';
+import Loader from './components/simple/Loader';
 const App = () => {
   const dispatch = useAppDispatch();
   const { loading, letterCheff, snackBar } = useAppSelector(
@@ -32,7 +33,7 @@ const App = () => {
     dispatch(closeSnackBar());
   };
   if (loading) {
-    return <LoadingTime>Загрузка...</LoadingTime>;
+    return <Loader />;
   }
   return (
     <>
