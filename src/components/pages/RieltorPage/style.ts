@@ -144,3 +144,13 @@ export const RieltorPageCallMe = styled.div`
     display: none;
   }
 `;
+export const RieltorPageVideos = styled.div`
+  overflow: hidden;
+  padding-bottom: 4rem;
+  box-sizing: border-box;
+`;
+export const RieltorPageVideosWrap = styled.div`
+  display: flex;
+  gap: 0.5rem;
+  overflow: auto;
+`;

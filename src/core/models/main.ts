@@ -25,6 +25,15 @@ export interface IRealtorFull {
   reviews: ISocNetworkAndReview[];
   specialisation: string[];
   rewards: IRieltorRewards[];
+  videoReviews: IRealtorVideo[];
+}
+export interface IRealtorVideo {
+  contentType: string;
+  contentUrl: string;
+  description: string;
+  name: string;
+  thumbnailUrl: string;
+  uploadDate: string;
 }
 export interface ISocNetworkAndReview {
   image: string;

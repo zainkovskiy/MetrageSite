@@ -168,6 +168,37 @@ const RieltorPage = () => {
                 </S.RieltorPageReviews>
               </S.RieltorPageReviewBlock>
             )}
+            {rieltor.videoReviews.length > 0 && (
+              <S.RieltorPageVideos>
+                <S.RieltorPageVideosWrap>
+                  {rieltor.videoReviews.map((video) => (
+                    <div
+                      itemScope
+                      itemProp='VideoObject'
+                      itemType='https://schema.org/VideoObject'
+                    >
+                      {/* <span itemProp='name'>{video.name}</span> */}
+                      <meta itemProp='uploadDate' content={video.uploadDate} />
+                      <meta
+                        itemProp='description'
+                        content={video.description}
+                      />
+                      <meta itemProp='contentUrl' content={video.contentUrl} />
+                      <video controls width='250' poster={video.thumbnailUrl}>
+                        <source
+                          src={video.contentUrl}
+                          type={video.contentType}
+                        />
+                        <meta
+                          itemProp='thumbnailUrl'
+                          content={video.thumbnailUrl}
+                        />
+                      </video>
+                    </div>
+                  ))}
+                </S.RieltorPageVideosWrap>
+              </S.RieltorPageVideos>
+            )}
             <Text size={24}>Объекты риелтора</Text>
             <S.RieltorPageObjects>
               {rieltor?.objects &&
